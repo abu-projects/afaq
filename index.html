@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFAQ Digital Infrastructure - Always Reliable, Always Ready</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .pacifico-font {
+        font-family: 'Pacifico', cursive;
+    }
+    .particles-container {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+    .particle {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: rgba(30, 170, 231, 0.3);
+        border-radius: 0;
+        animation: float 20s infinite linear;
+        box-shadow: 0 0 15px rgba(30, 170, 231, 0.3);
+    }
+    .particle:nth-child(2n) {
+        background: rgba(26, 20, 73, 0.3);
+        box-shadow: 0 0 15px rgba(26, 20, 73, 0.3);
+    }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 20%; top: 50%; animation-delay: -2s; }
+    .particle:nth-child(3) { left: 30%; top: 70%; animation-delay: -4s; }
+    .particle:nth-child(4) { left: 40%; top: 90%; animation-delay: -6s; }
+    .particle:nth-child(5) { left: 50%; top: 10%; animation-delay: -8s; }
+    .particle:nth-child(6) { left: 60%; top: 40%; animation-delay: -10s; }
+    .particle:nth-child(7) { left: 70%; top: 60%; animation-delay: -12s; }
+    .particle:nth-child(8) { left: 80%; top: 80%; animation-delay: -14s; }
+    .particle:nth-child(9) { left: 90%; top: 30%; animation-delay: -16s; }
+    .particle:nth-child(10) { left: 95%; top: 50%; animation-delay: -18s; }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+    .gradient-text {
+        background: linear-gradient(90deg, #1eaae7, #ffffff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px -5px rgba(30, 170, 231, 0.15), 0 8px 10px -6px rgba(30, 170, 231, 0.15);
+    }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+    .accordion-content.active {
+        max-height: 500px; /* Adjust as needed */
+    }
+    .hero-bg {
+        background-color: #0f172a;
+        background-image:
+            radial-gradient(ellipse 80% 80% at 50% -20%, rgba(30, 170, 231, 0.3), rgba(255, 255, 255, 0)),
+            radial-gradient(ellipse 80% 80% at 50% 120%, rgba(26, 20, 73, 0.3), rgba(255, 255, 255, 0));
+    }
+    .section-bg {
+        background-color: #1e293b;
+        background-image:
+            radial-gradient(at 0% 0%, rgba(26, 20, 73, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(30, 170, 231, 0.15) 0px, transparent 50%);
+    }
+    .partner-logo {
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease-in-out;
+    }
+    .partner-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body class="bg-slate-900 text-white">
+
+<!-- Navigation -->
+<nav class="w-full bg-slate-900/80 backdrop-blur-md fixed top-0 z-50 border-b border-slate-800">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="flex items-center">
+            <img src="imgs/logo.svg" alt="AFAQ ADI Logo" class="h-8 w-auto">
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">About Us</a>
+            <a href="#services" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Services</a>
+            <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Team</a>
+            <a href="#partners" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Partners</a>
+            <a href="#contact" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Contact</a>
+        </div>
+        <a href="#contact" class="bg-[#1eaae7] text-white px-6 py-2 rounded-none hover:bg-opacity-90 transition whitespace-nowrap">
+            Get In Touch
+        </a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-20 relative hero-bg overflow-hidden">
+    <!-- Hero background image -->
+    <img src="imgs/hero2.jpeg" alt="Data Center" class="absolute inset-0 w-full h-full object-cover opacity-30 z-0 pointer-events-none select-none" style="object-position:center;"/>
+    <div class="particles-container">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="container mx-auto px-6 py-20 w-full relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                Always <span class="gradient-text">Reliable</span>, Always <span class="gradient-text">Ready</span>
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl mb-10 max-w-3xl mx-auto">
+                AFAQ Digital Infrastructure (AFAQ ADI) is a leading integration company in Saudi Arabia, providing cutting-edge digital infrastructure solutions to empower businesses with robust, scalable, and secure IT environments.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#services" class="bg-[#1eaae7] text-white px-8 py-4 rounded-none hover:bg-opacity-90 transition text-lg font-medium flex items-center gap-2">
+                    Our Solutions <i class="ri-arrow-right-line"></i>
+                </a>
+                <a href="#contact" class="bg-white/10 text-white px-8 py-4 rounded-none hover:bg-white/20 transition text-lg font-medium backdrop-blur-sm flex items-center gap-2">
+                    Contact Us <i class="ri-mail-line"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="py-20 bg-slate-900">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-animate="fade-in">
+                <h2 class="text-4xl font-bold mb-4">About <span class="gradient-text">AFAQ ADI</span></h2>
+                <p class="text-slate-300 mb-4">
+                    AFAQ Digital Infrastructure (AFAQ ADI) stands at the forefront of digital transformation in the Kingdom of Saudi Arabia. As a specialized integration company, AFAQ ADI is committed to delivering state-of-the-art digital infrastructure solutions that are not only innovative but also inherently reliable and always ready to meet the dynamic demands of the modern business landscape.
+                </p>
+                <p class="text-slate-300 mb-6">
+                    Led by General Manager Mohamed Essawi, AFAQ ADI brings together a team of experts passionate about leveraging technology to solve complex challenges and drive progress. Our strategic location in Riyadh positions us perfectly to serve a diverse clientele across the region.
+                </p>
+                 <div class="bg-slate-800/50 border border-slate-700 rounded-none p-4 flex items-center gap-4">
+                    <img src="https://placehold.co/80x80/1e293b/ffffff?text=ME" alt="Mohamed Essawi, General Manager" class="w-20 h-20 rounded-none object-cover border-2 border-[#1eaae7]">
+                    <div>
+                        <h4 class="font-semibold text-lg">Mohamed Essawi</h4>
+                        <p class="text-sm text-[#1eaae7]">General Manager</p>
+                    </div>
+                </div>
+            </div>
+            <div data-animate="fade-in">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3" alt="AFAQ Digital Infrastructure Team" class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-full object-cover">
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center mt-20">
+             <div class="order-2 md:order-1" data-animate="fade-in">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Vision and Mission" class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-full object-cover">
+            </div>
+            <div class="order-1 md:order-2" data-animate="fade-in">
+                <h3 class="text-3xl font-bold mb-4">Our Vision & Mission</h3>
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-[#1eaae7] mb-2">Vision</h4>
+                    <p class="text-slate-300">To be the most trusted and innovative digital infrastructure partner in the Kingdom of Saudi Arabia, recognized for our unwavering commitment to reliability and readiness.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-[#1a1449] mb-2">Mission</h4>
+                    <p class="text-slate-300">To empower businesses with advanced, secure, and scalable digital infrastructure solutions, fostering growth and enabling seamless operations through expert integration, proactive support, and continuous innovation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 section-bg">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">Our Services & <span class="gradient-text">Solutions</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+            AFAQ ADI offers a comprehensive portfolio of IT solutions and services designed to meet the diverse needs of enterprises across various industries.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 100ms;">
+                <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
+                    <i class="ri-database-2-line text-3xl text-[#1eaae7]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Data Center Solutions</h3>
+                <p class="text-slate-400 text-sm">End-to-end solutions, from design and implementation to management of traditional and smart data centers.</p>
+            </div>
+            <div class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 200ms;">
+                <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
+                    <i class="ri-router-line text-3xl text-[#1eaae7]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Network Infrastructure</h3>
+                <p class="text-slate-400 text-sm">Resilient and high-performance passive and active network infrastructures for seamless communication.</p>
+            </div>
+            <div class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 300ms;">
+                <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
+                    <i class="ri-server-line text-3xl text-[#1eaae7]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">System Infrastructure</h3>
+                <p class="text-slate-400 text-sm">Optimization of IT systems including servers, security, virtualization, cloud architecture, and database management.</p>
+            </div>
+            <div class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 400ms;">
+                <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
+                    <i class="ri-device-line text-3xl text-[#1eaae7]"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Integrated Solutions</h3>
+                <p class="text-slate-400 text-sm">Specialized solutions including Access Control, Public Address, Sound Systems, IPTV, and Fire Alarms.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section id="values" class="py-20 bg-slate-900">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">Our Core <span class="gradient-text">Values</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+            Our operations and client engagements are guided by a set of core values that reflect our commitment to excellence.
+        </p>
+        <div class="max-w-4xl mx-auto">
+            <div class="space-y-4">
+                <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-shield-check-line text-2xl text-[#1eaae7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Reliability</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">We are dedicated to building and maintaining digital infrastructures that are consistently stable, dependable, and perform optimally under all conditions. Our solutions are designed for maximum uptime and minimal disruption.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in" style="transition-delay: 150ms;">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-rocket-2-line text-2xl text-[#57b5e7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#57b5e7] transition-colors">Readiness</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">We ensure our clients are always prepared for future technological advancements and potential challenges. This involves proactive planning, agile implementation, and continuous support to adapt to evolving needs.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in" style="transition-delay: 300ms;">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-lightbulb-flash-line text-2xl text-[#1eaae7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Innovation</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">We embrace cutting-edge technologies and innovative approaches to deliver solutions that are not just current but also future-proof, providing our clients with a competitive edge.</p>
+                    </div>
+                </div>
+                 <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in" style="transition-delay: 450ms;">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-hand-heart-line text-2xl text-[#1eaae7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Integrity</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">We operate with the highest standards of honesty, transparency, and ethical conduct in all our dealings, building lasting relationships based on trust and mutual respect.</p>
+                    </div>
+                </div>
+                 <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in" style="transition-delay: 600ms;">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-user-settings-line text-2xl text-[#1eaae7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Client-Centricity</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">Our clients are at the heart of everything we do. We are committed to understanding their unique needs and delivering tailored solutions that exceed their expectations and contribute to their success.</p>
+                    </div>
+                </div>
+                 <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in" style="transition-delay: 750ms;">
+                    <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                        <div class="flex items-center gap-4">
+                            <i class="ri-award-line text-2xl text-[#1eaae7]"></i>
+                            <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Excellence</span>
+                        </div>
+                        <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-400 pt-4 pl-10">We strive for perfection in every project, from initial consultation to post-implementation support, ensuring the highest quality of service and technical expertise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Team Section -->
+<section id="team" class="py-20 section-bg">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">Meet Our <span class="gradient-text">Expert Team</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+            The driving force behind our success is our team of dedicated and experienced professionals.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="https://placehold.co/128x128/1e293b/ffffff?text=JD" alt="Team Member" class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
+                <h3 class="text-xl font-semibold mb-1">Javier Rodriguez</h3>
+                <p class="text-[#1eaae7] mb-3">Lead Infrastructure Architect</p>
+                <p class="text-slate-400 text-sm mb-4">Javier designs resilient and scalable architectures that form the backbone of our clients' digital transformation.</p>
+                <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 200ms;">
+                <img src="https://placehold.co/128x128/1e293b/ffffff?text=FS" alt="Team Member" class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
+                <h3 class="text-xl font-semibold mb-1">Fatima Al-Sayed</h3>
+                <p class="text-[#1eaae7] mb-3">Senior Network Engineer</p>
+                <p class="text-slate-400 text-sm mb-4">Fatima ensures our networks are secure, efficient, and always ready, specializing in complex routing and security protocols.</p>
+                <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 300ms;">
+                <img src="https://placehold.co/128x128/1e293b/ffffff?text=LC" alt="Team Member" class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
+                <h3 class="text-xl font-semibold mb-1">Liam Chen</h3>
+                <p class="text-[#1eaae7] mb-3">Cloud Solutions Specialist</p>
+                <p class="text-slate-400 text-sm mb-4">Liam helps businesses leverage the power of the cloud, designing hybrid and multi-cloud environments for optimal performance.</p>
+                <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+            </div>
+            <!-- Team Member 4 -->
+            <div class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300" data-animate="fade-in" style="transition-delay: 400ms;">
+                <img src="https://placehold.co/128x128/1e293b/ffffff?text=AK" alt="Team Member" class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
+                <h3 class="text-xl font-semibold mb-1">Aisha Khan</h3>
+                <p class="text-[#1eaae7] mb-3">Cybersecurity Analyst</p>
+                <p class="text-slate-400 text-sm mb-4">Aisha is our first line of defense, protecting client infrastructure from threats with proactive monitoring and response.</p>
+                <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section -->
+<section id="partners" class="py-20 bg-slate-900">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">Trusted By <span class="gradient-text">Leading Brands</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+            We partner with the world's leading technology companies to deliver best-in-class solutions.
+        </p>
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=TechCorp" alt="Partner Logo" class="partner-logo">
+            </div>
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 200ms;">
+                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=InnovateInc" alt="Partner Logo" class="partner-logo">
+            </div>
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 300ms;">
+                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=GlobalData" alt="Partner Logo" class="partner-logo">
+            </div>
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 400ms;">
+                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=SecureNet" alt="Partner Logo" class="partner-logo">
+            </div>
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 500ms;">
+                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=CloudWave" alt="Partner Logo" class="partner-logo">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 section-bg">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
+            <p class="text-slate-300 mb-12">
+                We're here to help you build a reliable and ready digital future. Contact us to discuss your project.
+            </p>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-8 md:p-12 text-left">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
+                        <div class="space-y-4 text-slate-300">
+                            <div class="flex items-start gap-4">
+                                <i class="ri-map-pin-line text-2xl text-[#1eaae7] mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white">Address</h4>
+                                    <p>Khalid Ibn Al Walid St, Ar Rawdah, Riyadh 13211, Kingdom of Saudi Arabia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="ri-mail-send-line text-2xl text-[#1eaae7] mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white">Email</h4>
+                                    <a href="mailto:Info@adi.sa" class="hover:text-[#1eaae7] transition">Info@adi.sa</a>
+                                </div>
+                            </div>
+                             <div class="flex items-start gap-4">
+                                <i class="ri-phone-line text-2xl text-[#1eaae7] mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white">General Manager: Mohamed Essawi</h4>
+                                    <a href="tel:+966546477429" class="hover:text-[#1eaae7] transition">+966 54 647 7429</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="ri-global-line text-2xl text-[#1eaae7] mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-white">Website</h4>
+                                    <a href="http://www.adi.sa" target="_blank" rel="noopener noreferrer" class="hover:text-[#1eaae7] transition">www.adi.sa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+                        <form action="#" class="space-y-4">
+                            <input type="text" placeholder="Your Name" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+                            <input type="email" placeholder="Your Email" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+                            <textarea placeholder="Your Message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
+                            <button type="submit" class="w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <a href="#" class="flex items-center mb-4">
+                    <img src="imgs/logo.svg" alt="AFAQ ADI Logo" class="h-10 w-auto">
+                </a>
+                <p class="text-slate-400 mb-4 text-sm">Always Reliable, Always Ready.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="text-slate-400 hover:text-[#1eaae7] text-sm">About Us</a></li>
+                    <li><a href="#services" class="text-slate-400 hover:text-[#1eaae7] text-sm">Services</a></li>
+                    <li><a href="#team" class="text-slate-400 hover:text-[#1eaae7] text-sm">Our Team</a></li>
+                    <li><a href="#partners" class="text-slate-400 hover:text-[#1eaae7] text-sm">Partners</a></li>
+                    <li><a href="#contact" class="text-slate-400 hover:text-[#1eaae7] text-sm">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm">Privacy Policy</a></li>
+                    <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm">Terms of Service</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-semibold mb-4">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-twitter-x-line text-xl"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-line text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-slate-800 pt-8 text-center">
+            <p class="text-slate-500 text-sm">&copy; 2024 AFAQ Digital Infrastructure. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Accordion functionality
+    const accordionBtns = document.querySelectorAll(".accordion-btn");
+    accordionBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector(".accordion-icon");
+            
+            const isActive = content.classList.contains('active');
+
+            // Close all accordions
+            document.querySelectorAll('.accordion-content').forEach(acc => {
+                acc.classList.remove('active');
+                acc.previousElementSibling.querySelector('.accordion-icon').classList.remove('rotate-45');
+            });
+
+            // Toggle current accordion if it wasn't active
+            if (!isActive) {
+                content.classList.add("active");
+                icon.classList.add("rotate-45");
+            }
+        });
+    });
+
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Animate container
+                    if (entry.target.dataset.animate) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translate(0, 0)";
+                    }
+                    // Animate elements within a container
+                    const elements = entry.target.querySelectorAll('[data-animate="fade-in"]');
+                    elements.forEach(el => {
+                        el.style.opacity = "1";
+                        el.style.transform = "translate(0, 0)";
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+
+    const sectionsToAnimate = document.querySelectorAll("#about, #services, #values, #team, #partners, #contact");
+    sectionsToAnimate.forEach((section) => {
+        const elements = section.querySelectorAll('[data-animate="fade-in"]');
+        elements.forEach(el => {
+            if (el.style.transform.includes('translate-x')) {
+                // Keep existing direction
+            } else {
+                el.style.transform = 'translateY(2rem)';
+            }
+            el.style.opacity = '0';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            if(el.style.transitionDelay) {
+                el.style.transition += `, transition-delay ${el.style.transitionDelay}`;
+            }
+        });
+        observer.observe(section);
+    });
+});
+</script>
+
+</body>
+</html>

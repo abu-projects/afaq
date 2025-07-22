@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AFAQ Digital Infrastructure - Always Reliable, Always Ready</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0A0B3B",
+              secondary: "#00B6F1",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before {
+      content: "\f3c2";
+      }
+      body {
+      font-family: 'Inter', sans-serif;
+      }
+      .wave-divider {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+      background-size: cover;
+      height: 60px;
+      margin-bottom: -81px;
+      }
+      .wave-divider-blue {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%231e3a8a'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+      background-size: cover;
+      height: 60px;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+              <img
+                src="https://static.readdy.ai/image/3fbc212699fd94419ff9b65c079d4941/3d78d1b538a5ee87a776103f15cf0302.png"
+                alt="AFAQ ADI Logo"
+                class="h-12"
+              />
+            </div>
+          </div>
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#services"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Services</a
+            >
+            <a
+              href="#solutions"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Solutions</a
+            >
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >About</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Contact</a
+            >
+            <button
+              class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-blue-800 transition-colors whitespace-nowrap"
+            >
+              Get Started
+            </button>
+          </nav>
+          <button class="md:hidden w-8 h-8 flex items-center justify-center">
+            <i class="ri-menu-line text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      class="relative bg-gradient-to-br from-primary to-blue-900 text-white overflow-hidden"
+      style="background-image: url('https://readdy.ai/api/search-image?query=Modern%20digital%20infrastructure%20data%20center%20servers%20network%20cables%20futuristic%20technology%20blue%20lighting%20professional%20business%20environment%20clean%20minimalist%20background%20Saudi%20Arabia%20technology&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center; background-blend-mode: overlay;"
+    >
+      <div class="absolute inset-0 bg-primary bg-opacity-80"></div>
+      <div class="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
+        <div class="w-full flex items-center min-h-[500px]">
+          <div class="w-full lg:w-2/3 space-y-8">
+            <div class="space-y-4">
+              <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                Building Tomorrow's
+                <span class="text-blue-300">Digital Infrastructure</span>
+              </h1>
+              <p class="text-xl lg:text-2xl text-blue-100 max-w-2xl">
+                Always Reliable, Always Ready. Pioneering digital transformation
+                across Saudi Arabia with cutting-edge IT solutions and
+                unwavering commitment to excellence.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                class="bg-white text-primary px-8 py-4 !rounded-button font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap"
+              >
+                Explore Solutions
+              </button>
+              <button
+                class="border-2 border-white text-white px-8 py-4 !rounded-button font-semibold hover:bg-white hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Schedule Consultation
+              </button>
+            </div>
+            <div class="flex items-center space-x-8 pt-8">
+              <div class="text-center">
+                <div class="text-3xl font-bold">500+</div>
+                <div class="text-blue-200 text-sm">Projects Delivered</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold">99.9%</div>
+                <div class="text-blue-200 text-sm">Uptime Guarantee</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold">24/7</div>
+                <div class="text-blue-200 text-sm">Support Available</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wave-divider"></div>
+    </section>
+    <!-- Core Services -->
+    <section id="services" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Core Infrastructure Services
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive digital infrastructure solutions designed to power
+            your business transformation and ensure operational excellence.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6"
+            >
+              <i class="ri-server-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Data Centers</h3>
+            <p class="text-gray-600 mb-6">
+              Smart and traditional data center solutions with enterprise-grade
+              security, scalability, and 99.9% uptime guarantee for
+              mission-critical operations.
+            </p>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Smart Infrastructure Design
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Disaster Recovery Solutions
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                24/7 Monitoring & Support
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-secondary rounded-xl flex items-center justify-center mb-6"
+            >
+              <i class="ri-global-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Network Infrastructure
+            </h3>
+            <p class="text-gray-600 mb-6">
+              Active and passive network infrastructure solutions ensuring
+              seamless connectivity, optimal performance, and future-ready
+              scalability.
+            </p>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                High-Speed Connectivity
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Network Security Solutions
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Performance Optimization
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6"
+            >
+              <i class="ri-settings-3-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              System Architecture
+            </h3>
+            <p class="text-gray-600 mb-6">
+              Comprehensive system architecture including virtualization, server
+              management, security protocols, and cloud integration services.
+            </p>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Virtualization Solutions
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Cloud Management
+              </li>
+              <li class="flex items-center">
+                <i class="ri-check-line text-green-500 mr-2"></i>
+                Security Implementation
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team Section (adapted) -->
+    <section id="team" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Meet Our <span class="text-primary">Expert Team</span></h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            The driving force behind our success is our team of dedicated and experienced professionals.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white rounded-2xl text-center p-8 shadow-lg border border-gray-100 hover:shadow-xl transition" >
+            <img src="https://placehold.co/128x128/1e293b/ffffff?text=JD" alt="Team Member" class="w-32 h-32 rounded-xl mx-auto mb-4 border-4 border-gray-100 object-cover">
+            <h3 class="text-xl font-semibold mb-1 text-gray-900">Javier Rodriguez</h3>
+            <p class="text-secondary mb-3">Lead Infrastructure Architect</p>
+            <p class="text-gray-600 text-sm mb-4">Javier designs resilient and scalable architectures that form the backbone of our clients' digital transformation.</p>
+            <a href="#" class="text-gray-400 hover:text-secondary"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl text-center p-8 shadow-lg border border-gray-100 hover:shadow-xl transition" >
+            <img src="https://placehold.co/128x128/1e293b/ffffff?text=FS" alt="Team Member" class="w-32 h-32 rounded-xl mx-auto mb-4 border-4 border-gray-100 object-cover">
+            <h3 class="text-xl font-semibold mb-1 text-gray-900">Fatima Al-Sayed</h3>
+            <p class="text-secondary mb-3">Senior Network Engineer</p>
+            <p class="text-gray-600 text-sm mb-4">Fatima ensures our networks are secure, efficient, and always ready, specializing in complex routing and security protocols.</p>
+            <a href="#" class="text-gray-400 hover:text-secondary"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl text-center p-8 shadow-lg border border-gray-100 hover:shadow-xl transition" >
+            <img src="https://placehold.co/128x128/1e293b/ffffff?text=LC" alt="Team Member" class="w-32 h-32 rounded-xl mx-auto mb-4 border-4 border-gray-100 object-cover">
+            <h3 class="text-xl font-semibold mb-1 text-gray-900">Liam Chen</h3>
+            <p class="text-secondary mb-3">Cloud Solutions Specialist</p>
+            <p class="text-gray-600 text-sm mb-4">Liam helps businesses leverage the power of the cloud, designing hybrid and multi-cloud environments for optimal performance.</p>
+            <a href="#" class="text-gray-400 hover:text-secondary"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+          </div>
+          <div class="bg-white rounded-2xl text-center p-8 shadow-lg border border-gray-100 hover:shadow-xl transition" >
+            <img src="https://placehold.co/128x128/1e293b/ffffff?text=AK" alt="Team Member" class="w-32 h-32 rounded-xl mx-auto mb-4 border-4 border-gray-100 object-cover">
+            <h3 class="text-xl font-semibold mb-1 text-gray-900">Aisha Khan</h3>
+            <p class="text-secondary mb-3">Cybersecurity Analyst</p>
+            <p class="text-gray-600 text-sm mb-4">Aisha is our first line of defense, protecting client infrastructure from threats with proactive monitoring and response.</p>
+            <a href="#" class="text-gray-400 hover:text-secondary"><i class="ri-linkedin-box-fill text-2xl"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section (adapted) -->
+    <section id="partners" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Trusted By <span class="text-secondary">Leading Brands</span></h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            We partner with the world's leading technology companies to deliver best-in-class solutions.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center max-w-5xl mx-auto">
+          <div class="flex justify-center">
+            <img src="https://placehold.co/160x80/ffffff/9ca3af?text=TechCorp" alt="Partner Logo" class="h-16 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition">
+          </div>
+          <div class="flex justify-center">
+            <img src="https://placehold.co/160x80/ffffff/9ca3af?text=InnovateInc" alt="Partner Logo" class="h-16 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition">
+          </div>
+          <div class="flex justify-center">
+            <img src="https://placehold.co/160x80/ffffff/9ca3af?text=GlobalData" alt="Partner Logo" class="h-16 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition">
+          </div>
+          <div class="flex justify-center">
+            <img src="https://placehold.co/160x80/ffffff/9ca3af?text=SecureNet" alt="Partner Logo" class="h-16 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition">
+          </div>
+          <div class="flex justify-center">
+            <img src="https://placehold.co/160x80/ffffff/9ca3af?text=CloudWave" alt="Partner Logo" class="h-16 object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Company Values -->
+    <section class="py-20 bg-primary text-white relative">
+      <div class="max-w-7xl mx-auto px-6" style="    padding-bottom: 60px;">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">Our Core Values</h2>
+          <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+            The principles that guide our commitment to excellence and drive our
+            mission to deliver unparalleled digital infrastructure solutions.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-shield-check-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Reliability</h3>
+            <p class="text-blue-100">
+              Unwavering commitment to delivering consistent, dependable
+              solutions that exceed expectations.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-flashlight-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Readiness</h3>
+            <p class="text-blue-100">
+              Always prepared to respond swiftly to evolving technological
+              challenges and opportunities.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-lightbulb-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+            <p class="text-blue-100">
+              Pioneering cutting-edge technologies to shape the future of
+              digital infrastructure.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-heart-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Integrity</h3>
+            <p class="text-blue-100">
+              Maintaining the highest ethical standards in all our business
+              relationships and practices.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-user-heart-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Client-Centricity</h3>
+            <p class="text-blue-100">
+              Placing our clients' success at the center of everything we do and
+              every decision we make.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-star-line text-2xl text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Excellence</h3>
+            <p class="text-blue-100">
+              Striving for perfection in every project, service, and interaction
+              with unwavering dedication.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="wave-divider"></div>
+    </section>
+    <!-- Leadership Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <div class="relative">
+              <img
+                src="https://readdy.ai/api/search-image?query=Professional%20Saudi%20business%20executive%20Mohamed%20Essawi%20in%20modern%20office%20setting%20confident%20leadership%20portrait%20clean%20background%20technology%20environment&width=600&height=600&seq=leader1&orientation=squarish"
+                alt="Mohamed Essawi"
+                class="w-80 h-80 rounded-2xl object-cover object-top mx-auto shadow-2xl"
+              />
+              <div
+                class="absolute -bottom-6 -right-6 w-24 h-24 bg-primary rounded-full flex items-center justify-center"
+              >
+                <i class="ri-award-line text-3xl text-white"></i>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/2 space-y-6">
+            <div>
+              <h2 class="text-4xl font-bold text-gray-900 mb-2">
+                Mohamed Essawi
+              </h2>
+              <p class="text-xl text-primary font-semibold">Founder & CEO</p>
+            </div>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              With over two decades of experience in digital infrastructure and
+              technology leadership, Mohamed Essawi founded AFAQ ADI with a
+              vision to transform Saudi Arabia's digital landscape. His
+              expertise spans enterprise architecture, data center operations,
+              and strategic technology implementation.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Under his leadership, AFAQ ADI has become a trusted partner for
+              government entities and enterprise clients, delivering
+              mission-critical infrastructure solutions that power digital
+              transformation across the Kingdom.
+            </p>
+            <div class="flex items-center space-x-6 pt-4">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-primary">20+</div>
+                <div class="text-gray-600 text-sm">Years Experience</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-primary">100+</div>
+                <div class="text-gray-600 text-sm">Enterprise Clients</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-primary">50+</div>
+                <div class="text-gray-600 text-sm">Team Members</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Saudi Identity & Regional Focus -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Proudly Saudi, Regionally Focused
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Headquartered in Riyadh, we're driving digital transformation across
+            Saudi Arabia and the broader Middle East region with
+            locally-tailored solutions.
+          </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-map-pin-line text-xl text-green-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  Riyadh Headquarters
+                </h3>
+                <p class="text-gray-600">
+                  Strategically located in the heart of Saudi Arabia's capital,
+                  positioning us at the center of the Kingdom's digital
+                  transformation initiatives.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-government-line text-xl text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  Vision 2030 Alignment
+                </h3>
+                <p class="text-gray-600">
+                  Supporting Saudi Arabia's Vision 2030 through innovative
+                  digital infrastructure solutions that enable economic
+                  diversification and technological advancement.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0"
+              >
+                <i class="ri-global-line text-xl text-purple-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  Regional Expansion
+                </h3>
+                <p class="text-gray-600">
+                  Expanding our footprint across the GCC region, bringing
+                  world-class digital infrastructure expertise to emerging
+                  markets.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="bg-gradient-to-br from-primary to-blue-900 rounded-2xl p-8 text-white relative overflow-hidden"
+              style="background-image: url('https://readdy.ai/api/search-image?query=Saudi%20Arabia%20map%20Riyadh%20city%20skyline%20modern%20architecture%20technology%20digital%20transformation%20clean%20minimalist%20background&width=800&height=600&seq=saudi1&orientation=landscape'); background-size: cover; background-position: center; background-blend-mode: overlay;"
+            >
+              <div class="absolute inset-0 bg-primary bg-opacity-80"></div>
+              <div class="relative z-10">
+                <div class="flex items-center space-x-3 mb-6">
+                  <div
+                    class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center"
+                  >
+                    <i class="ri-flag-line text-white"></i>
+                  </div>
+                  <span class="text-lg font-semibold"
+                    >Kingdom of Saudi Arabia</span
+                  >
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Serving the Kingdom</h3>
+                <p class="text-blue-100 mb-6">
+                  From government institutions to private enterprises, we're
+                  proud to contribute to Saudi Arabia's digital future with
+                  cutting-edge infrastructure solutions.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold">15+</div>
+                    <div class="text-blue-200 text-sm">Government Projects</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold">85+</div>
+                    <div class="text-blue-200 text-sm">Enterprise Clients</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-primary text-white relative">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-6">
+          Ready to Transform Your Digital Infrastructure?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Partner with AFAQ ADI to build a robust, scalable, and secure digital
+          foundation that powers your business growth and innovation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            class="bg-white text-primary px-8 py-4 !rounded-button font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap"
+          >
+            Schedule Consultation
+          </button>
+          <button
+            class="border-2 border-white text-white px-8 py-4 !rounded-button font-semibold hover:bg-white hover:text-primary transition-colors whitespace-nowrap"
+          >
+            Download Brochure
+          </button>
+        </div>
+        <div
+          class="grid md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-blue-800"
+        >
+          <div class="text-center">
+            <div
+              class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-phone-line text-xl text-white"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Call Us</h3>
+            <p class="text-blue-100">+966 11 234 5678</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-mail-line text-xl text-white"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Email Us</h3>
+            <p class="text-blue-100">info@afaqadi.com</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <i class="ri-map-pin-line text-xl text-white"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Visit Us</h3>
+            <p class="text-blue-100">Riyadh, Saudi Arabia</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <img
+                src="https://static.readdy.ai/image/3fbc212699fd94419ff9b65c079d4941/3d78d1b538a5ee87a776103f15cf0302.png"
+                alt="AFAQ ADI Logo"
+                class="h-10 brightness-0 invert"
+              />
+            </div>
+            <p class="text-gray-400">
+              Always Reliable, Always Ready. Building tomorrow's digital
+              infrastructure across Saudi Arabia.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
+                <i class="ri-linkedin-fill text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
+                <i class="ri-twitter-fill text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+              >
+                <i class="ri-facebook-fill text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Services</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Data Centers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Network Infrastructure</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >System Architecture</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Smart Systems</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Solutions</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Access Control</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >IPTV Systems</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Fire Alarm</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Sound & PA</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Company</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Leadership</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2024 AFAQ Digital Infrastructure. All rights reserved.
+          </p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script id="navigation-scroll">
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+        let lastScrollY = window.scrollY;
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("shadow-lg");
+          } else {
+            header.classList.remove("shadow-lg");
+          }
+          lastScrollY = window.scrollY;
+        });
+      });
+    </script>
+    <script id="smooth-scroll">
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      });
+    </script>
+    <script id="mobile-menu">
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuButton = document.querySelector(".md\\:hidden button");
+        const nav = document.querySelector("nav");
+        if (menuButton && nav) {
+          menuButton.addEventListener("click", function () {
+            nav.classList.toggle("hidden");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
