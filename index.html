@@ -166,13 +166,7 @@
                 <p class="text-slate-300 mb-6">
                     Led by General Manager Mohamed Essawi, AFAQ ADI brings together a team of experts passionate about leveraging technology to solve complex challenges and drive progress. Our strategic location in Riyadh positions us perfectly to serve a diverse clientele across the region.
                 </p>
-                 <div class="bg-slate-800/50 border border-slate-700 rounded-none p-4 flex items-center gap-4">
-                    <img src="https://placehold.co/80x80/1e293b/ffffff?text=ME" alt="Mohamed Essawi, General Manager" class="w-20 h-20 rounded-none object-cover border-2 border-[#1eaae7]">
-                    <div>
-                        <h4 class="font-semibold text-lg">Mohamed Essawi</h4>
-                        <p class="text-sm text-[#1eaae7]">General Manager</p>
-                    </div>
-                </div>
+            
             </div>
             <div data-animate="fade-in">
                 <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3" alt="AFAQ Digital Infrastructure Team" class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-full object-cover">
@@ -236,6 +230,157 @@
         </div>
     </div>
 </section>
+<!-- Running Projects Section -->
+<section id="projects" class="py-20 bg-slate-900">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-4">Our <span class="gradient-text">Running Projects</span></h2>
+    <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+      Delivering impactful solutions through flagship infrastructure and security projects across the Kingdom.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- KKIA Project Card -->
+      <div onclick="openModal('kkia')" class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
+        <img src="https://placehold.co/600x300?text=KKIA+Project" alt="KKIA Project" class="rounded-md mb-4 w-full h-40 object-cover">
+        <div class="flex items-center gap-4 mb-3">
+          <img src="https://placehold.co/80x40?text=KKIA" alt="KKIA Logo" class="h-10 object-contain">
+          <h3 class="text-xl font-semibold text-[#1eaae7]">KKIA Concourse Hall</h3>
+        </div>
+        <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security, and smart systems.</p>
+      </div>
+
+      <!-- RAK Project Card -->
+      <div onclick="openModal('rak')" class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
+        <img src="https://placehold.co/600x300?text=RAK+WTS+Project" alt="RAK Project" class="rounded-md mb-4 w-full h-40 object-cover">
+        <div class="flex items-center gap-4 mb-3">
+          <img src="https://placehold.co/80x40?text=RAK" alt="RAK Logo" class="h-10 object-contain">
+          <h3 class="text-xl font-semibold text-[#1eaae7]">RAK Desalination & WTS</h3>
+        </div>
+        <p class="text-slate-400 text-sm">Full security and fiber optic deployment including bollards, CCTV, and road blockers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Template -->
+<div id="modal-kkia" class="modal-template hidden"></div>
+<div id="modal-rak" class="modal-template hidden"></div>
+
+<!-- Modal Script -->
+<script>
+  function openModal(id) {
+    const modals = {
+      kkia: {
+        title: 'KKIA Concourse Hall – Project Dashboard',
+        tabs: {
+          client: {
+            label: 'Client Info',
+            content: `<h3 class="text-xl font-semibold mb-2">Client: King Khalid International Airport</h3>
+            <p class="text-slate-400">Expansion and infrastructure deployment in Riyadh airport's new concourse hall. Structured cabling, BMS, ACS, FAS.</p>`
+          },
+          partners: {
+            label: 'Partners',
+            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Active Networking Systems</li>
+              <li>Fire Alarm Technologies</li>
+              <li>BMS Integrators</li>
+            </ul>`
+          },
+          figures: {
+            label: 'Project Figures',
+            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Value: 6.5M SAR</li>
+              <li>12,000+ Man Days</li>
+              <li>400,000+ meters of cabling</li>
+              <li>40,000+ meters piping & trunking</li>
+              <li>Systems: PA, FAS, ACS, BMS</li>
+            </ul>`
+          },
+          gallery: {
+            label: 'Gallery',
+            content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://placehold.co/600x400?text=KKIA+1" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=KKIA+2" class="rounded-md w-full">
+            </div>`
+          }
+        }
+      },
+      rak: {
+        title: 'RAK Desalination & WTS ISS – Project Dashboard',
+        tabs: {
+          client: {
+            label: 'Client Info',
+            content: `<h3 class="text-xl font-semibold mb-2">Client: RAK Water Treatment Services</h3>
+            <p class="text-slate-400">Security and infrastructure deployment including UVIS, bollards, surveillance and fiber optics.</p>`
+          },
+          partners: {
+            label: 'Partners',
+            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>HCIS Compliant Systems Providers</li>
+              <li>Thermal Camera Manufacturers</li>
+              <li>Road Barrier Specialists</li>
+            </ul>`
+          },
+          figures: {
+            label: 'Project Figures',
+            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Value: 24M SAR</li>
+              <li>6,800+ Man Days</li>
+              <li>25,000+ m HCIS Fence</li>
+              <li>800+ Cameras, 800+ Bollards</li>
+              <li>380+ KM Fiber, 26+ KM Power</li>
+              <li>3 Control Centers</li>
+            </ul>`
+          },
+          gallery: {
+            label: 'Gallery',
+            content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://placehold.co/600x400?text=RAK+1" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=RAK+2" class="rounded-md w-full">
+            </div>`
+          }
+        }
+      }
+    };
+
+    const data = modals[id];
+    const container = document.getElementById(`modal-${id}`);
+    container.innerHTML = `
+      <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
+        <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
+          <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
+          <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
+        </div>
+        <div class="flex flex-1 overflow-hidden">
+          <div class="w-60 bg-slate-800 border-r border-slate-700 p-4 space-y-4">
+            ${Object.keys(data.tabs).map((key, i) =>
+              `<button onclick="switchTab('${id}', '${key}')" id="${id}-tab-btn-${key}" class="block w-full text-left px-3 py-2 rounded-md ${i === 0 ? 'bg-[#1eaae7] text-white' : 'text-slate-300 hover:bg-slate-700'}">${data.tabs[key].label}</button>`
+            ).join('')}
+          </div>
+          <div class="flex-1 p-6 overflow-y-auto">
+            ${Object.keys(data.tabs).map((key, i) =>
+              `<div id="${id}-tab-content-${key}" class="${i === 0 ? '' : 'hidden'}">${data.tabs[key].content}</div>`
+            ).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+    container.classList.remove('hidden');
+  }
+
+  function closeModal(id) {
+    document.getElementById(`modal-${id}`).classList.add('hidden');
+  }
+
+  function switchTab(id, key) {
+    const tabs = document.querySelectorAll(`#modal-${id} [id^="${id}-tab-content-"]`);
+    const buttons = document.querySelectorAll(`#modal-${id} [id^="${id}-tab-btn-"]`);
+    tabs.forEach(tab => tab.classList.add('hidden'));
+    buttons.forEach(btn => btn.classList.remove('bg-[#1eaae7]', 'text-white'));
+    document.getElementById(`${id}-tab-content-${key}`).classList.remove('hidden');
+    document.getElementById(`${id}-tab-btn-${key}`).classList.add('bg-[#1eaae7]', 'text-white');
+  }
+</script>
 
 <!-- Core Values Section -->
 <section id="values" class="py-20 bg-slate-900">
@@ -560,6 +705,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/966546477429" target="_blank"
+   class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg transition-all"
+   aria-label="Chat on WhatsApp">
+  <i class="ri-whatsapp-line text-4xl"></i>
+</a>
 
 </body>
 </html>
