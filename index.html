@@ -16,6 +16,7 @@
     .pacifico-font {
         font-family: 'Pacifico', cursive;
     }
+  
     .particles-container {
         position: absolute;
         inset: 0;
@@ -93,15 +94,29 @@
             radial-gradient(at 0% 0%, rgba(26, 20, 73, 0.15) 0px, transparent 50%),
             radial-gradient(at 100% 100%, rgba(30, 170, 231, 0.15) 0px, transparent 50%);
     }
+    /* Partner Logo Styling - White Effect */
     .partner-logo {
-        filter: grayscale(100%);
-        opacity: 0.6;
-        transition: all 0.3s ease-in-out;
+        filter: brightness(0) invert(1);
+        opacity: 0.9;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        max-width: 160px;
+        max-height: 48px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
     }
     .partner-logo:hover {
-        filter: grayscale(0%);
+        filter: none;
         opacity: 1;
-        transform: scale(1.1);
+              transition: all 0.5s ease-in-out;
+    }
+   
+      .bg-bw:hover{
+        background-color: #ffffff;
+        padding: 1px;
+    }
+    .partner-tab.active-tab{
+        color: #1eaae7;
     }
 </style>
 </head>
@@ -289,13 +304,27 @@
           },
           figures: {
             label: 'Project Figures',
-            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
-              <li>Value: 6.5M SAR</li>
-              <li>12,000+ Man Days</li>
-              <li>400,000+ meters of cabling</li>
-              <li>40,000+ meters piping & trunking</li>
-              <li>Systems: PA, FAS, ACS, BMS</li>
-            </ul>`
+            content: `<div id="figures-tab" class="tab-pane ">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">6.5M SAR</div>
+        <div class="text-sm text-slate-300">Project Value</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">12,000+</div>
+        <div class="text-sm text-slate-300">Man Days</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">400,000m+</div>
+        <div class="text-sm text-slate-300">Fiber & Cabling</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">4 Systems</div>
+        <div class="text-sm text-slate-300">PA, FAS, ACS, BMS</div>
+      </div>
+    </div>
+  </div>
+  `
           },
           gallery: {
             label: 'Gallery',
@@ -324,14 +353,40 @@
           },
           figures: {
             label: 'Project Figures',
-            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
-              <li>Value: 24M SAR</li>
-              <li>6,800+ Man Days</li>
-              <li>25,000+ m HCIS Fence</li>
-              <li>800+ Cameras, 800+ Bollards</li>
-              <li>380+ KM Fiber, 26+ KM Power</li>
-              <li>3 Control Centers</li>
-            </ul>`
+            content: `
+  <div id="figures-tab" class="tab-pane  ">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-white">
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">24M SAR</div>
+        <div class="text-sm text-slate-300">Project Value</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">6,800+</div>
+        <div class="text-sm text-slate-300">Man Days</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">25,000m+</div>
+        <div class="text-sm text-slate-300">HCIS Fence</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">800+</div>
+        <div class="text-sm text-slate-300">Cameras & Bollards</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">380+ KM</div>
+        <div class="text-sm text-slate-300">Fiber</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">26+ KM</div>
+        <div class="text-sm text-slate-300">Power Cabling</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300 col-span-2 md:col-span-3">
+        <div class="text-3xl font-bold mb-2">3 Centers</div>
+        <div class="text-sm text-slate-300">Control Centers</div>
+      </div>
+    </div>
+  </div>
+  `
           },
           gallery: {
             label: 'Gallery',
@@ -522,24 +577,174 @@
         </p>
         <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
-                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=TechCorp" alt="Partner Logo" class="partner-logo">
+                <img src="imgs/brands/dell.png" alt="Dell Logo" class="partner-logo">
             </div>
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 200ms;">
-                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=InnovateInc" alt="Partner Logo" class="partner-logo">
+                <img src="imgs/brands/siemens.png" alt="Siemens Logo" class="partner-logo">
             </div>
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 300ms;">
-                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=GlobalData" alt="Partner Logo" class="partner-logo">
+                <img src="imgs/brands/samsung.png" alt="Samsung Logo" class="partner-logo">
             </div>
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 400ms;">
-                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=SecureNet" alt="Partner Logo" class="partner-logo">
+                <img src="imgs/brands/huawei.png" alt="Huawei Logo" class="partner-logo">
             </div>
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 500ms;">
-                <img src="https://placehold.co/160x80/ffffff/9ca3af?text=CloudWave" alt="Partner Logo" class="partner-logo">
+                <img src="imgs/brands/bosch.png" alt="Bosch Logo" class="partner-logo">
             </div>
         </div>
     </div>
 </section>
+<!-- Partners Section -->
+<!-- Partners by Category Section -->
+<!-- Partners Section with Tabs -->
+<section id="partners" class="py-20 bg-slate-900">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-4">Our <span class="gradient-text">Partners</span></h2>
+    <p class="text-slate-300 text-center max-w-3xl mx-auto mb-12">
+      Explore our top-tier technology partners organized by category.
+    </p>
 
+    <!-- Tabs -->
+    <div class="flex flex-wrap justify-center gap-4 mb-10">
+      <button onclick="switchPartnerTab('active')" class="partner-tab active-tab">Active</button>
+      <button onclick="switchPartnerTab('passive')" class="partner-tab">Passive</button>
+      <button onclick="switchPartnerTab('cctv')" class="partner-tab">CCTV</button>
+      <button onclick="switchPartnerTab('acs')" class="partner-tab">ACS</button>
+      <button onclick="switchPartnerTab('bms')" class="partner-tab">BMS</button>
+      <button onclick="switchPartnerTab('fire')" class="partner-tab">Fire Alarm</button>
+      <button onclick="switchPartnerTab('pa')" class="partner-tab">Public Address</button>
+      <button onclick="switchPartnerTab('av')" class="partner-tab">Audio Visual</button>
+            <button onclick="switchPartnerTab('iptv')" class="partner-tab">IPTV  </button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="tab-active">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="partner-logo h-8 mx-auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg" alt="HPE" class="partner-logo bg-bw h-8 mx-auto">
+                <img src="imgs/brands/dell.png" alt="Dell Logo" class="partner-logo bg-bw h-8 mx-auto">
+                 <img src="imgs/brands/huawei.png" alt="Huawei Logo"  class="partner-logo  h-8 mx-auto">
+
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-passive">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+     <img src="imgs/brands/Panduit Logo Desktop header.svg" alt="Panduit" class="partner-logo h-6 mx-auto bg-bw">
+     <img src="imgs/brands/commsxope.svg" alt="CommScope" class="partner-logo h-8 mx-auto bg-bw">
+     <img src="imgs/brands/corning-5.svg" alt="CommScope" class="partner-logo h-8 mx-auto ">
+      <img src="imgs/brands/RM_logo_negativ_transparent.png"  alt="RM Logo"  class="partner-logo  h-6 mx-auto">
+        <img src="imgs/brands/siemon.png" alt="siemon"  class="partner-logo  h-10 bg-bw mx-auto">
+                <img src="imgs/brands/logo-legrand-sa.svg" alt="legrand-logo" class="partner-logo h-8 mx-auto  bg-bw">   
+
+
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-cctv">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <img src="imgs/brands/Hikvision_logo.svg.png" alt="Hikvision" class="partner-logo h-8 mx-auto bg-bw">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" alt="Bosch" class="partner-logo h-8 mx-auto bg-bw">
+        <img src="imgs/brands/pelco.svg" alt="Pelco" class="partner-logo h-6 bg-bw mx-auto">
+        <img src="imgs/brands/ax.png" alt="Axis" class="partner-logo h-8 mx-auto bg-bw">
+          <img src="imgs/brands/dahuasecurity.png" alt="dahuasecurity" class="partner-logo h-8 mx-auto  ">
+                 <img src="imgs/brands/tyco-logo.svg" alt="tyco-logo" class="partner-logo h-8 mx-auto  ">
+        <img src="imgs/brands/hanwha-logo.svg" alt="hanwha-logo" class="partner-logo h-10 mx-auto  bg-bw">  
+
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-acs">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+  <img src="imgs/brands/honeywell-logo.svg" alt="Honeywell" class="partner-logo h-8 mx-auto">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" alt="Bosch" class="partner-logo h-8 mx-auto bg-bw">
+      <img src="imgs/brands/genetec_logo.svg" alt="Genetec" class="partner-logo h-8 mx-auto  ">     
+                <img src="imgs/brands/dahuasecurity.png" alt="dahuasecurity" class="partner-logo h-8 mx-auto  ">
+                        <img src="imgs/brands/Hikvision_logo.svg.png" alt="Hikvision" class="partner-logo h-8 mx-auto bg-bw">
+                        <img src="imgs/brands/lenel2.png" alt="lenel2"     class="partner-logo h-12 mx-auto bg-bw">
+
+
+  
+    </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-bms">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <img src="imgs/brands/siemns.svg" alt="Siemens" class="partner-logo h-8 mx-auto">
+        <img src="imgs/brands/johnson-controls-2.svg" alt="Johnson Controls" class="partner-logo h-12 mx-auto"> 
+   
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-fire">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg" alt="Honeywell" class="partner-logo h-10 mx-auto">
+        <img src="imgs/brands/siemns.svg" alt="Siemens" class="partner-logo h-8 mx-auto">
+ 
+    <img src="imgs/brands/johnson-controls-2.svg" alt="Johnson Controls" class="partner-logo h-12 mx-auto"> 
+        <img src="imgs/brands/shield-logo.png" alt="shield"  class="partner-logo h-12 mx-auto"> 
+
+
+        
+
+</div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-pa">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Honeywell_logo.svg" alt="Honeywell" class="partner-logo h-10 mx-auto">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" alt="Bosch" class="partner-logo h-8 mx-auto bg-bw">
+ 
+    <img src="imgs/brands/johnson-controls-2.svg" alt="Johnson Controls" class="partner-logo h-12 mx-auto"> 
+       <img src="imgs/brands/biamp-logo.png" alt="biamp"   class="partner-logo h-10 mx-auto"> 
+       </div>
+    </div>
+
+    <div class="tab-content hidden" id="tab-av">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <img src="imgs/brands/extron.svg" alt=    "Extron"  class="partner-logo h-6 mx-auto">
+        <img src="imgs/brands/samsung-electronics.svg" alt="Samsung" class="partner-logo h-10 mx-auto">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" alt="Bosch" class="partner-logo h-8 mx-auto bg-bw">
+       <img src="imgs/brands/biamp-logo.png" alt="biamp"   class="partner-logo h-10 mx-auto bg-bw"> 
+         <img src="imgs/brands/honeywell-logo.svg" alt="Honeywell" class="partner-logo h-8 mx-auto">
+
+
+           <img src="imgs/brands/logo-lg.svg" alt="LG"   class="partner-logo h-10 mx-auto">
+      </div>
+    </div>
+    
+
+      <div class="tab-content hidden" id="tab-iptv">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <img src="imgs/brands/televes.svg" alt=    "Televes"  class="partner-logo h-8 mx-auto">
+        <img src="imgs/brands/vite.png" alt="Vite"   class="partner-logo h-8 mx-auto">
+      
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Tailwind Style Additions -->
+<style>
+  .partner-tab {
+    @apply px-4 py-2 rounded-md border border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white transition;
+  }
+  .active-tab {
+    @apply bg-[#1eaae7] text-white;
+  }
+</style>
+
+<!-- Script -->
+<script>
+  function switchPartnerTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    document.querySelector(`#tab-${tabId}`).classList.remove('hidden');
+
+    document.querySelectorAll('.partner-tab').forEach(btn => btn.classList.remove('active-tab'));
+    event.target.classList.add('active-tab');
+  }
+</script>
 <!-- Contact Section -->
 <section id="contact" class="py-20 section-bg">
     <div class="container mx-auto px-6">
