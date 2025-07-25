@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AFAQ Digital Infrastructure - Always Reliable, Always Ready</title>
+<link rel="icon" href="imgs/fav.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" href="imgs/fav.png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,7 +202,7 @@
                     <p class="text-slate-300">To be the most trusted and innovative digital infrastructure partner in the Kingdom of Saudi Arabia, recognized for our unwavering commitment to reliability and readiness.</p>
                 </div>
                 <div>
-                    <h4 class="text-xl font-semibold text-[#1a1449] mb-2">Mission</h4>
+                    <h4 class="text-xl font-semibold text-[#1eaae7] mb-2">Mission</h4>
                     <p class="text-slate-300">To empower businesses with advanced, secure, and scalable digital infrastructure solutions, fostering growth and enabling seamless operations through expert integration, proactive support, and continuous innovation.</p>
                 </div>
             </div>
@@ -257,9 +260,9 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- KKIA Project Card -->
       <div onclick="openModal('kkia')" class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-        <img src="https://placehold.co/600x300?text=KKIA+Project" alt="KKIA Project" class="rounded-md mb-4 w-full h-40 object-cover">
+        <img src="imgs/King-Khaled-International-Airport.jpg" alt="KKIA Project" class="rounded-md mb-4 w-full h-40 object-cover">
         <div class="flex items-center gap-4 mb-3">
-          <img src="https://placehold.co/80x40?text=KKIA" alt="KKIA Logo" class="h-10 object-contain">
+          <img src="imgs/brands/riy.svg" alt="KKIA Logo" class="h-10 object-contain">
           <h3 class="text-xl font-semibold text-[#1eaae7]">KKIA Concourse Hall</h3>
         </div>
         <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security, and smart systems.</p>
@@ -267,9 +270,9 @@
 
       <!-- RAK Project Card -->
       <div onclick="openModal('rak')" class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-        <img src="https://placehold.co/600x300?text=RAK+WTS+Project" alt="RAK Project" class="rounded-md mb-4 w-full h-40 object-cover">
+        <img src="imgs/swcc.jpg" alt="RAK Project" class="rounded-md mb-4 w-full h-40 object-cover">
         <div class="flex items-center gap-4 mb-3">
-          <img src="https://placehold.co/80x40?text=RAK" alt="RAK Logo" class="h-10 object-contain">
+          <img src="imgs/brands/swa-logo-dark.svg" alt="RAK Logo" class="h-10 object-contain">
           <h3 class="text-xl font-semibold text-[#1eaae7]">RAK Desalination & WTS</h3>
         </div>
         <p class="text-slate-400 text-sm">Full security and fiber optic deployment including bollards, CCTV, and road blockers.</p>
@@ -281,9 +284,51 @@
 <!-- Modal Template -->
 <div id="modal-kkia" class="modal-template hidden"></div>
 <div id="modal-rak" class="modal-template hidden"></div>
+<div id="modal-privacy" class="modal-template hidden"></div>
 
 <!-- Modal Script -->
 <script>
+  function renderModal(data, id) {
+    const container = document.getElementById(`modal-${id}`);
+
+    if (id === 'privacy') {
+      // Special rendering for privacy policy - full width without sidebar
+      container.innerHTML = `
+        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
+          <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
+            <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
+            <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
+          </div>
+          <div class="flex-1 overflow-y-auto p-6">
+            ${Object.values(data.tabs)[0].content}
+          </div>
+        </div>
+      `;
+    } else {
+      // Normal rendering with tabs sidebar for other modals
+      container.innerHTML = `
+        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
+          <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
+            <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
+            <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
+          </div>
+          <div class="flex flex-1 overflow-hidden">
+            <div class="w-60 bg-slate-800 border-r border-slate-700 p-4 space-y-4">
+              ${Object.keys(data.tabs).map((key, i) =>
+                `<button onclick="switchTab('${id}', '${key}')" id="${id}-tab-btn-${key}" class="block w-full text-left px-3 py-2 rounded-md ${i === 0 ? 'bg-[#1eaae7] text-white' : 'text-slate-300 hover:bg-slate-700'}">${data.tabs[key].label}</button>`
+              ).join('')}
+            </div>
+            <div class="flex-1 p-6 overflow-y-auto">
+              ${Object.keys(data.tabs).map((key, i) =>
+                `<div id="${id}-tab-content-${key}" class="${i === 0 ? '' : 'hidden'}">${data.tabs[key].content}</div>`
+              ).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  }
+
   function openModal(id) {
     const modals = {
       kkia: {
@@ -356,7 +401,85 @@
             content: `
   <div id="figures-tab" class="tab-pane  ">
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-white">
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300 col-span-2 md:col-span-3">
+        <div class="text-3xl font-bold mb-2">24M SAR</div>
+        <div class="text-sm text-slate-300">Project Value</div>
+      </div>
       <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">6,800+</div>
+        <div class="text-sm text-slate-300">Man Days</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">25,000m+</div>
+        <div class="text-sm text-slate-300">HCIS Fence</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">800+</div>
+        <div class="text-sm text-slate-300">Cameras & Bollards</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">380+ KM</div>
+        <div class="text-sm text-slate-300">Fiber</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
+        <div class="text-3xl font-bold mb-2">26+ KM</div>
+        <div class="text-sm text-slate-300">Power Cabling</div>
+      </div>
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300 col-span-2 md:col-span-3">
+        <div class="text-3xl font-bold mb-2">3 Centers</div>
+        <div class="text-sm text-slate-300">Control Centers</div>
+      </div>
+    </div>
+  </div>
+  `
+          },
+          gallery: {
+            label: 'Gallery',
+            content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://placehold.co/600x400?text=RAK+1" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=RAK+2" class="rounded-md w-full">
+            </div>`
+          }
+        }
+      },
+      privacy: {
+        title: 'Privacy Policy',
+        tabs: {
+          fullcontent: {
+            label: '',
+            content: `
+              <div class="text-slate-400 space-y-4 w-full">
+                <p>We value your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
+                <p>We collect personal information you provide directly to us, such as when filling out contact forms or subscribing to our newsletters. We may also gather data through cookies and similar technologies to improve user experience.</p>
+                <p>Your data is used to respond to inquiries, provide services, and improve our offerings. We do not sell or rent your personal information to third parties.</p>
+                <p>Security of your information is a top priority. We implement appropriate technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction.</p>
+                <p>By using our website, you consent to this privacy policy. We may update it periodically, so please review it regularly.</p>
+              </div>
+            `
+          }
+        }
+      },
+      rak2: {
+        tabs: {
+          client: {
+            label: 'Client Info',
+            content: `<h3 class="text-xl font-semibold mb-2">Client: RAK Water Treatment Services</h3>
+            <p class="text-slate-400">Security and infrastructure deployment including UVIS, bollards, surveillance and fiber optics.</p>`
+          },
+          partners: {
+            label: 'Partners',
+            content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>HCIS Compliant Systems Providers</li>
+              <li>Thermal Camera Manufacturers</li>
+              <li>Road Barrier Specialists</li>
+            </ul>`
+          },
+          figures: {
+            label: 'Project Figures',
+            content: `
+  <div id="figures-tab" class="tab-pane  ">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-white">
+      <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300 col-span-2 md:col-span-3">
         <div class="text-3xl font-bold mb-2">24M SAR</div>
         <div class="text-sm text-slate-300">Project Value</div>
       </div>
@@ -399,29 +522,9 @@
       }
     };
 
-    const data = modals[id];
-    const container = document.getElementById(`modal-${id}`);
-    container.innerHTML = `
-      <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
-        <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
-          <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
-          <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
-        </div>
-        <div class="flex flex-1 overflow-hidden">
-          <div class="w-60 bg-slate-800 border-r border-slate-700 p-4 space-y-4">
-            ${Object.keys(data.tabs).map((key, i) =>
-              `<button onclick="switchTab('${id}', '${key}')" id="${id}-tab-btn-${key}" class="block w-full text-left px-3 py-2 rounded-md ${i === 0 ? 'bg-[#1eaae7] text-white' : 'text-slate-300 hover:bg-slate-700'}">${data.tabs[key].label}</button>`
-            ).join('')}
-          </div>
-          <div class="flex-1 p-6 overflow-y-auto">
-            ${Object.keys(data.tabs).map((key, i) =>
-              `<div id="${id}-tab-content-${key}" class="${i === 0 ? '' : 'hidden'}">${data.tabs[key].content}</div>`
-            ).join('')}
-          </div>
-        </div>
-      </div>
-    `;
-    container.classList.remove('hidden');
+    renderModal(modals[id], id);
+    const modal = document.getElementById(`modal-${id}`);
+    modal.classList.remove("hidden");
   }
 
   function closeModal(id) {
@@ -568,29 +671,32 @@
     </div>
 </section>
 
-<!-- Partners Section -->
+<!-- clients Section -->
 <section id="partners" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-4">Trusted By <span class="gradient-text">Leading Brands</span></h2>
+        <h2 class="text-4xl font-bold text-center mb-4">Trusted By <span class="gradient-text">Our Clients</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-            We partner with the world's leading technology companies to deliver best-in-class solutions.
+            Our expert team proudly serves these distinguished clients, delivering tailored, reliable digital infrastructure solutions with excellence and precision.
         </p>
         <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
-                <img src="imgs/brands/dell.png" alt="Dell Logo" class="partner-logo">
+                <img src="imgs/brands/riy.svg" alt="Riyadh Airlines Logo"  class="partner-logo bg-bw  mx-auto">
             </div>
-            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 200ms;">
-                <img src="imgs/brands/siemens.png" alt="Siemens Logo" class="partner-logo">
+            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="imgs/brands/swa-logo-dark.svg" alt="    الهيئة السعودية للمياه"  class="partner-logo bg-bw  mx-auto">
             </div>
-            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 300ms;">
-                <img src="imgs/brands/samsung.png" alt="Samsung Logo" class="partner-logo">
+             <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="imgs/brands/stc.svg" alt="STC Logo"  class="partner-logo  bg-bw  mx-auto">
             </div>
-            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 400ms;">
-                <img src="imgs/brands/huawei.png" alt="Huawei Logo" class="partner-logo">
+              <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="imgs/brands/GACA_HR.svg" alt="GACA Logo"  class="partner-logo  bg-bw  mx-auto">
+            
             </div>
-            <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 500ms;">
-                <img src="imgs/brands/bosch.png" alt="Bosch Logo" class="partner-logo">
+                 <div class="flex justify-center" data-animate="fade-in" style="transition-delay: 100ms;">
+                <img src="imgs/brands/gam.svg" alt="gam Logo"  class="partner-logo  bg-bw  mx-auto">
+            
             </div>
+     
         </div>
     </div>
 </section>
@@ -606,24 +712,24 @@
 
     <!-- Tabs -->
     <div class="flex flex-wrap justify-center gap-4 mb-10">
-      <button onclick="switchPartnerTab('active')" class="partner-tab active-tab">Active</button>
-      <button onclick="switchPartnerTab('passive')" class="partner-tab">Passive</button>
-      <button onclick="switchPartnerTab('cctv')" class="partner-tab">CCTV</button>
-      <button onclick="switchPartnerTab('acs')" class="partner-tab">ACS</button>
-      <button onclick="switchPartnerTab('bms')" class="partner-tab">BMS</button>
-      <button onclick="switchPartnerTab('fire')" class="partner-tab">Fire Alarm</button>
-      <button onclick="switchPartnerTab('pa')" class="partner-tab">Public Address</button>
-      <button onclick="switchPartnerTab('av')" class="partner-tab">Audio Visual</button>
-            <button onclick="switchPartnerTab('iptv')" class="partner-tab">IPTV  </button>
+      <button onclick="switchPartnerTab('active', event)" class="partner-tab active-tab">Active</button>
+      <button onclick="switchPartnerTab('passive', event)" class="partner-tab">Passive</button>
+      <button onclick="switchPartnerTab('cctv', event)" class="partner-tab">CCTV</button>
+      <button onclick="switchPartnerTab('acs', event)" class="partner-tab">ACS</button>
+      <button onclick="switchPartnerTab('bms', event)" class="partner-tab">BMS</button>
+      <button onclick="switchPartnerTab('fire', event)" class="partner-tab">Fire Alarm</button>
+      <button onclick="switchPartnerTab('pa', event)" class="partner-tab">Public Address</button>
+      <button onclick="switchPartnerTab('av', event)" class="partner-tab">Audio Visual</button>
+      <button onclick="switchPartnerTab('iptv', event)" class="partner-tab">IPTV  </button>
     </div>
 
     <!-- Tab Contents -->
     <div class="tab-content" id="tab-active">
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="partner-logo h-8 mx-auto">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg" alt="HPE" class="partner-logo bg-bw h-8 mx-auto">
-                <img src="imgs/brands/dell.png" alt="Dell Logo" class="partner-logo bg-bw h-8 mx-auto">
-                 <img src="imgs/brands/huawei.png" alt="Huawei Logo"  class="partner-logo  h-8 mx-auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" class="partner-logo h-10 mx-auto">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg" alt="HPE" class="partner-logo bg-bw h-10 mx-auto">
+                <img src="imgs/brands/dell.png" alt="Dell Logo" class="partner-logo bg-bw h-6 mx-auto">
+                 <img src="imgs/brands/huawei.png" alt="Huawei Logo"  class="partner-logo  h-8 mx-auto bg-bw">
 
       </div>
     </div>
@@ -634,7 +740,7 @@
      <img src="imgs/brands/commsxope.svg" alt="CommScope" class="partner-logo h-8 mx-auto bg-bw">
      <img src="imgs/brands/corning-5.svg" alt="CommScope" class="partner-logo h-8 mx-auto ">
       <img src="imgs/brands/RM_logo_negativ_transparent.png"  alt="RM Logo"  class="partner-logo  h-6 mx-auto">
-        <img src="imgs/brands/siemon.png" alt="siemon"  class="partner-logo  h-10 bg-bw mx-auto">
+        <img src="imgs/brands/siemon.png" alt="siemon"  class="partner-logo  h-12 bg-bw mx-auto">
                 <img src="imgs/brands/logo-legrand-sa.svg" alt="legrand-logo" class="partner-logo h-8 mx-auto  bg-bw">   
 
 
@@ -661,7 +767,7 @@
       <img src="imgs/brands/genetec_logo.svg" alt="Genetec" class="partner-logo h-8 mx-auto  ">     
                 <img src="imgs/brands/dahuasecurity.png" alt="dahuasecurity" class="partner-logo h-8 mx-auto  ">
                         <img src="imgs/brands/Hikvision_logo.svg.png" alt="Hikvision" class="partner-logo h-8 mx-auto bg-bw">
-                        <img src="imgs/brands/lenel2.png" alt="lenel2"     class="partner-logo h-12 mx-auto bg-bw">
+                        <img src="imgs/brands/lenel2.png" alt="lenel2" class="partner-logo h-12 mx-auto bg-bw">
 
 
   
@@ -696,7 +802,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" alt="Bosch" class="partner-logo h-8 mx-auto bg-bw">
  
     <img src="imgs/brands/johnson-controls-2.svg" alt="Johnson Controls" class="partner-logo h-12 mx-auto"> 
-       <img src="imgs/brands/biamp-logo.png" alt="biamp"   class="partner-logo h-10 mx-auto"> 
+       <img src="imgs/brands/biamp-logo.png" alt="biamp"   class="partner-logo h-10 mx-auto bg-bw"> 
        </div>
     </div>
 
@@ -737,7 +843,7 @@
 
 <!-- Script -->
 <script>
-  function switchPartnerTab(tabId) {
+  function switchPartnerTab(tabId, event) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
     document.querySelector(`#tab-${tabId}`).classList.remove('hidden');
 
@@ -755,35 +861,37 @@
             </p>
             <div class="bg-slate-800/50 border border-slate-700 rounded-none p-8 md:p-12 text-left">
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
-                        <div class="space-y-4 text-slate-300">
-                            <div class="flex items-start gap-4">
-                                <i class="ri-map-pin-line text-2xl text-[#1eaae7] mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold text-white">Address</h4>
-                                    <p>Khalid Ibn Al Walid St, Ar Rawdah, Riyadh 13211, Kingdom of Saudi Arabia</p>
+                    <div class="flex flex-col space-y-8 items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
+                            <div class="space-y-4 text-slate-300">
+                                <div class="flex items-start gap-4">
+                                    <i class="ri-map-pin-line text-2xl text-[#1eaae7] mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-white">Address</h4>
+                                        <p>Khalid Ibn Al Walid St, Ar Rawdah, Riyadh 13211, Kingdom of Saudi Arabia</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <i class="ri-mail-send-line text-2xl text-[#1eaae7] mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold text-white">Email</h4>
-                                    <a href="mailto:Info@adi.sa" class="hover:text-[#1eaae7] transition">Info@adi.sa</a>
+                                <div class="flex items-start gap-4">
+                                    <i class="ri-mail-send-line text-2xl text-[#1eaae7] mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-white">Email</h4>
+                                        <a href="mailto:Info@adi.sa" class="hover:text-[#1eaae7] transition">Info@adi.sa</a>
+                                    </div>
                                 </div>
-                            </div>
-                             <div class="flex items-start gap-4">
-                                <i class="ri-phone-line text-2xl text-[#1eaae7] mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold text-white">General Manager: Mohamed Essawi</h4>
-                                    <a href="tel:+966546477429" class="hover:text-[#1eaae7] transition">+966 54 647 7429</a>
+                                <div class="flex items-start gap-4">
+                                    <i class="ri-phone-line text-2xl text-[#1eaae7] mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-white">General Manager: Mohamed Essawi</h4>
+                                        <a href="tel:+966546477429" class="hover:text-[#1eaae7] transition">+966 54 647 7429</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <i class="ri-global-line text-2xl text-[#1eaae7] mt-1"></i>
-                                <div>
-                                    <h4 class="font-semibold text-white">Website</h4>
-                                    <a href="http://www.adi.sa" target="_blank" rel="noopener noreferrer" class="hover:text-[#1eaae7] transition">www.adi.sa</a>
+                                <div class="flex items-start gap-4">
+                                    <i class="ri-global-line text-2xl text-[#1eaae7] mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-white">Website</h4>
+                                        <a href="http://www.adi.sa" target="_blank" rel="noopener noreferrer" class="hover:text-[#1eaae7] transition">www.adi.sa</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -793,11 +901,19 @@
                         <form action="#" class="space-y-4">
                             <input type="text" placeholder="Your Name" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
                             <input type="email" placeholder="Your Email" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+                            <input type="tel" placeholder="Your Phone Number" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
                             <textarea placeholder="Your Message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
                             <button type="submit" class="w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">Submit</button>
                         </form>
                     </div>
                 </div>
+            </div>
+            <!-- Map Section -->
+            <div class="mt-8 border border-slate-700 p-4 rounded-md">
+                <h3 class="text-2xl font-semibold mb-4">Location Map</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.1167190200035!2d46.763296715003374!3d24.75212398409556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f0cd82b2bd6d3%3A0x1d70aa45fbb7f51d!2sKhalid%20Ibn%20Al%20Walid%20St%2C%20Ar%20Rawdah%2C%20Riyadh%2013211%2C%20Saudi%20Arabia!5e0!3m2!1sen!2seg!4v1658825691875!5m2!1sen!2seg"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" class="rounded-md border border-slate-700 w-full"></iframe>
             </div>
         </div>
     </div>
@@ -826,7 +942,7 @@
             <div>
                 <h4 class="font-semibold mb-4">Legal</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm">Privacy Policy</a></li>
+                    <li><a href="#" onclick="openModal('privacy')" class="text-slate-400 hover:text-[#1eaae7] text-sm">Privacy Policy</a></li>
                     <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm">Terms of Service</a></li>
                 </ul>
             </div>
