@@ -236,6 +236,11 @@
     p {
       font-weight: 100 !important;
     }
+
+    /* Ensure Arabic font is used inside modals in RTL */
+    html[dir="rtl"] .modal-content {
+      font-family: 'alex-md', sans-serif;
+    }
   </style>
 </head>
 
@@ -1738,37 +1743,38 @@
   <script>
     function renderModal(data, id) {
       const container = document.getElementById(`modal-${id}`);
+      const rtl = document.documentElement.dir === 'rtl';
 
       if (id === 'privacy') {
         // Special rendering for privacy policy - full width without sidebar
         container.innerHTML = `
-        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
+        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col modal-content">
           <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
-            <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
+            <h2 class="text-2xl font-bold text-[#1eaae7]">${typeof data.title === 'string' ? data.title : (rtl ? data.title.ar : data.title.en)}</h2>
             <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
           </div>
           <div class="flex-1 overflow-y-auto p-6">
-            ${Object.values(data.tabs)[0].content}
+            ${(() => { const tab = Object.values(data.tabs)[0]; return (typeof tab.content === 'string') ? tab.content : (rtl ? tab.content.ar : tab.content.en); })()}
           </div>
         </div>
       `;
       } else {
         // Normal rendering with tabs sidebar for other modals
         container.innerHTML = `
-        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col">
+        <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col modal-content">
           <div class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-800/50">
-            <h2 class="text-2xl font-bold text-[#1eaae7]">${data.title}</h2>
+            <h2 class="text-2xl font-bold text-[#1eaae7]">${typeof data.title === 'string' ? data.title : (rtl ? data.title.ar : data.title.en)}</h2>
             <button onclick="closeModal('${id}')" class="text-white text-3xl hover:text-[#1eaae7]">&times;</button>
           </div>
           <div class="flex flex-1 overflow-hidden">
             <div class="w-60 bg-slate-800 border-r border-slate-700 p-4 space-y-4">
               ${Object.keys(data.tabs).map((key, i) =>
-          `<button onclick="switchTab('${id}', '${key}')" id="${id}-tab-btn-${key}" class="block w-full text-left px-3 py-2 rounded-md ${i === 0 ? 'bg-[#1eaae7] text-white' : 'text-slate-300 hover:bg-slate-700'}">${data.tabs[key].label}</button>`
+          `<button onclick="switchTab('${id}', '${key}')" id="${id}-tab-btn-${key}" class="block w-full ${document.documentElement.dir === 'rtl' ? 'text-right' : 'text-left'} px-3 py-2 rounded-md ${i === 0 ? 'bg-[#1eaae7] text-white' : 'text-slate-300 hover:bg-slate-700'}">${(typeof data.tabs[key].label === 'string') ? data.tabs[key].label : ((document.documentElement.dir === 'rtl') ? data.tabs[key].label.ar : data.tabs[key].label.en)}</button>`
         ).join('')}
             </div>
             <div class="flex-1 p-6 overflow-y-auto">
               ${Object.keys(data.tabs).map((key, i) =>
-          `<div id="${id}-tab-content-${key}" class="${i === 0 ? '' : 'hidden'}">${data.tabs[key].content}</div>`
+          `<div id="${id}-tab-content-${key}" class="${i === 0 ? '' : 'hidden'}">${(typeof data.tabs[key].content === 'string') ? data.tabs[key].content : ((document.documentElement.dir === 'rtl') ? data.tabs[key].content.ar : data.tabs[key].content.en)}</div>`
         ).join('')}
             </div>
           </div>
@@ -1780,24 +1786,36 @@
     function openModal(id) {
       const modals = {
         kkia: {
-          title: 'KKIA Concourse Hall – Project Dashboard',
+          title: { en: 'KKIA Concourse Hall – Project Dashboard', ar: 'قاعة صالات مطار الملك خالد الدولي – لوحة المشروع' },
           tabs: {
             client: {
-              label: 'Client Info',
-              content: `<h3 class="text-xl font-semibold mb-2">Client: King Khalid International Airport</h3>
-            <p class="text-slate-400">Expansion and infrastructure deployment in Riyadh airport's new concourse hall. Structured cabling, BMS, ACS, FAS.</p>`
+              label: { en: 'Client Info', ar: 'معلومات العميل' },
+              content: {
+                en: `<h3 class="text-xl font-semibold mb-2">Client: King Khalid International Airport</h3>
+            <p class="text-slate-400">Expansion and infrastructure deployment in Riyadh airport's new concourse hall. Structured cabling, BMS, ACS, FAS.</p>`,
+                ar: `<h3 class=\"text-xl font-semibold mb-2\">العميل: مطار الملك خالد الدولي</h3>
+            <p class=\"text-slate-400\">توسعة ونشر البنية التحتية في قاعة الكونكورس الجديدة بمطار الرياض. تمديدات كابلات منظمة، نظام إدارة المباني BMS، نظام التحكم في الدخول ACS، ونظام إنذار الحريق FAS.</p>`
+              }
             },
             partners: {
-              label: 'Partners',
-              content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              label: { en: 'Partners', ar: 'الشركاء' },
+              content: {
+                en: `<ul class="list-disc list-inside text-slate-400 space-y-1">
               <li>Active Networking Systems</li>
               <li>Fire Alarm Technologies</li>
               <li>BMS Integrators</li>
+            </ul>`,
+                ar: `<ul class=\"list-disc list-inside text-slate-400 space-y-1\">
+              <li>أنظمة الشبكات النشطة</li>
+              <li>تقنيات إنذار الحريق</li>
+              <li>مُكاملوا أنظمة إدارة المباني</li>
             </ul>`
+              }
             },
             figures: {
-              label: 'Project Figures',
-              content: `<div id="figures-tab" class="tab-pane ">
+              label: { en: 'Project Figures', ar: 'أرقام المشروع' },
+              content: {
+                en: `<div id="figures-tab" class="tab-pane ">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
       <div class="bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300">
         <div class="text-3xl font-bold mb-2">6.5M SAR</div>
@@ -1817,35 +1835,73 @@
       </div>
     </div>
   </div>
-  `
+  `,
+                ar: `<div id=\"figures-tab\" class=\"tab-pane \">
+    <div class=\"grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white\">
+      <div class=\"bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300\">
+        <div class=\"text-3xl font-bold mb-2\">6.5 مليون ريال</div>
+        <div class=\"text-sm text-slate-300\">قيمة المشروع</div>
+      </div>
+      <div class=\"bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300\">
+        <div class=\"text-3xl font-bold mb-2\">+12,000</div>
+        <div class=\"text-sm text-slate-300\">أيام العمل</div>
+      </div>
+      <div class=\"bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300\">
+        <div class=\"text-3xl font-bold mb-2\">+400,000م</div>
+        <div class=\"text-sm text-slate-300\">ألياف وكابلات</div>
+      </div>
+      <div class=\"bg-slate-800/80 p-6 rounded-lg shadow-lg hover:bg-[#1eaae7]/90 transition duration-300\">
+        <div class=\"text-3xl font-bold mb-2\">4 أنظمة</div>
+        <div class=\"text-sm text-slate-300\">PA, FAS, ACS, BMS</div>
+      </div>
+    </div>
+  </div>`
+              }
             },
             gallery: {
-              label: 'Gallery',
-              content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              label: { en: 'Gallery', ar: 'المعرض' },
+              content: {
+                en: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <img src="https://placehold.co/600x400?text=KKIA+1" class="rounded-md w-full">
               <img src="https://placehold.co/600x400?text=KKIA+2" class="rounded-md w-full">
+            </div>`,
+                ar: `<div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\">
+              <img src=\"https://placehold.co/600x400?text=KKIA+1\" class=\"rounded-md w-full\">
+              <img src=\"https://placehold.co/600x400?text=KKIA+2\" class=\"rounded-md w-full\">
             </div>`
+              }
             }
           }
         },
         rak: {
-          title: 'RAK Desalination & WTS ISS – Project Dashboard',
+          title: { en: 'RAK Desalination & WTS ISS – Project Dashboard', ar: 'تحلية مياه رأس الخيمة وخدمات معالجة المياه – لوحة المشروع' },
           tabs: {
             client: {
-              label: 'Client Info',
-              content: `<h3 class="text-xl font-semibold mb-2">Client: RAK Water Treatment Services</h3>
-            <p class="text-slate-400">Security and infrastructure deployment including UVIS, bollards, surveillance and fiber optics.</p>`
+              label: { en: 'Client Info', ar: 'معلومات العميل' },
+              content: {
+                en: `<h3 class="text-xl font-semibold mb-2">Client: RAK Water Treatment Services</h3>
+            <p class="text-slate-400">Security and infrastructure deployment including UVIS, bollards, surveillance and fiber optics.</p>`,
+                ar: `<h3 class=\"text-xl font-semibold mb-2\">العميل: خدمات معالجة المياه برأس الخيمة</h3>
+            <p class=\"text-slate-400\">حلول أمن وبنية تحتية تشمل نظام فحص أسفل المركبات UVIS، حواجز، أنظمة مراقبة، وألياف ضوئية.</p>`
+              }
             },
             partners: {
-              label: 'Partners',
-              content: `<ul class="list-disc list-inside text-slate-400 space-y-1">
+              label: { en: 'Partners', ar: 'الشركاء' },
+              content: {
+                en: `<ul class="list-disc list-inside text-slate-400 space-y-1">
               <li>HCIS Compliant Systems Providers</li>
               <li>Thermal Camera Manufacturers</li>
               <li>Road Barrier Specialists</li>
+            </ul>`,
+                ar: `<ul class=\"list-disc list-inside text-slate-400 space-y-1\">
+              <li>مزودو أنظمة متوافقة مع HCIS</li>
+              <li>مصنِّعو الكاميرات الحرارية</li>
+              <li>متخصصو الحواجز الطرقية</li>
             </ul>`
+              }
             },
             figures: {
-              label: 'Project Figures',
+              label: { en: 'Project Figures', ar: 'أرقام المشروع' },
               content: `
   <div id="figures-tab" class="tab-pane  ">
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-white">
@@ -1882,7 +1938,7 @@
   `
             },
             gallery: {
-              label: 'Gallery',
+              label: { en: 'Gallery', ar: 'المعرض' },
               content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <img src="https://placehold.co/600x400?text=RAK+1" class="rounded-md w-full">
               <img src="https://placehold.co/600x400?text=RAK+2" class="rounded-md w-full">
@@ -1891,11 +1947,12 @@
           }
         },
         privacy: {
-          title: 'Privacy Policy',
+          title: { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
           tabs: {
             fullcontent: {
-              label: '',
-              content: `
+              label: { en: '', ar: '' },
+              content: {
+                en: `
               <div class="text-slate-400 space-y-4 w-full">
                 <p>We value your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
                 <p>We collect personal information you provide directly to us, such as when filling out contact forms or subscribing to our newsletters. We may also gather data through cookies and similar technologies to improve user experience.</p>
@@ -1903,7 +1960,17 @@
                 <p>Security of your information is a top priority. We implement appropriate technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction.</p>
                 <p>By using our website, you consent to this privacy policy. We may update it periodically, so please review it regularly.</p>
               </div>
+            `,
+                ar: `
+              <div class=\"text-slate-400 space-y-4 w-full\" dir=\"rtl\">
+                <p>نحن نحترم خصوصيتك. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك.</p>
+                <p>نجمع المعلومات الشخصية التي تقدمها لنا مباشرة، مثل عند تعبئة نماذج التواصل أو الاشتراك في النشرات البريدية. قد نجمع أيضًا بيانات عبر ملفات تعريف الارتباط وتقنيات مشابهة لتحسين تجربة المستخدم.</p>
+                <p>نستخدم بياناتك للرد على الاستفسارات، وتقديم الخدمات، وتحسين عروضنا. لا نبيع أو نؤجر معلوماتك الشخصية لأطراف ثالثة.</p>
+                <p>أمن معلوماتك أولوية قصوى. نطبق تدابير تقنية وتنظيمية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التغيير أو الكشف أو الإتلاف.</p>
+                <p>باستخدامك لموقعنا، فإنك توافق على هذه السياسة. قد نقوم بتحديثها دوريًا، لذا يُرجى مراجعتها بانتظام.</p>
+              </div>
             `
+              }
             }
           }
         },
@@ -2453,100 +2520,85 @@
             نحن هنا لمساعدتك في بناء مستقبل رقمي موثوق وجاهز. تواصل معنا لمناقشة مشروعك.
           </p>
         </div>
-        <div class="bg-slate-800/50 border border-slate-700 rounded-none p-8 md:p-12 text-left">
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="flex flex-col space-y-8 items-start">
-              <div>
-                <div class="english">
-                  <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
-                </div>
-                <div class="arabic">
-                  <h3 class="text-2xl font-semibold mb-6 text-right">بيانات التواصل</h3>
-                </div>
-                <div class="space-y-4 text-slate-300">
-                  <div class="flex items-start gap-4 address">
-                    <i class="ri-map-pin-line text-2xl text-[#1eaae7] mt-1"></i>
-                    <div>
-                      <h4 class="font-semibold text-white english">Address</h4>
-                      <h4 class="font-semibold text-white arabic">العنوان</h4>
-                      <div class="english">
-                        Khalid Ibn Al Walid St, Ar Rawdah, Riyadh 13211, Kingdom of Saudi Arabia
-                      </div>
-                      <div class="arabic">شارع خالد بن الوليد، حي الروضة، الرياض 13211، المملكة العربية السعودية</div>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-4">
-                    <i class="ri-mail-send-line text-2xl text-[#1eaae7] mt-1"></i>
-                    <div>
-                      <h4 class="font-semibold text-white english">Email</h4>
-                      <h4 class="font-semibold text-white arabic">البريد الإلكتروني</h4>
-                      <a href="mailto:Info@adi.sa" class="hover:text-[#1eaae7] transition">Info@adi.sa</a>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-4">
-                    <i class="ri-phone-line text-2xl text-[#1eaae7] mt-1"></i>
-                    <div>
-                      <h4 class="font-semibold text-white english">General Manager: Mohamed Essawi</h4>
-                      <h4 class="font-semibold text-white arabic">المدير العام: محمد عصاوي</h4>
-                      <a href="tel:+966546477429" class="hover:text-[#1eaae7] transition">+966 54 647 7429</a>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-4">
-                    <i class="ri-global-line text-2xl text-[#1eaae7] mt-1"></i>
-                    <div>
-                      <h4 class="font-semibold text-white english">Website</h4>
-                      <h4 class="font-semibold text-white arabic">الموقع الإلكتروني</h4>
-                      <a href="http://www.adi.sa" target="_blank" rel="noopener noreferrer"
-                        class="hover:text-[#1eaae7] transition">www.adi.sa</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Left column: Contact details above map -->
+          <div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-8 md:p-12 text-left">
               <div class="english">
-                <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+                <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
               </div>
               <div class="arabic">
-                <h3 class="text-2xl font-semibold mb-6 text-right">أرسل لنا رسالة</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-right">بيانات التواصل</h3>
               </div>
-              <form action="#" class="space-y-4">
-                <input type="text" placeholder="Your Name"
-                  class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input type="text" placeholder="اسمك"
-                  class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input type="email" placeholder="Your Email"
-                  class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input type="email" placeholder="بريدك الإلكتروني"
-                  class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input type="tel" placeholder="Your Phone Number"
-                  class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input  type="tel" placeholder="رقم هاتفك"
-                  class="arabic w-full bg-slate-700/50 border text-right border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <textarea placeholder="Your Message" rows="4"
-                  class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
-                <textarea placeholder="رسالتك" rows="4"
-                  class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
-                <button type="submit"
-                  class="english w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">Submit</button>
-                <button type="submit"
-                  class="arabic w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">إرسال</button>
-              </form>
+              <div class="space-y-4 text-slate-300">
+                <div class="flex items-start gap-4 address">
+                  <i class="ri-map-pin-line text-2xl text-[#1eaae7] mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold text-white english">Address</h4>
+                    <h4 class="font-semibold text-white arabic">العنوان</h4>
+                    <div class="english">
+                      Khalid Ibn Al Walid St, Ar Rawdah, Riyadh 13211, Kingdom of Saudi Arabia
+                    </div>
+                    <div class="arabic">شارع خالد بن الوليد، حي الروضة، الرياض 13211، المملكة العربية السعودية</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <i class="ri-mail-send-line text-2xl text-[#1eaae7] mt-1"></i>
+                  <div>
+                    <h4 class="font-semibold text-white english">Email</h4>
+                    <h4 class="font-semibold text-white arabic">البريد الإلكتروني</h4>
+                    <a href="mailto:Info@adi.sa" class="hover:text-[#1eaae7] transition">Info@adi.sa</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Map under contact details -->
+            <div class="mt-8 border border-slate-700 p-4 rounded-md">
+              <h3 class="text-2xl font-semibold mb-4 english">Location Map</h3>
+              <h3 class="text-2xl font-semibold mb-4 arabic">خريطة الموقع</h3>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.1167190200035!2d46.763296715003374!3d24.75212398409556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f0cd82b2bd6d3%3A0x1d70aa45fbb7f51d!2sKhalid%20Ibn%20Al%20Walid%20St%2C%20Ar%20Rawdah%2C%20Riyadh%2013211%2C%20Saudi%20Arabia!5e0!3m2!1sen!2seg!4v1658825691875!5m2!1sen!2seg"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" class="rounded-md border border-slate-700 w-full"></iframe>
             </div>
           </div>
-        </div>
-        <!-- Map Section -->
-        <div class="mt-8 border border-slate-700 p-4 rounded-md">
-          <h3 class="text-2xl font-semibold mb-4 english">Location Map</h3>
-          <h3 class="text-2xl font-semibold mb-4 arabic">خريطة الموقع</h3>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.1167190200035!2d46.763296715003374!3d24.75212398409556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f0cd82b2bd6d3%3A0x1d70aa45fbb7f51d!2sKhalid%20Ibn%20Al%20Walid%20St%2C%20Ar%20Rawdah%2C%20Riyadh%2013211%2C%20Saudi%20Arabia!5e0!3m2!1sen!2seg!4v1658825691875!5m2!1sen!2seg"
-            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" class="rounded-md border border-slate-700 w-full"></iframe>
+          <!-- Right column: Form -->
+          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-8 md:p-12 text-left">
+            <div class="english">
+              <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
+            </div>
+            <div class="arabic">
+              <h3 class="text-2xl font-semibold mb-6 text-right">أرسل لنا رسالة</h3>
+            </div>
+            <form action="contact.php" method="POST" class="space-y-4" novalidate>
+              <input type="hidden" name="language" id="form-language" value="en">
+              <input type="text" name="name" placeholder="Your Name"
+                class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <input type="text" name="name" placeholder="اسمك"
+                class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <input type="email" name="email" placeholder="Your Email"
+                class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <input type="email" name="email" placeholder="بريدك الإلكتروني"
+                class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <input type="tel" name="phone" placeholder="Your Phone Number"
+                class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <input  type="tel" name="phone" placeholder="رقم هاتفك"
+                class="arabic w-full bg-slate-700/50 border text-right border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+              <textarea name="message" placeholder="Your Message" rows="4"
+                class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
+              <textarea name="message" placeholder="رسالتك" rows="4"
+                class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
+              <!-- Honeypot field (anti-spam) -->
+              <input type="text" name="company" id="company" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button type="submit"
+                class="english w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">Submit</button>
+              <button type="submit"
+                class="arabic w-full bg-[#1eaae7] text-white px-6 py-3 rounded-none hover:bg-opacity-90 transition font-semibold">إرسال</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Footer -->
   <footer class="bg-slate-900 border-t border-slate-800 py-12">
@@ -2679,7 +2731,7 @@
       isArabic = JSON.parse(localStorage.getItem('isArabic'));
     }
     else {
-      localStorage.setItem('isAraic', isArabic);
+      localStorage.setItem('isArabic', isArabic);
     }
 
     var site = document.querySelector('#site');
@@ -2690,13 +2742,24 @@
     var mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
 
     // Define a function to toggle the language
-    function toggleLanguage() {
-      isArabic = !isArabic;
-      localStorage.setItem('isArabic', isArabic);
-      hideShowElements();
-      updateLangAttributes();
-    }
+    // (single definition kept; removed unused hideShowElements call)
 
+
+    // Sync form fields so only visible language inputs submit
+    function syncFormLangFields() {
+      var isRTL = document.documentElement.dir === 'rtl';
+      var enableIfVisible = function (el, enable) {
+        if (!el) return;
+        var tag = el.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON') {
+          el.disabled = !enable;
+        }
+      };
+      document.querySelectorAll('form .english').forEach(function (el) { enableIfVisible(el, !isRTL); });
+      document.querySelectorAll('form .arabic').forEach(function (el) { enableIfVisible(el, isRTL); });
+      var hiddenLang = document.getElementById('form-language');
+      if (hiddenLang) hiddenLang.value = isRTL ? 'ar' : 'en';
+    }
 
     // Define a function to update the language attributes of the site and the button
     function updateLangAttributes() {
@@ -2704,6 +2767,7 @@
       document.documentElement.classList.toggle('show-arabic', isArabic);
       if (langbtn) langbtn.textContent = isArabic ? 'EN' : 'عربى';
       if (langbtnMobile) langbtnMobile.textContent = isArabic ? 'EN' : 'عربى';
+      syncFormLangFields();
     }
 
     // Define a function to toggle the language
@@ -2715,6 +2779,7 @@
 
     // Initialize the language
     updateLangAttributes();
+    syncFormLangFields();
 
     // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
