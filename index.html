@@ -35,15 +35,16 @@
       font-family: 'alex-md', sans-serif;
     }
 
+    /* Helper to mirror row direction for RTL layouts */
+    html[dir="rtl"] .rtl-row-reverse {
+      flex-direction: row-reverse;
+    }
+
     html[dir="rtl"] .address {
       text-align: right;
     }
 
-    html[dir="rtl"] .arabic.space-x-8> :not([hidden])~ :not([hidden]) {
-      --tw-space-x-reverse: 0;
-
-      margin-right: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
-    }
+    /* Cleanup: no longer using space-x utilities on nav in RTL */
 
     /* html[dir="ltr"] .english {
     font-family: 'gotham-md', sans-serif;
@@ -246,36 +247,67 @@
       <a href="#" class="flex items-center">
         <img src="imgs/logo.svg" alt="AFAQ ADI Logo" class="h-10 w-auto">
       </a>
-      <div class="hidden md:flex items-center space-x-8 english">
+      <!-- Desktop nav (>= 1024px) -->
+      <div class="hidden lg:flex items-center gap-8 english">
         <a href="#about" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">About Us</a>
+        <a href="#story" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Story</a>
+        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Team</a>
         <a href="#services" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Services</a>
         <a href="#projects" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Projects</a>
-        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Team</a>
+        <a href="#values" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Values</a>
         <a href="#partners" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Partners</a>
-        <a href="#contact" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Contact</a>
       </div>
-      <div class="hidden md:flex items-center space-x-8 arabic">
+      <div class="hidden lg:flex items-center gap-8 arabic">
         <a href="#about" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">من نحن</a>
+        <a href="#story" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">قصتنا</a>
+        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">فريق العمل</a>
         <a href="#services" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">الخدمات</a>
         <a href="#projects" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">المشاريع</a>
-        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">فريق العمل</a>
+        <a href="#values" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">قيمنا</a>
         <a href="#partners" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">الشركاء</a>
-        <a href="#contact" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">تواصل معنا</a>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="#contact"
-          class="bg-[#1eaae7] text-white px-6 py-2 rounded-none hover:bg-opacity-90 transition whitespace-nowrap">
-
+      <!-- Desktop actions (>= 1024px) -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="#contact" class="bg-[#1eaae7] text-white px-6 py-2 rounded-none hover:bg-opacity-90 transition whitespace-nowrap">
           <span class="english"> Get In Touch</span>
-
           <span class="arabic">تواصل معنا</span>
-
         </a>
         <span class="topbar-widget"><a id="langbtn" onclick="toggleLanguage()">عربى</a></span>
-
-
       </div>
 
+      <!-- Mobile actions (< 1024px): language + hamburger -->
+      <div class="flex items-center gap-3 lg:hidden">
+        <span class="topbar-widget"><a id="langbtn-mobile" onclick="toggleLanguage()">عربى</a></span>
+        <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" class="p-2 border border-slate-700 text-slate-200 hover:bg-slate-800">
+          <i class="ri-menu-line text-2xl"></i>
+        </button>
+      </div>
+
+    </div>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="lg:hidden hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="english flex flex-col">
+          <a href="#about" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">About Us</a>
+          <a href="#story" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our Story</a>
+          <a href="#team" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our Team</a>
+          <a href="#services" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Services</a>
+          <a href="#projects" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Projects</a>
+          <a href="#values" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Values</a>
+          <a href="#partners" class="py-4 text-slate-200 hover:text-[#1eaae7]">Partners</a>
+          <a href="#contact" class="mt-2 bg-[#1eaae7] text-white px-6 py-3 rounded-none text-center">Get In Touch</a>
+        </div>
+        <div class="arabic flex flex-col">
+          <a href="#about" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">من نحن</a>
+          <a href="#story" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قصتنا</a>
+          <a href="#team" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">فريق العمل</a>
+          <a href="#services" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">الخدمات</a>
+          <a href="#projects" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">المشاريع</a>
+          <a href="#values" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قيمنا</a>
+          <a href="#partners" class="py-4 text-slate-200 hover:text-[#1eaae7]">الشركاء</a>
+          <a href="#contact" class="mt-2 bg-[#1eaae7] text-white px-6 py-3 rounded-none text-center">تواصل معنا</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -346,6 +378,13 @@
   <!-- About Us Section -->
   <section id="about" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-information-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">ABOUT US</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">من نحن</span>
+        </div>
+      </div>
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div data-animate="fade-in">
           <div class="english">
@@ -372,16 +411,16 @@
         </div>
         <div data-animate="fade-in">
           <img
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3"
+            src="imgs/about2.png"
             alt="AFAQ Digital Infrastructure Team"
-            class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-full object-cover">
+            class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-60 object-cover">
         </div>
       </div>
       <div class="grid md:grid-cols-2 gap-12 items-center mt-20">
         <div class="order-2 md:order-1" data-animate="fade-in">
           <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3"
-            alt="Vision and Mission" class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-full object-cover">
+            src="imgs/about3.webp"
+            alt="Vision and Mission" class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-60 object-cover">
         </div>
         <div class="order-1 md:order-2" data-animate="fade-in">
           <div class="english">
@@ -419,6 +458,13 @@
   <!-- Our Story Section -->
   <section id="story" class="py-20 section-bg">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-book-2-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">OUR STORY</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">قصتنا</span>
+        </div>
+      </div>
       <!-- English Version -->
       <div class="english">
         <h2 class="text-4xl font-bold text-center mb-4">Our Story: <span class="gradient-text">Building a New
@@ -443,67 +489,108 @@
             </p>
           </div>
           <div data-animate="fade-in">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="Saudi Arabia Infrastructure Projects"
-              class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-full object-cover">
+            <img src="imgs/about 4.webp" alt="Saudi Arabia Infrastructure Projects"
+              class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-[300px] object-cover">
           </div>
         </div>
 
         <!-- Problems Grid -->
         <div class="mb-20">
-          <h3 class="text-2xl font-bold text-center mb-12">Common Industry <span
+          <h3 class="text-2xl font-bold text-center mb-4">Critical Industry <span
               class="gradient-text">Bottlenecks</span></h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-time-line text-2xl text-red-400"></i>
+          <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">
+            Six systemic challenges that consistently derail infrastructure projects across the Kingdom.
+          </p>
+
+          <div class="flex flex-col lg:flex-row items-stretch gap-8">
+            <!-- Left Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- Governance Paralysis -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-government-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Governance Paralysis</h4>
+                </div>
+                <p class="text-xs text-slate-400">Multi-layered approval chains create decision bottlenecks, causing
+                  30-60 day delays and inflated costs.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Approval Delays</h4>
-              <p class="text-slate-400 text-sm">Endless waiting for internal approvals, stalling critical projects and
-                missing deadlines.</p>
+
+              <!-- Technology Misalignment -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-puzzle-2-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Technology Misalignment</h4>
+                </div>
+                <p class="text-xs text-slate-400">Solutions chosen without operational understanding lead to integration
+                  failures and costly retrofits.</p>
+              </div>
+
+              <!-- Capability Deficits -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-graduation-cap-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Capability Deficits</h4>
+                </div>
+                <p class="text-xs text-slate-400">Skills gaps between project demands and team expertise result in
+                  quality compromises and extended timelines.</p>
+              </div>
             </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-puzzle-line text-2xl text-red-400"></i>
-              </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Mismatched Solutions</h4>
-              <p class="text-slate-400 text-sm">Technology that doesn't align with project needs, causing integration
-                headaches.</p>
+
+            <!-- Center Image -->
+            <div class="flex-shrink-0 w-80 h-80 lg:w-96 lg:h-96">
+              <img src="imgs/problem.png" alt="Infrastructure Challenges"
+                class="w-full h-full object-cover rounded-none shadow-2xl shadow-[#1eaae7]/10">
             </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-team-line text-2xl text-red-400"></i>
+
+            <!-- Right Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- Accountability Vacuum -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-user-search-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Accountability Vacuum</h4>
+                </div>
+                <p class="text-xs text-slate-400">Distributed ownership with no single responsibility point leads to
+                  finger-pointing and project drift.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Talent Gaps</h4>
-              <p class="text-slate-400 text-sm">Lack of investment in continuous team growth and skill development.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-question-line text-2xl text-red-400"></i>
+
+              <!-- Process Rigidity -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-lock-2-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Process Rigidity</h4>
+                </div>
+                <p class="text-xs text-slate-400">Inflexible workflows that can't adapt to project realities cause
+                  missed opportunities and delays.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Lost Accountability</h4>
-              <p class="text-slate-400 text-sm">Diffused responsibility where no one truly owns the project outcome.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-lock-line text-2xl text-red-400"></i>
+
+              <!-- Financial Opacity -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-eye-off-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Financial Opacity</h4>
+                </div>
+                <p class="text-xs text-slate-400">Hidden costs and unrealistic budget assumptions result in overruns,
+                  scope cuts, and stakeholder conflicts.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Rigid Structures</h4>
-              <p class="text-slate-400 text-sm">Inflexible processes that prevent teams from acting swiftly and
-                decisively.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-money-dollar-circle-line text-2xl text-red-400"></i>
-              </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">Cost Surprises</h4>
-              <p class="text-slate-400 text-sm">Underestimated operational costs leading to conflicts and compromised
-                quality.</p>
             </div>
           </div>
         </div>
@@ -511,8 +598,8 @@
         <!-- The Question Section -->
         <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
           <div class="order-2 md:order-1" data-animate="fade-in">
-            <img src="imgs/swcc.jpg" alt="Digital Transformation"
-              class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-full object-cover">
+            <img src="imgs/about5.png" alt="Digital Transformation"
+              class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-[300px] object-cover">
           </div>
           <div class="order-1 md:order-2" data-animate="fade-in">
             <h3 class="text-3xl font-bold mb-6">The Pivotal <span class="gradient-text">Question</span></h3>
@@ -536,65 +623,95 @@
             We've built our company on principles that directly address every challenge we witnessed in the industry.
           </p>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-flashlight-line text-3xl text-[#1eaae7]"></i>
+          <div class="flex flex-col lg:flex-row items-stretch gap-8">
+            <!-- Left Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- We Respond, Not React -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-flashlight-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">We Respond, Not React</h4>
+                </div>
+                <p class="text-xs text-slate-400">Our dedicated team structure ensures decisions are made with speed and
+                  expertise, eliminating internal delays that derail timelines.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">We Respond, Not React</h4>
-              <p class="text-slate-400 text-sm">Our dedicated team structure ensures decisions are made with speed and
-                expertise, eliminating internal delays that derail timelines.</p>
+
+              <!-- We Prescribe, Not Propose -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-stethoscope-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">We Prescribe, Not Propose</h4>
+                </div>
+                <p class="text-xs text-slate-400">We listen first. Our solutions are tailored fits, ensuring technology
+                  aligns perfectly with your project's unique needs.</p>
+              </div>
+
+              <!-- We Invest in People -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-graduation-cap-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">We Invest in People</h4>
+                </div>
+                <p class="text-xs text-slate-400">Our team is in constant growth. We foster learning and certification
+                  because your project deserves the sharpest minds.</p>
+              </div>
             </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-stethoscope-line text-3xl text-[#1eaae7]"></i>
-              </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">We Prescribe, Not Propose</h4>
-              <p class="text-slate-400 text-sm">We listen first. Our solutions are tailored fits, ensuring technology
-                aligns perfectly with your project's unique needs.</p>
+            <!-- Center Image -->
+            <div class="flex-shrink-0 w-80 h-80 lg:w-96 lg:h-96">
+              <img src="imgs/about6.png" alt="Our Promise Infrastructure"
+                class="w-full h-full object-cover rounded-none shadow-2xl shadow-[#1eaae7]/10">
             </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-graduation-cap-line text-3xl text-[#1eaae7]"></i>
+            <!-- Right Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- We Own Our Work -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-shield-check-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">We Own Our Work</h4>
+                </div>
+                <p class="text-xs text-slate-400">From first wire to final configuration, you deal with a team that
+                  takes personal pride in every detail. Accountability is our pride.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">We Invest in People</h4>
-              <p class="text-slate-400 text-sm">Our team is in constant growth. We foster learning and certification
-                because your project deserves the sharpest minds.</p>
-            </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-shield-check-line text-3xl text-[#1eaae7]"></i>
+              <!-- Built for Speed & Clarity -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-rocket-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">Built for Speed & Clarity</h4>
+                </div>
+                <p class="text-xs text-slate-400">We empower project managers with clear boundaries, enabling prompt,
+                  decisive answers without constant escalation.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">We Own Our Work</h4>
-              <p class="text-slate-400 text-sm">From first wire to final configuration, you deal with a team that takes
-                personal pride in every detail. Accountability is our pride.</p>
-            </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-rocket-line text-3xl text-[#1eaae7]"></i>
+              <!-- We Communicate to Partner -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-team-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">We Communicate to Partner</h4>
+                </div>
+                <p class="text-xs text-slate-400">Your contact acts as strategic account manager, focused on long-term
+                  success, not just tactical project delivery.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">Built for Speed & Clarity</h4>
-              <p class="text-slate-400 text-sm">We empower project managers with clear boundaries, enabling prompt,
-                decisive answers without constant escalation.</p>
-            </div>
-
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-handshake-line text-3xl text-[#1eaae7]"></i>
-              </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">We Communicate to Partner</h4>
-              <p class="text-slate-400 text-sm">Your contact acts as strategic account manager, focused on long-term
-                success, not just tactical project delivery.</p>
             </div>
           </div>
         </div>
@@ -620,11 +737,7 @@
 
         <!-- Vision for Saudi Arabia -->
         <div class="text-center">
-          <div class="flex justify-center items-center gap-8 mb-8">
-            <img src="imgs/brands/logo-neom-en-spaced.webp" alt="NEOM" class="h-12 opacity-60">
-            <img src="imgs/brands/riy.svg" alt="Riyadh" class="h-12 opacity-60">
-            <img src="imgs/brands/GACA_HR.svg" alt="GACA" class="h-12 opacity-60">
-          </div>
+
           <p class="text-slate-300 text-lg mb-6">
             We are passionate about contributing to Saudi Arabia's transformation. We believe that world-class vision
             deserves a world-class execution partner.
@@ -633,6 +746,8 @@
             Let's build not just better infrastructure, but a better way, together.
           </p>
         </div>
+
+
       </div>
 
       <!-- Arabic Version -->
@@ -658,73 +773,117 @@
             </p>
           </div>
           <div data-animate="fade-in">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشاريع البنية التحتية السعودية"
-              class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full h-full object-cover">
+            <img src="imgs/about 4.webp" alt="مشاريع البنية التحتية السعودية"
+              class="rounded-none shadow-2xl shadow-[#1eaae7]/10 w-full   object-cover h-[300px]">
           </div>
         </div>
 
         <!-- Problems Grid -->
         <div class="mb-20">
-          <h3 class="text-2xl font-bold text-center mb-12">اختناقات <span class="gradient-text">الصناعة الشائعة</span>
+          <h3 class="text-2xl font-bold text-center mb-4">اختناقات <span class="gradient-text">الصناعة الحرجة</span>
           </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-time-line text-2xl text-red-400"></i>
+          <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">
+            ستة تحديات منهجية تعطل مشاريع البنية التحتية باستمرار في جميع أنحاء المملكة.
+          </p>
+
+          <div class="flex flex-col lg:flex-row items-stretch gap-8">
+            <!-- Left Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- شلل الحوكمة -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-government-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">شلل الحوكمة</h4>
+                </div>
+                <p class="text-xs text-slate-400">سلاسل موافقات متعددة الطبقات تخلق اختناقات في القرارات، مما يسبب
+                  تأخيرات 30-60 يوماً وتضخم التكاليف.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">تأخير الموافقات</h4>
-              <p class="text-slate-400 text-sm">انتظار لا نهاية له للموافقات الداخلية، مما يعطل المشاريع الحيوية ويفوت
-                المواعيد النهائية.</p>
+
+              <!-- عدم توافق التكنولوجيا -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-puzzle-2-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">عدم توافق التكنولوجيا</h4>
+                </div>
+                <p class="text-xs text-slate-400">اختيار حلول دون فهم تشغيلي يؤدي إلى فشل التكامل وتعديلات مكلفة.</p>
+              </div>
+
+              <!-- عجز القدرات -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-graduation-cap-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">عجز القدرات</h4>
+                </div>
+                <p class="text-xs text-slate-400">فجوات مهارات بين متطلبات المشروع وخبرة الفريق تؤدي إلى تنازلات الجودة
+                  وجداول زمنية ممتدة.</p>
+              </div>
             </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-puzzle-line text-2xl text-red-400"></i>
-              </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">حلول غير متطابقة</h4>
-              <p class="text-slate-400 text-sm">تكنولوجيا لا تتماشى مع احتياجات المشروع، مما يسبب صداع في التكامل.</p>
+
+            <!-- Center Image -->
+            <div class="flex-shrink-0 w-80 h-80 lg:w-96 lg:h-96">
+              <img src="imgs/problem.png" alt="تحديات البنية التحتية"
+                class="w-full h-full object-cover rounded-none shadow-2xl shadow-[#1eaae7]/10">
             </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-team-line text-2xl text-red-400"></i>
+
+            <!-- Right Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- فراغ المساءلة -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-user-search-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">فراغ المساءلة</h4>
+                </div>
+                <p class="text-xs text-slate-400">ملكية موزعة بدون نقطة مسؤولية واحدة تؤدي إلى إلقاء اللوم وانحراف
+                  المشروع.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">فجوات المواهب</h4>
-              <p class="text-slate-400 text-sm">نقص الاستثمار في النمو المستمر للفريق وتطوير المهارات.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-question-line text-2xl text-red-400"></i>
+
+              <!-- جمود العمليات -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-lock-2-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">جمود العمليات</h4>
+                </div>
+                <p class="text-xs text-slate-400">تدفقات عمل غير مرنة لا تتكيف مع واقع المشروع تسبب فرص ضائعة وتأخيرات.
+                </p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">ضياع المساءلة</h4>
-              <p class="text-slate-400 text-sm">مسؤولية مشتتة حيث لا أحد يملك حقاً نتيجة المشروع.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-lock-line text-2xl text-red-400"></i>
+
+              <!-- عتامة مالية -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-eye-off-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">عتامة مالية</h4>
+                </div>
+                <p class="text-xs text-slate-400">تكاليف م`خفية وافتراضات ميزانية غير واقعية تؤدي إلى تجاوزات وتقليص
+                  النطاق وصراعات أصحاب المصلحة.</p>
               </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">هياكل جامدة</h4>
-              <p class="text-slate-400 text-sm">عمليات غير مرنة تمنع الفرق من العمل بسرعة وحسم.</p>
-            </div>
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-6 border border-red-500/20 card-hover transition duration-300">
-              <div class="w-12 h-12 bg-red-500/10 rounded-none flex items-center justify-center mb-4">
-                <i class="ri-money-dollar-circle-line text-2xl text-red-400"></i>
-              </div>
-              <h4 class="text-lg font-semibold mb-2 text-red-400">مفاجآت التكلفة</h4>
-              <p class="text-slate-400 text-sm">تكاليف تشغيلية مقللة التقدير تؤدي إلى صراعات وجودة مضرة.</p>
             </div>
           </div>
+
         </div>
 
         <!-- The Question Section -->
         <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
           <div class="order-2 md:order-1" data-animate="fade-in">
-            <img src="imgs/swcc.jpg" alt="التحول الرقمي"
-              class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-full object-cover">
+            <img src="imgs/about5.png" alt="التحول الرقمي"
+              class="rounded-none shadow-2xl shadow-[#1a1449]/10 w-full h-[300px] object-cover">
           </div>
           <div class="order-1 md:order-2" data-animate="fade-in">
             <h3 class="text-3xl font-bold mb-6">السؤال <span class="gradient-text">المحوري</span></h3>
@@ -747,65 +906,95 @@
             بنينا شركتنا على مبادئ تتعامل مباشرة مع كل تحدٍ شهدناه في الصناعة.
           </p>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-flashlight-line text-3xl text-[#1eaae7]"></i>
+          <div class="flex flex-col lg:flex-row items-stretch gap-8">
+            <!-- Left Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- نحن نستجيب، لا نتفاعل -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-flashlight-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">نحن نستجيب، لا نتفاعل</h4>
+                </div>
+                <p class="text-xs text-slate-400">هيكل فريقنا المخصص يضمن اتخاذ القرارات بسرعة وخبرة، مما يلغي التأخيرات
+                  الداخلية التي تعطل الجداول الزمنية.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">نحن نستجيب، لا نتفاعل</h4>
-              <p class="text-slate-400 text-sm">هيكل فريقنا المخصص يضمن اتخاذ القرارات بسرعة وخبرة، مما يلغي التأخيرات
-                الداخلية التي تعطل الجداول الزمنية.</p>
+
+              <!-- نحن نصف، لا نقترح -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-stethoscope-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">نحن نصف، لا نقترح</h4>
+                </div>
+                <p class="text-xs text-slate-400">نستمع أولاً. حلولنا مصممة خصيصاً، مما يضمن توافق التكنولوجيا تماماً مع
+                  احتياجات مشروعك الفريدة.</p>
+              </div>
+
+              <!-- نحن نستثمر في الأشخاص -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-graduation-cap-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">نحن نستثمر في الأشخاص</h4>
+                </div>
+                <p class="text-xs text-slate-400">فريقنا في نمو مستمر. نعزز التعلم والحصول على الشهادات لأن مشروعك يستحق
+                  أذكى العقول.</p>
+              </div>
             </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-stethoscope-line text-3xl text-[#1eaae7]"></i>
-              </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">نحن نصف، لا نقترح</h4>
-              <p class="text-slate-400 text-sm">نستمع أولاً. حلولنا مصممة خصيصاً، مما يضمن توافق التكنولوجيا تماماً مع
-                احتياجات مشروعك الفريدة.</p>
+            <!-- Center Image -->
+            <div class="flex-shrink-0 w-80 h-80 lg:w-96 lg:h-96">
+              <img src="imgs/about6.png" alt="وعدنا للبنية التحتية"
+                class="w-full h-full object-cover rounded-none shadow-2xl shadow-[#1eaae7]/10">
             </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-graduation-cap-line text-3xl text-[#1eaae7]"></i>
+            <!-- Right Column - 3 Boxes -->
+            <div class="flex-1 lg:h-96 grid grid-rows-3 gap-4">
+              <!-- نحن نملك عملنا -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-shield-check-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">نحن نملك عملنا</h4>
+                </div>
+                <p class="text-xs text-slate-400">من أول سلك إلى التكوين النهائي، تتعامل مع فريق يفتخر شخصياً بكل
+                  تفصيلة. المساءلة هي فخرنا.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">نحن نستثمر في الأشخاص</h4>
-              <p class="text-slate-400 text-sm">فريقنا في نمو مستمر. نعزز التعلم والحصول على الشهادات لأن مشروعك يستحق
-                أذكى العقول.</p>
-            </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-shield-check-line text-3xl text-[#1eaae7]"></i>
+              <!-- مبنيون للسرعة والوضوح -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-rocket-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">مبنيون للسرعة والوضوح</h4>
+                </div>
+                <p class="text-xs text-slate-400">نمكّن مديري المشاريع بحدود واضحة، مما يمكّن إجابات سريعة وحاسمة دون
+                  تصعيد مستمر.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">نحن نملك عملنا</h4>
-              <p class="text-slate-400 text-sm">من أول سلك إلى التكوين النهائي، تتعامل مع فريق يفتخر شخصياً بكل تفصيلة.
-                المساءلة هي فخرنا.</p>
-            </div>
 
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-rocket-line text-3xl text-[#1eaae7]"></i>
+              <!-- نحن نتواصل للشراكة -->
+              <div
+                class="h-full bg-slate-800/50 backdrop-blur-sm rounded-none p-4 border border-[#1eaae7]/20 card-hover transition duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 bg-[#1eaae7]/10 rounded-none flex items-center justify-center">
+                    <i class="ri-team-line text-lg text-[#1eaae7]"></i>
+                  </div>
+                  <h4 class="text-sm font-semibold text-[#1eaae7]">نحن نتواصل للشراكة</h4>
+                </div>
+                <p class="text-xs text-slate-400">جهة الاتصال تعمل كمدير حساب استراتيجي، مركزة على النجاح طويل المدى،
+                  وليس فقط تسليم المشروع التكتيكي.</p>
               </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">مبنيون للسرعة والوضوح</h4>
-              <p class="text-slate-400 text-sm">نمكّن مديري المشاريع بحدود واضحة، مما يمكّن إجابات سريعة وحاسمة دون
-                تصعيد مستمر.</p>
-            </div>
-
-            <div
-              class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-[#1eaae7]/20 card-hover transition duration-300">
-              <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-                <i class="ri-handshake-line text-3xl text-[#1eaae7]"></i>
-              </div>
-              <h4 class="text-xl font-semibold mb-3 text-[#1eaae7]">نحن نتواصل للشراكة</h4>
-              <p class="text-slate-400 text-sm">جهة الاتصال تعمل كمدير حساب استراتيجي، مركزة على النجاح طويل المدى، وليس
-                فقط تسليم المشروع التكتيكي.</p>
             </div>
           </div>
         </div>
@@ -830,11 +1019,7 @@
 
         <!-- Vision for Saudi Arabia -->
         <div class="text-center">
-          <div class="flex justify-center items-center gap-8 mb-8">
-            <img src="imgs/brands/logo-neom-en-spaced.webp" alt="نيوم" class="h-12 opacity-60">
-            <img src="imgs/brands/riy.svg" alt="الرياض" class="h-12 opacity-60">
-            <img src="imgs/brands/GACA_HR.svg" alt="الطيران المدني" class="h-12 opacity-60">
-          </div>
+
           <p class="text-slate-300 text-lg mb-6">
             نحن متحمسون للمساهمة في تحول المملكة العربية السعودية. نؤمن أن الرؤية عالمية المستوى تستحق شريك تنفيذ عالمي
             المستوى.
@@ -847,104 +1032,625 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-20 section-bg">
+  <!-- Our Expert Team Section -->
+  <section id="team" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-team-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">OUR TEAM</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">فريق العمل</span>
+        </div>
+      </div>
       <div class="english">
-        <h2 class="text-4xl font-bold text-center mb-4">Our Services & <span class="gradient-text">Solutions</span></h2>
+        <h2 class="text-4xl font-bold text-center mb-4">Meet Our <span class="gradient-text">Expert Team</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-          AFAQ ADI offers a comprehensive portfolio of IT solutions and services designed to meet the diverse needs of
-          enterprises across various industries.
+          Saudi infrastructure experts with certified engineers and project management professionals delivering
+          world-class solutions.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 100ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-database-2-line text-3xl text-[#1eaae7]"></i>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Side - Team Images and Stats -->
+
+          <div class="relative">
+            <!-- Team Photos -->
+            <img src="imgs/team.png" alt="">
+
+
+
+            <!-- Certification Badges -->
+            <div class="flex flex-wrap gap-4 justify-center">
+              <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                CERTIFIED ENGINEERS
+              </div>
+              <div class="bg-slate-700 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                PROJECT PROFESSIONALS
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3">Data Center Solutions</h3>
-            <p class="text-slate-400 text-sm">End-to-end solutions, from design and implementation to management of
-              traditional and smart data centers.</p>
+
+
           </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 200ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-router-line text-3xl text-[#1eaae7]"></i>
+
+          <!-- Right Side - Expertise Stats -->
+          <div class="space-y-8">
+            <!-- Experience Stats -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center">
+                <div class="text-4xl font-bold text-[#1eaae7] mb-2">15+</div>
+                <div class="text-sm text-slate-400">YEARS EXPERIENCE</div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold text-green-500 mb-2">PMP</div>
+                <div class="text-sm text-slate-400">CERTIFIED</div>
+                <div class="text-xs text-slate-500">AVERAGE EXPERIENCE</div>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3">Network Infrastructure</h3>
-            <p class="text-slate-400 text-sm">Resilient and high-performance passive and active network infrastructures
-              for seamless communication.</p>
-          </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 300ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-server-line text-3xl text-[#1eaae7]"></i>
+
+            <!-- Expertise Areas -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-building-line text-xl text-blue-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">MEP</h4>
+                  <p class="text-sm text-slate-400">Civil & Structural Engineering Expertise</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-shield-check-line text-xl text-orange-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">Risk Management</h4>
+                  <p class="text-sm text-slate-400">Proficiency</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-leaf-line text-xl text-green-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">Sustainable</h4>
+                  <p class="text-sm text-slate-400">Focus</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-settings-3-line text-xl text-purple-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">Sustainable</h4>
+                  <p class="text-sm text-slate-400">Design Focus</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-[#1eaae7]/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-time-line text-xl text-[#1eaae7]"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">Delivering</h4>
+                  <p class="text-sm text-slate-400">Mega-Projects</p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3">System Infrastructure</h3>
-            <p class="text-slate-400 text-sm">Optimization of IT systems including servers, security, virtualization,
-              cloud architecture, and database management.</p>
-          </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 400ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-device-line text-3xl text-[#1eaae7]"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3">Integrated Solutions</h3>
-            <p class="text-slate-400 text-sm">Specialized solutions including Access Control, Public Address, Sound
-              Systems, IPTV, and Fire Alarms.</p>
           </div>
         </div>
       </div>
+
       <div class="arabic">
-        <h2 class="text-4xl font-bold text-center mb-4">خدماتنا و<span class="gradient-text">حلولنا</span></h2>
+        <h2 class="text-4xl font-bold text-center mb-4">تعرف على <span class="gradient-text">فريقنا الخبير</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-          تقدم آفاق ADI مجموعة متكاملة من حلول وخدمات تقنية المعلومات المصممة لتلبية احتياجات المؤسسات المتنوعة في مختلف
-          القطاعات.
+          خبراء البنية التحتية السعودية مع مهندسين معتمدين ومحترفي إدارة المشاريع يقدمون حلولاً عالمية المستوى.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 100ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-database-2-line text-3xl text-[#1eaae7]"></i>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Side - Team Images and Stats -->
+          <div class="relative">
+            <!-- Team Photos -->
+            <!-- Team Photos -->
+            <img src="imgs/team.png" alt="">
+            <!-- Certification Badges -->
+            <div class="flex flex-wrap gap-4 justify-center">
+              <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                مهندسون معتمدون
+              </div>
+              <div class="bg-slate-700 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                محترفو المشاريع
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3">حلول مراكز البيانات</h3>
-            <p class="text-slate-400 text-sm">حلول شاملة من التصميم والتنفيذ حتى إدارة مراكز البيانات التقليدية والذكية.
+
+          </div>
+
+          <!-- Right Side - Expertise Stats -->
+          <div class="space-y-8">
+            <!-- Experience Stats -->
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center">
+                <div class="text-4xl font-bold text-[#1eaae7] mb-2">15+</div>
+                <div class="text-sm text-slate-400">سنوات الخبرة</div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold text-green-500 mb-2">PMP</div>
+                <div class="text-sm text-slate-400">معتمد</div>
+                <div class="text-xs text-slate-500">متوسط الخبرة</div>
+              </div>
+            </div>
+
+            <!-- Expertise Areas -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-building-line text-xl text-blue-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">MEP</h4>
+                  <p class="text-sm text-slate-400">خبرة الهندسة المدنية والإنشائية</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-shield-check-line text-xl text-orange-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">إدارة المخاطر</h4>
+                  <p class="text-sm text-slate-400">الكفاءة</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-leaf-line text-xl text-green-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">مستدام</h4>
+                  <p class="text-sm text-slate-400">التركيز</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-settings-3-line text-xl text-purple-400"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">التصميم المستدام</h4>
+                  <p class="text-sm text-slate-400">التركيز</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
+                <div class="w-12 h-12 bg-[#1eaae7]/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-time-line text-xl text-[#1eaae7]"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-200">تسليم</h4>
+                  <p class="text-sm text-slate-400">المشاريع الضخمة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+    <div class="absolute top-0 left-0 w-full h-full opacity-5">
+      <div class="absolute top-20 left-10 w-32 h-32 bg-[#1eaae7] rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-40 h-40 bg-green-500 rounded-full blur-3xl"></div>
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-purple-500 rounded-full blur-3xl">
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="english">
+        <!-- Header Section -->
+        <div class="text-center mb-20">
+          <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2 mb-6">
+            <i class="ri-service-line text-[#1eaae7]"></i>
+            <span class="text-[#1eaae7] text-sm font-medium">COMPREHENSIVE SOLUTIONS</span>
+          </div>
+          <h2 class="text-5xl font-bold mb-6">
+            Our Services & <span class="gradient-text">Solutions</span>
+          </h2>
+          <p class="text-slate-300 text-xl max-w-4xl mx-auto leading-relaxed">
+            AFAQ ADI delivers cutting-edge IT infrastructure solutions that power Saudi Arabia's digital transformation,
+            combining world-class expertise with innovative technology.
+          </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <!-- Data Center Operations - Featured Card -->
+          <div
+            class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-[#1eaae7]/50 transition-all duration-500 overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-[#1eaae7] rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-20 h-20 bg-gradient-to-br from-[#1eaae7]/20 to-[#1eaae7]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <i class="ri-database-2-line text-4xl text-[#1eaae7]"></i>
+                </div>
+                <div class="text-right">
+                  <div class="text-[#1eaae7] text-sm font-medium">MISSION CRITICAL</div>
+                  <div class="text-slate-400 text-xs">24/7 Operations</div>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-4 group-hover:text-[#1eaae7] transition-colors duration-300">
+                Data Center Operations
+              </h3>
+
+              <p class="text-slate-300 mb-6 leading-relaxed">
+                Comprehensive operations and assessments for mission-critical data centers, including preventive
+                maintenance, 24/7 monitoring, and capacity management.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-[#1eaae7]/10 text-[#1eaae7] text-xs">UPS Management</span>
+                <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs">Cooling Systems</span>
+                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">Asset Management</span>
+              </div>
+
+              <div class="flex items-center text-slate-400 group-hover:text-[#1eaae7] transition-colors duration-300">
+                <span class="text-sm font-medium">Learn More</span>
+                <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Network Infrastructure -->
+          <div
+            class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-green-500/50 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+              <div class="absolute bottom-0 left-0 w-32 h-32 bg-green-500 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-20 h-20 bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <i class="ri-router-line text-4xl text-green-500"></i>
+                </div>
+                <div class="text-right">
+                  <div class="text-green-500 text-sm font-medium">HIGH PERFORMANCE</div>
+                  <div class="text-slate-400 text-xs">Seamless Communication</div>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-4 group-hover:text-green-500 transition-colors duration-300">
+                Network Infrastructure
+              </h3>
+
+              <p class="text-slate-300 mb-6 leading-relaxed">
+                Resilient and high-performance passive and active network infrastructures designed for seamless, secure
+                communication across all platforms.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs">Fiber Optics</span>
+                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">Wireless Solutions</span>
+                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">Network Security</span>
+              </div>
+
+              <div class="flex items-center text-slate-400 group-hover:text-green-500 transition-colors duration-300">
+                <span class="text-sm font-medium">Learn More</span>
+                <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- ELV & Integrated Solutions -->
+          <div
+            class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+              <div class="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-20 h-20 bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <i class="ri-server-line text-4xl text-purple-500"></i>
+                </div>
+                <div class="text-right">
+                  <div class="text-purple-500 text-sm font-medium">INTEGRATED</div>
+                  <div class="text-slate-400 text-xs">Smart Systems</div>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-500 transition-colors duration-300">
+                ELV & Integrated Solutions
+              </h3>
+
+              <p class="text-slate-300 mb-6 leading-relaxed">
+                Specialized ELV and integrated systems including CCTV, Access Control, Public Address, IPTV, Fire
+                Alarms, and Physical Security Systems.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">CCTV Systems</span>
+                <span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs">Access Control</span>
+                <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs">Fire Alarms</span>
+              </div>
+
+              <div class="flex items-center text-slate-400 group-hover:text-purple-500 transition-colors duration-300">
+                <span class="text-sm font-medium">Learn More</span>
+                <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Infrastructure -->
+          <div
+            class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-orange-500/50 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+              <div class="absolute bottom-0 right-0 w-32 h-32 bg-orange-500 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-20 h-20 bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <i class="ri-device-line text-4xl text-orange-500"></i>
+                </div>
+                <div class="text-right">
+                  <div class="text-orange-500 text-sm font-medium">OPTIMIZED</div>
+                  <div class="text-slate-400 text-xs">Cloud Ready</div>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-4 group-hover:text-orange-500 transition-colors duration-300">
+                System Infrastructure
+              </h3>
+
+              <p class="text-slate-300 mb-6 leading-relaxed">
+                Comprehensive optimization of IT systems including servers, cybersecurity, virtualization, cloud
+                architecture, and advanced network monitoring.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs">Cloud Architecture</span>
+                <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs">Cybersecurity</span>
+                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">Virtualization</span>
+              </div>
+
+              <div class="flex items-center text-slate-400 group-hover:text-orange-500 transition-colors duration-300">
+                <span class="text-sm font-medium">Learn More</span>
+                <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+          <div class="inline-flex items-center gap-4  px-8 py-4  border border-[#1eaae7]/20">
+            <div class="w-12 h-12 bg-[#1eaae7]/20 flex items-center justify-center">
+              <i class="ri-customer-service-2-line text-xl text-[#1eaae7]"></i>
+            </div>
+            <div class="text-left">
+              <div class="text-white font-semibold">Ready to Transform Your Infrastructure?</div>
+              <div class="text-slate-400 text-sm">Let's discuss your project requirements</div>
+            </div>
+            <a href="#contact"
+              class="bg-[#1eaae7] text-white px-6 py-3 font-semibold hover:shadow-lg hover:shadow-[#1eaae7]/25 transition-all duration-300">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10 arabic">
+      <!-- Header Section -->
+      <div class="text-center mb-20">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2 mb-6">
+          <i class="ri-service-line text-[#1eaae7]"></i>
+          <span class="text-[#1eaae7] text-sm font-medium">حلول شاملة</span>
+        </div>
+        <h2 class="text-5xl font-bold mb-6">
+          خدماتنا و<span class="gradient-text">حلولنا</span>
+        </h2>
+        <p class="text-slate-300 text-xl max-w-4xl mx-auto leading-relaxed">
+          تقدم آفاق ADI حلول البنية التحتية التقنية المتطورة التي تدعم التحول الرقمي في المملكة العربية السعودية،
+          مع الجمع بين الخبرة العالمية والتكنولوجيا المبتكرة.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <!-- Data Center Operations - Featured Card -->
+        <div
+          class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-[#1eaae7]/50 transition-all duration-500 overflow-hidden">
+          <!-- Background Pattern -->
+          <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-[#1eaae7] rounded-full blur-3xl"></div>
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-6 rtl-row-reverse">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-[#1eaae7]/20 to-[#1eaae7]/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i class="ri-database-2-line text-4xl text-[#1eaae7]"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-[#1eaae7] text-sm font-medium">حرجة المهام</div>
+                <div class="text-slate-400 text-xs">تشغيل 24/7</div>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-[#1eaae7] transition-colors duration-300">
+              تشغيل مراكز البيانات
+            </h3>
+
+            <p class="text-slate-300 mb-6 leading-relaxed">
+              تشغيل وتقييم شامل لمراكز البيانات الحرجة، بما يشمل الصيانة الوقائية والمراقبة على مدار الساعة وإدارة
+              السعة.
             </p>
-          </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 200ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-router-line text-3xl text-[#1eaae7]"></i>
+
+            <div class="flex flex-wrap gap-2 mb-6 justify-end">
+              <span class="px-3 py-1 bg-[#1eaae7]/10 text-[#1eaae7] text-xs">إدارة UPS</span>
+              <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs">أنظمة التبريد</span>
+              <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">إدارة الأصول</span>
             </div>
-            <h3 class="text-xl font-semibold mb-3">بنية الشبكات</h3>
-            <p class="text-slate-400 text-sm">بنية شبكات نشطة وسلبية عالية الكفاءة وموثوقة لضمان اتصال سلس وآمن.</p>
-          </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 300ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-server-line text-3xl text-[#1eaae7]"></i>
+
+            <div class="flex items-center justify-end text-slate-400 group-hover:text-[#1eaae7] transition-colors duration-300">
+              <span class="text-sm font-medium">اعرف المزيد</span>
+              <i class="ri-arrow-left-line mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
             </div>
-            <h3 class="text-xl font-semibold mb-3">بنية الأنظمة</h3>
-            <p class="text-slate-400 text-sm">تحسين أنظمة تقنية المعلومات: الخوادم، الأمن، الافتراضية، الحوسبة السحابية،
-              وإدارة قواعد البيانات.</p>
           </div>
-          <div
-            class="bg-slate-800/50 backdrop-blur-sm rounded-none p-8 border border-slate-700/50 card-hover transition duration-300"
-            data-animate="fade-in" style="transition-delay: 400ms;">
-            <div class="w-16 h-16 bg-[#1eaae7]/10 rounded-none flex items-center justify-center mb-6">
-              <i class="ri-device-line text-3xl text-[#1eaae7]"></i>
+        </div>
+
+        <!-- Network Infrastructure -->
+        <div
+          class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-green-500/50 transition-all duration-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-green-500 rounded-full blur-3xl"></div>
+          </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6 rtl-row-reverse">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i class="ri-router-line text-4xl text-green-500"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-green-500 text-sm font-medium">عالي الأداء</div>
+                <div class="text-slate-400 text-xs">اتصال سلس</div>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3">حلول متكاملة</h3>
-            <p class="text-slate-400 text-sm">حلول متخصصة تشمل أنظمة الدخول، النداء العام، أنظمة الصوت، IPTV، وإنذارات
-              الحريق.</p>
+
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-500 transition-colors duration-300">
+              بنية الشبكات
+            </h3>
+
+            <p class="text-slate-300 mb-6 leading-relaxed">
+              بنية شبكات نشطة وسلبية عالية الكفاءة وموثوقة مصممة للاتصال السلس والآمن عبر جميع المنصات.
+            </p>
+
+              <div class="flex flex-wrap gap-2 mb-6 justify-end">
+              <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs">الألياف البصرية</span>
+              <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">الحلول اللاسلكية</span>
+              <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">أمان الشبكة</span>
+            </div>
+
+              <div class="flex items-center justify-end text-slate-400 group-hover:text-green-500 transition-colors duration-300">
+                <span class="text-sm font-medium">اعرف المزيد</span>
+                <i class="ri-arrow-left-line mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
           </div>
+
+        <!-- ELV & Integrated Solutions -->
+        <div
+          class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
+          </div>
+
+            <div class="relative z-10">
+              <div class="flex items-start justify-between mb-6 rtl-row-reverse">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i class="ri-server-line text-4xl text-purple-500"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-purple-500 text-sm font-medium">متكامل</div>
+                <div class="text-slate-400 text-xs">أنظمة ذكية</div>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-500 transition-colors duration-300">
+              أنظمة التيار الضعيف والحلول المتكاملة
+            </h3>
+
+            <p class="text-slate-300 mb-6 leading-relaxed">
+              أنظمة ELV والحلول المتكاملة المتخصصة بما يشمل CCTV والتحكم في الدخول والنداء العام وIPTV وإنذار الحريق
+              وأنظمة الأمان المادي.
+            </p>
+
+              <div class="flex flex-wrap gap-2 mb-6 justify-end">
+              <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">أنظمة CCTV</span>
+              <span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs">التحكم في الدخول</span>
+              <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs">إنذار الحريق</span>
+            </div>
+
+              <div class="flex items-center justify-end text-slate-400 group-hover:text-purple-500 transition-colors duration-300">
+                <span class="text-sm font-medium">اعرف المزيد</span>
+                <i class="ri-arrow-left-line mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+              </div>
+            </div>
+          </div>
+
+        <!-- System Infrastructure -->
+        <div
+          class="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm p-8 border border-slate-700/50 hover:border-orange-500/50 transition-all duration-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+            <div class="absolute bottom-0 right-0 w-32 h-32 bg-orange-500 rounded-full blur-3xl"></div>
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex items-start justify-between mb-6 rtl-row-reverse">
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <i class="ri-device-line text-4xl text-orange-500"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-orange-500 text-sm font-medium">محسّن</div>
+                <div class="text-slate-400 text-xs">جاهز للسحابة</div>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-orange-500 transition-colors duration-300">
+              بنية الأنظمة
+            </h3>
+
+            <p class="text-slate-300 mb-6 leading-relaxed">
+              تحسين شامل لأنظمة تقنية المعلومات بما يشمل الخوادم والأمن السيبراني والافتراضية والحوسبة السحابية ومراقبة
+              الشبكات المتقدمة.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6 justify-end">
+              <span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs">الحوسبة السحابية</span>
+              <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs">الأمن السيبراني</span>
+              <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">الافتراضية</span>
+            </div>
+
+            <div class="flex items-center justify-end text-slate-400 group-hover:text-orange-500 transition-colors duration-300">
+              <span class="text-sm font-medium">اعرف المزيد</span>
+              <i class="ri-arrow-left-line mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center">
+        <div
+          class="inline-flex items-center gap-4 bg-gradient-to-r from-[#1eaae7]/10 to-green-500/10 px-8 py-4 rounded-2xl border border-[#1eaae7]/20">
+          <div class="w-12 h-12 bg-[#1eaae7]/20 flex items-center justify-center">
+            <i class="ri-customer-service-2-line text-xl text-[#1eaae7]"></i>
+          </div>
+          <div class="text-right">
+            <div class="text-white font-semibold">جاهز لتحويل بنيتك التحتية؟</div>
+            <div class="text-slate-400 text-sm">دعنا نناقش متطلبات مشروعك</div>
+          </div>
+          <a href="#contact"
+            class="bg-[#1eaae7] text-white px-6 py-3   font-semibold hover:shadow-lg hover:shadow-[#1eaae7]/25 transition-all duration-300">
+تواصل معنا          </a>
         </div>
       </div>
     </div>
@@ -952,6 +1658,13 @@
   <!-- Running Projects Section -->
   <section id="projects" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-briefcase-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">RUNNING PROJECTS</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">مشاريعنا الجارية</span>
+        </div>
+      </div>
       <div class="english">
         <h2 class="text-4xl font-bold text-center mb-4">Our <span class="gradient-text">Running Projects</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
@@ -963,8 +1676,8 @@
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
             <img src="imgs/King-Khaled-International-Airport.jpg" alt="KKIA Project"
               class="rounded-md mb-4 w-full h-40 object-cover">
-            <div class="flex items-center gap-4 mb-3">
-              <img src="imgs/brands/riy.svg" alt="KKIA Logo" class="h-10 object-contain">
+            <div class="flex items-center gap-4 mb-3 text-xl">
+              <img src="imgs/brands/riy.svg" alt="KKIA Logo" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">KKIA Concourse Hall</h3>
             </div>
             <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security,
@@ -974,8 +1687,8 @@
           <div onclick="openModal('rak')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
             <img src="imgs/swcc.jpg" alt="RAK Project" class="rounded-md mb-4 w-full h-40 object-cover">
-            <div class="flex items-center gap-4 mb-3">
-              <img src="imgs/brands/swa-logo-dark.svg" alt="RAK Logo" class="h-10 object-contain">
+            <div class="flex items-center gap-4 mb-3 text-xl">
+              <img src="imgs/brands/swa-logo-dark.svg" alt="RAK Logo" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">RAK Desalination & WTS</h3>
             </div>
             <p class="text-slate-400 text-sm">Full security and fiber optic deployment including bollards, CCTV, and
@@ -994,8 +1707,8 @@
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
             <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشروع مطار الملك خالد"
               class="rounded-md mb-4 w-full h-40 object-cover">
-            <div class="flex items-center gap-4 mb-3">
-              <img src="imgs/brands/riy.svg" alt="شعار مطار الملك خالد" class="h-10 object-contain">
+            <div class="flex items-center gap-4 mb-3 text-xl">
+              <img src="imgs/brands/riy.svg" alt="شعار مطار الملك خالد" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">صالة مطار الملك خالد</h3>
             </div>
             <p class="text-slate-400 text-sm">تنفيذ بنية تحتية ضخمة بمطار الرياض - تمديدات، أنظمة أمنية وأنظمة ذكية.</p>
@@ -1004,8 +1717,8 @@
           <div onclick="openModal('rak')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
             <img src="imgs/swcc.jpg" alt="مشروع رأس الخير" class="rounded-md mb-4 w-full h-40 object-cover">
-            <div class="flex items-center gap-4 mb-3">
-              <img src="imgs/brands/swa-logo-dark.svg" alt="شعار رأس الخير" class="h-10 object-contain">
+            <div class="flex items-center gap-4 mb-3 text-xl">
+              <img src="imgs/brands/swa-logo-dark.svg" alt="شعار رأس الخير" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">محطة تحلية رأس الخير</h3>
             </div>
             <p class="text-slate-400 text-sm">تنفيذ كامل لأنظمة الأمن والألياف البصرية بما في ذلك الحواجز، كاميرات
@@ -1279,6 +1992,13 @@
   <!-- Core Values Section -->
   <section id="values" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-shield-check-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">CORE VALUES</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">قيمنا الأساسية</span>
+        </div>
+      </div>
       <div class="english">
         <h2 class="text-4xl font-bold text-center mb-4">Our Core <span class="gradient-text">Values</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
@@ -1476,177 +2196,18 @@
     </div>
   </section>
 
-  <!-- Our Team Section -->
-  <section id="team" class="py-20 section-bg">
-    <div class="container mx-auto px-6">
-      <div class="english">
-        <h2 class="text-4xl font-bold text-center mb-4">Meet Our <span class="gradient-text">Expert Team</span></h2>
-        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-          The driving force behind our success is our team of dedicated and experienced professionals.
-        </p>
-      </div>
-      <div class="arabic">
-        <h2 class="text-4xl font-bold text-center mb-4">تعرف على <span class="gradient-text">فريقنا الخبير</span></h2>
-        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-          سر نجاحنا يكمن في فريقنا من المحترفين ذوي الخبرة والالتزام.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Team Member: Aymn Alajroush -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 400ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=AA" alt="Aymn Alajroush"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Aymn Alajroush</h3>
-            <p class="text-[#1eaae7] mb-3">CEO & Co-Founder </p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">Aymn Alajroush</h3>
-            <p class="text-[#1eaae7] mb-3">CEO & Co-Founder </p>
-          </div>
 
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966504245626" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 50 424 5626</a>
-            <a href="mailto:A.Alajroush@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              A.Alajroush@adi.sa</a>
-          </div>
-        </div>
-        <!-- Team Member: Mohamed Essawi -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 100ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=ME" alt="Mohamed Essawi"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Mohamed Essawi</h3>
-            <p class="text-[#1eaae7] mb-3">General Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">محمد العيسوى</h3>
-            <p class="text-[#1eaae7] mb-3">المدير العام</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966546477429" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 54 647 7429</a>
-            <a href="mailto:m.essawi@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              m.essawi@adi.sa</a>
-          </div>
-        </div>
-
-        <!-- Team Member: Nabil El-Attar -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 150ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=NE" alt="Nabil El-Attar"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Nabil El‑Attar</h3>
-            <p class="text-[#1eaae7] mb-3">Operations Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">نبيل العطار</h3>
-            <p class="text-[#1eaae7] mb-3">مدير العمليات</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966543107301" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 54 310 7301</a>
-            <a href="mailto:n.elattar@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              n.elattar@adi.sa</a>
-          </div>
-        </div>
-
-        <!-- Team Member: Alaa Hassan -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 200ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=AH" alt="Alaa Hassan"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Alaa Hassan</h3>
-            <p class="text-[#1eaae7] mb-3">Sales &amp; Business Development Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">علاء حسن</h3>
-            <p class="text-[#1eaae7] mb-3">مدير المبيعات وتطوير الأعمال</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966504323030" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 50 432 3030</a>
-            <a href="mailto:a.hassan@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              a.hassan@adi.sa</a>
-          </div>
-        </div>
-
-        <!-- Team Member: Mustafa Mohamed -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 250ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=MM" alt="Mustafa Mohamed"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Mustafa Mohamed</h3>
-            <p class="text-[#1eaae7] mb-3">Finance Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">مصطفي محمد</h3>
-            <p class="text-[#1eaae7] mb-3">مدير الحسابات</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966561483673" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 56 148 3673</a>
-            <a href="mailto:m.mohamed@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              m.mohamed@adi.sa</a>
-          </div>
-        </div>
-
-        <!-- Team Member: Mohamed Gamasy -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 300ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=MG" alt="Mohamed Gamasy"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Mohamed Gamasy</h3>
-            <p class="text-[#1eaae7] mb-3">Project Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">محمد الجمسي</h3>
-            <p class="text-[#1eaae7] mb-3">مدير مشروع</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966549140577" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 54 914 0577</a>
-            <a href="mailto:m.gamasy@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              m.gamasy@adi.sa</a>
-          </div>
-        </div>
-
-        <!-- Team Member: Mohamed Mahmoud -->
-        <div
-          class="bg-slate-800/50 rounded-none text-center p-8 border border-slate-700/50 card-hover transition duration-300"
-          data-animate="fade-in" style="transition-delay: 350ms;">
-          <img src="https://placehold.co/128x128/1e293b/ffffff?text=MM" alt="Mohamed Mahmoud"
-            class="w-32 h-32 rounded-none mx-auto mb-4 border-4 border-slate-700">
-          <div class="english">
-            <h3 class="text-xl font-semibold mb-1">Mohamed Mahmoud</h3>
-            <p class="text-[#1eaae7] mb-3">Technical Manager</p>
-          </div>
-          <div class="arabic">
-            <h3 class="text-xl font-semibold mb-1">محمد محمود</h3>
-            <p class="text-[#1eaae7] mb-3">المدير التقني</p>
-          </div>
-          <div class="text-slate-400 text-sm mt-3 flex flex-col gap-1">
-            <a href="tel:+966594197929" class="hover:text-[#1eaae7]"><i class="ri-phone-line"></i> +966 59 419 7929</a>
-            <a href="mailto:m.mahmoud@adi.sa" class="hover:text-[#1eaae7]"><i class="ri-mail-line"></i>
-              m.mahmoud@adi.sa</a>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
 
   <!-- clients Section -->
   <section id="partners" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-group-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">OUR CLIENTS</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">عملاؤنا</span>
+        </div>
+      </div>
       <div class="english">
         <h2 class="text-4xl font-bold text-center mb-4">Trusted By <span class="gradient-text">Our Clients</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
@@ -1688,6 +2249,13 @@
   <!-- Partners Section with Tabs -->
   <section id="partners" class="py-20 bg-slate-900">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-handshake-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">PARTNERS</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">شركاؤنا</span>
+        </div>
+      </div>
       <div class="english">
         <h2 class="text-4xl font-bold text-center mb-4">Our <span class="gradient-text">Partners</span></h2>
         <p class="text-slate-300 text-center max-w-3xl mx-auto mb-12">
@@ -1865,6 +2433,13 @@
   <!-- Contact Section -->
   <section id="contact" class="py-20 section-bg">
     <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-mail-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">GET IN TOUCH</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">تواصل معنا</span>
+        </div>
+      </div>
       <div class="max-w-4xl mx-auto text-center">
         <div class="english">
           <h2 class="text-4xl font-bold mb-4">Get in <span class="gradient-text">Touch</span></h2>
@@ -1886,7 +2461,7 @@
                   <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
                 </div>
                 <div class="arabic">
-                  <h3 class="text-2xl font-semibold mb-6">بيانات التواصل</h3>
+                  <h3 class="text-2xl font-semibold mb-6 text-right">بيانات التواصل</h3>
                 </div>
                 <div class="space-y-4 text-slate-300">
                   <div class="flex items-start gap-4 address">
@@ -1933,7 +2508,7 @@
                 <h3 class="text-2xl font-semibold mb-6">Send Us a Message</h3>
               </div>
               <div class="arabic">
-                <h3 class="text-2xl font-semibold mb-6">أرسل لنا رسالة</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-right">أرسل لنا رسالة</h3>
               </div>
               <form action="#" class="space-y-4">
                 <input type="text" placeholder="Your Name"
@@ -1946,8 +2521,8 @@
                   class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
                 <input type="tel" placeholder="Your Phone Number"
                   class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
-                <input type="tel" placeholder="رقم هاتفك"
-                  class="arabic w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
+                <input  type="tel" placeholder="رقم هاتفك"
+                  class="arabic w-full bg-slate-700/50 border text-right border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition">
                 <textarea placeholder="Your Message" rows="4"
                   class="english w-full bg-slate-700/50 border border-slate-600 text-white px-4 py-3 rounded-none focus:ring-2 focus:ring-[#1eaae7]/50 focus:border-[#1eaae7] focus:outline-none transition"></textarea>
                 <textarea placeholder="رسالتك" rows="4"
@@ -2109,6 +2684,10 @@
 
     var site = document.querySelector('#site');
     var langbtn = document.querySelector('#langbtn');
+    var langbtnMobile = document.querySelector('#langbtn-mobile');
+    var mobileMenuButton = document.querySelector('#mobile-menu-button');
+    var mobileMenu = document.querySelector('#mobile-menu');
+    var mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
 
     // Define a function to toggle the language
     function toggleLanguage() {
@@ -2123,7 +2702,8 @@
     function updateLangAttributes() {
       document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
       document.documentElement.classList.toggle('show-arabic', isArabic);
-      langbtn.textContent = isArabic ? 'EN' : 'عربى';
+      if (langbtn) langbtn.textContent = isArabic ? 'EN' : 'عربى';
+      if (langbtnMobile) langbtnMobile.textContent = isArabic ? 'EN' : 'عربى';
     }
 
     // Define a function to toggle the language
@@ -2135,6 +2715,31 @@
 
     // Initialize the language
     updateLangAttributes();
+
+    // Mobile menu toggle
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        var isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        var newOpen = !isOpen;
+        mobileMenuButton.setAttribute('aria-expanded', String(newOpen));
+        mobileMenu.classList.toggle('hidden');
+        if (mobileMenuIcon) {
+          mobileMenuIcon.classList.toggle('ri-menu-line', !newOpen);
+          mobileMenuIcon.classList.toggle('ri-close-line', newOpen);
+        }
+      });
+      // Close menu on navigation click
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          if (mobileMenuIcon) {
+            mobileMenuIcon.classList.add('ri-menu-line');
+            mobileMenuIcon.classList.remove('ri-close-line');
+          }
+        });
+      });
+    }
   </script>
 
   </script>
