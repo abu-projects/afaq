@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="zxx" id="site">
+<html lang="en" id="site">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AFAQ Digital Infrastructure - Always Reliable, Always Ready</title>
+  <meta name="description" id="meta-description" content="AFAQ Digital Infrastructure (AFAQ ADI) delivers reliable, scalable IT and ELV solutions in Saudi Arabia: data center operation, networking, security, and system integration.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" id="canonical-link" href="/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="og-title" content="AFAQ Digital Infrastructure - Always Reliable, Always Ready">
+  <meta property="og:description" id="og-description" content="Reliable, scalable IT and ELV solutions in Saudi Arabia.">
+  <meta property="og:url" id="og-url" content="/">
+  <meta property="og:image" id="og-image" content="/imgs/hero%203.png">
+  <meta property="og:locale" id="og-locale" content="en_US">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" id="tw-title" content="AFAQ Digital Infrastructure - Always Reliable, Always Ready">
+  <meta name="twitter:description" id="tw-description" content="Reliable, scalable IT and ELV solutions in Saudi Arabia.">
+  <meta name="twitter:image" id="tw-image" content="/imgs/hero%203.png">
+  <link rel="alternate" hreflang="en" id="alt-en" href="/">
+  <link rel="alternate" hreflang="ar" id="alt-ar" href="/">
   <link rel="icon" href="imgs/fav.png" type="image/png">
   <!-- Favicon -->
   <link rel="apple-touch-icon" href="imgs/fav.png">
@@ -14,6 +31,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" rel="stylesheet">
+  <!-- Structured Data: Organization + LocalBusiness + Breadcrumbs -->
+  <script type="application/ld+json" id="org-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AFAQ Digital Infrastructure",
+    "url": "",
+    "logo": "/imgs/logo.svg",
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json" id="localbusiness-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "AFAQ Digital Infrastructure",
+    "image": "/imgs/hero%203.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Khalid Ibn Al Walid St, Ar Rawdah",
+      "addressLocality": "Riyadh",
+      "postalCode": "13211",
+      "addressCountry": "SA"
+    },
+    "email": "Info@adi.sa"
+  }
+  </script>
+  <script type="application/ld+json" id="breadcrumbs-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+      {"@type": "ListItem", "position": 2, "name": "Services", "item": "#/services"},
+      {"@type": "ListItem", "position": 3, "name": "Contact", "item": "#/contact"}
+    ]
+  }
+  </script>
   <style>
     /* Alexandria-Medium font for Arabic in RTL */
     @font-face {
@@ -1059,7 +1114,7 @@
 
           <div class="relative">
             <!-- Team Photos -->
-            <img src="imgs/team.png" alt="">
+            <img src="imgs/team.png" alt="AFAQ ADI Team" loading="lazy">
 
 
 
@@ -1158,7 +1213,7 @@
           <div class="relative">
             <!-- Team Photos -->
             <!-- Team Photos -->
-            <img src="imgs/team.png" alt="">
+            <img src="imgs/team.png" alt="AFAQ ADI Team" loading="lazy">
             <!-- Certification Badges -->
             <div class="flex flex-wrap gap-4 justify-center">
               <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
@@ -1679,7 +1734,8 @@
           <!-- KKIA Project Card -->
           <div onclick="openModal('kkia')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="KKIA Project"
+            <img src="imgs/King-Khaled-International-Airport.jpg" alt="King Khalid International Airport project (KKIA)"
+              loading="lazy"
               class="rounded-md mb-4 w-full h-40 object-cover">
             <div class="flex items-center gap-4 mb-3 text-xl">
               <img src="imgs/brands/riy.svg" alt="KKIA Logo" class="h-[1em] w-auto object-contain align-middle shrink-0">
@@ -1691,7 +1747,7 @@
           <!-- RAK Project Card -->
           <div onclick="openModal('rak')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/swcc.jpg" alt="RAK Project" class="rounded-md mb-4 w-full h-40 object-cover">
+            <img src="imgs/swcc.jpg" alt="Ras Al Khair desalination and water treatment project (RAK)" class="rounded-md mb-4 w-full h-40 object-cover" loading="lazy">
             <div class="flex items-center gap-4 mb-3 text-xl">
               <img src="imgs/brands/swa-logo-dark.svg" alt="RAK Logo" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">RAK Desalination & WTS</h3>
@@ -1710,7 +1766,7 @@
           <!-- KKIA Project Card -->
           <div onclick="openModal('kkia')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشروع مطار الملك خالد"
+            <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشروع مطار الملك خالد" loading="lazy"
               class="rounded-md mb-4 w-full h-40 object-cover">
             <div class="flex items-center gap-4 mb-3 text-xl">
               <img src="imgs/brands/riy.svg" alt="شعار مطار الملك خالد" class="h-[1em] w-auto object-contain align-middle shrink-0">
@@ -1721,7 +1777,7 @@
           <!-- RAK Project Card -->
           <div onclick="openModal('rak')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/swcc.jpg" alt="مشروع رأس الخير" class="rounded-md mb-4 w-full h-40 object-cover">
+            <img src="imgs/swcc.jpg" alt="مشروع رأس الخير" class="rounded-md mb-4 w-full h-40 object-cover" loading="lazy">
             <div class="flex items-center gap-4 mb-3 text-xl">
               <img src="imgs/brands/swa-logo-dark.svg" alt="شعار رأس الخير" class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">محطة تحلية رأس الخير</h3>
@@ -1738,6 +1794,7 @@
   <div id="modal-kkia" class="modal-template hidden"></div>
   <div id="modal-rak" class="modal-template hidden"></div>
   <div id="modal-privacy" class="modal-template hidden"></div>
+  <div id="modal-terms" class="modal-template hidden"></div>
 
   <!-- Modal Script -->
   <script>
@@ -1745,7 +1802,7 @@
       const container = document.getElementById(`modal-${id}`);
       const rtl = document.documentElement.dir === 'rtl';
 
-      if (id === 'privacy') {
+      if (id === 'privacy' || id === 'terms') {
         // Special rendering for privacy policy - full width without sidebar
         container.innerHTML = `
         <div class="fixed inset-0 bg-slate-900 z-50 flex flex-col modal-content">
@@ -1862,12 +1919,12 @@
               label: { en: 'Gallery', ar: 'المعرض' },
               content: {
                 en: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <img src="https://placehold.co/600x400?text=KKIA+1" class="rounded-md w-full">
-              <img src="https://placehold.co/600x400?text=KKIA+2" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=KKIA+1" alt="KKIA gallery photo 1" class="rounded-md w-full" loading="lazy">
+              <img src="https://placehold.co/600x400?text=KKIA+2" alt="KKIA gallery photo 2" class="rounded-md w-full" loading="lazy">
             </div>`,
                 ar: `<div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\">
-              <img src=\"https://placehold.co/600x400?text=KKIA+1\" class=\"rounded-md w-full\">
-              <img src=\"https://placehold.co/600x400?text=KKIA+2\" class=\"rounded-md w-full\">
+              <img src=\"https://placehold.co/600x400?text=KKIA+1\" alt=\"صورة معرض KKIA 1\" class=\"rounded-md w-full\" loading=\"lazy\">
+              <img src=\"https://placehold.co/600x400?text=KKIA+2\" alt=\"صورة معرض KKIA 2\" class=\"rounded-md w-full\" loading=\"lazy\">
             </div>`
               }
             }
@@ -1940,8 +1997,8 @@
             gallery: {
               label: { en: 'Gallery', ar: 'المعرض' },
               content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <img src="https://placehold.co/600x400?text=RAK+1" class="rounded-md w-full">
-              <img src="https://placehold.co/600x400?text=RAK+2" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=RAK+1" alt="RAK gallery photo 1" class="rounded-md w-full" loading="lazy">
+              <img src="https://placehold.co/600x400?text=RAK+2" alt="RAK gallery photo 2" class="rounded-md w-full" loading="lazy">
             </div>`
             }
           }
@@ -1953,21 +2010,262 @@
               label: { en: '', ar: '' },
               content: {
                 en: `
-              <div class="text-slate-400 space-y-4 w-full">
-                <p>We value your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
-                <p>We collect personal information you provide directly to us, such as when filling out contact forms or subscribing to our newsletters. We may also gather data through cookies and similar technologies to improve user experience.</p>
-                <p>Your data is used to respond to inquiries, provide services, and improve our offerings. We do not sell or rent your personal information to third parties.</p>
-                <p>Security of your information is a top priority. We implement appropriate technical and organizational measures to protect your data from unauthorized access, alteration, disclosure, or destruction.</p>
-                <p>By using our website, you consent to this privacy policy. We may update it periodically, so please review it regularly.</p>
+              <div class="text-slate-300 w-full space-y-6">
+                <p class="text-sm text-slate-400">Last updated: 30 Aug 2025</p>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Introduction</h3>
+                  <p>
+                    We value your privacy. This policy explains what information we collect, how we use it,
+                    the choices you have, and how we keep your information secure when you use our website and
+                    contact services.
+                  </p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Information We Collect</h3>
+                  <ul class="list-disc list-inside text-slate-400 space-y-1">
+                    <li><span class="text-slate-300">Information you provide:</span> name, email, phone, company, and message content submitted via forms.</li>
+                    <li><span class="text-slate-300">Automatic data:</span> IP address, device/browser type, pages visited, and interactions collected through cookies or similar technologies to improve performance and security.</li>
+                  </ul>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">How We Use Information</h3>
+                  <ul class="list-disc list-inside text-slate-400 space-y-1">
+                    <li>Respond to inquiries and provide requested services.</li>
+                    <li>Operate, maintain, and improve our website and user experience.</li>
+                    <li>Secure our services and prevent fraud or misuse.</li>
+                    <li>Comply with legal obligations and enforce our terms.</li>
+                  </ul>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Cookies</h3>
+                  <p>Cookies are small files stored on your device to help the site function and improve performance. You can control cookies through your browser settings. Disabling cookies may affect certain features.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Sharing and Disclosure</h3>
+                  <p>We do not sell or rent your personal information. We may share limited information with trusted providers who help us operate the site, subject to confidentiality obligations, or when required by law.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Data Security</h3>
+                  <p>We use appropriate technical and organizational measures to protect information against unauthorized access, alteration, disclosure, or destruction.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Data Retention</h3>
+                  <p>We retain personal information only for as long as necessary for the purposes described above or as required by applicable laws.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Your Choices and Rights</h3>
+                  <p>You may request access, correction, or deletion of your personal information subject to applicable law. To make a request, please contact us using the details below.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Third-Party Links</h3>
+                  <p>Our website may contain links to third-party sites. We are not responsible for their privacy practices. Please review their policies.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Contact Us</h3>
+                  <p>If you have questions about this policy or your data, contact us via the form on the Contact section.</p>
+                </div>
               </div>
             `,
                 ar: `
-              <div class=\"text-slate-400 space-y-4 w-full\" dir=\"rtl\">
-                <p>نحن نحترم خصوصيتك. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك.</p>
-                <p>نجمع المعلومات الشخصية التي تقدمها لنا مباشرة، مثل عند تعبئة نماذج التواصل أو الاشتراك في النشرات البريدية. قد نجمع أيضًا بيانات عبر ملفات تعريف الارتباط وتقنيات مشابهة لتحسين تجربة المستخدم.</p>
-                <p>نستخدم بياناتك للرد على الاستفسارات، وتقديم الخدمات، وتحسين عروضنا. لا نبيع أو نؤجر معلوماتك الشخصية لأطراف ثالثة.</p>
-                <p>أمن معلوماتك أولوية قصوى. نطبق تدابير تقنية وتنظيمية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التغيير أو الكشف أو الإتلاف.</p>
-                <p>باستخدامك لموقعنا، فإنك توافق على هذه السياسة. قد نقوم بتحديثها دوريًا، لذا يُرجى مراجعتها بانتظام.</p>
+              <div class=\"text-slate-300 w-full space-y-6\" dir=\"rtl\">
+                <p class=\"text-sm text-slate-400\">آخر تحديث: 30 أغسطس 2025</p>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">مقدمة</h3>
+                  <p>
+                    نحن نحترم خصوصيتك. توضح هذه السياسة أنواع المعلومات التي نجمعها وكيف نستخدمها
+                    والخيارات المتاحة لك وكيف نحافظ على أمان معلوماتك عند استخدامك لموقعنا وخدمات التواصل.
+                  </p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">المعلومات التي نجمعها</h3>
+                  <ul class=\"list-disc list-inside text-slate-400 space-y-1\">
+                    <li><span class=\"text-slate-300\">معلومات تقدمها أنت:</span> الاسم والبريد الإلكتروني ورقم الهاتف والشركة ومحتوى الرسالة المرسلة عبر النماذج.</li>
+                    <li><span class=\"text-slate-300\">بيانات تُجمع تلقائيًا:</span> عنوان بروتوكول الإنترنت (IP) ونوع الجهاز/المتصفح والصفحات التي تمت زيارتها والتفاعلات، ويجري جمعها عبر ملفات تعريف الارتباط وتقنيات مشابهة لتحسين الأداء والأمان.</li>
+                  </ul>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">كيفية استخدامنا للمعلومات</h3>
+                  <ul class=\"list-disc list-inside text-slate-400 space-y-1\">
+                    <li>الرد على الاستفسارات وتقديم الخدمات المطلوبة.</li>
+                    <li>تشغيل الموقع وصيانته وتحسين تجربة المستخدم.</li>
+                    <li>حماية خدماتنا ومنع الاحتيال أو إساءة الاستخدام.</li>
+                    <li>الامتثال للالتزامات القانونية وتطبيق الشروط.</li>
+                  </ul>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">ملفات تعريف الارتباط (الكوكيز)</h3>
+                  <p>هي ملفات صغيرة تُخزَّن على جهازك لمساعدة الموقع على العمل وتحسين الأداء. يمكنك التحكم في إعدادات الكوكيز من خلال المتصفح. قد يؤثر التعطيل على بعض الميزات.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">المشاركة والإفصاح</h3>
+                  <p>لا نبيع معلوماتك الشخصية ولا نؤجرها. قد نشارك قدرًا محدودًا من المعلومات مع مزودين موثوقين يساعدوننا في تشغيل الموقع، وفقًا لالتزامات السرية، أو عند الطلب القانوني.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">أمن البيانات</h3>
+                  <p>نطبق تدابير تقنية وتنظيمية مناسبة لحماية المعلومات من الوصول أو التعديل أو الإفصاح أو الإتلاف غير المصرح به.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">الاحتفاظ بالبيانات</h3>
+                  <p>نحتفظ بالمعلومات الشخصية فقط للمدة اللازمة للأغراض الموضحة أعلاه أو حسب ما يتطلبه القانون المعمول به.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">خياراتك وحقوقك</h3>
+                  <p>يمكنك طلب الوصول إلى معلوماتك الشخصية أو تصحيحها أو حذفها وفقًا للقانون المعمول به. لإرسال طلب، يُرجى التواصل معنا عبر نموذج الاتصال.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">روابط الجهات الخارجية</h3>
+                  <p>قد يحتوي موقعنا على روابط لمواقع تابعة لجهات خارجية. لسنا مسؤولين عن ممارسات الخصوصية لديهم. يُرجى مراجعة سياساتهم.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">تواصل معنا</h3>
+                  <p>للاستفسار حول هذه السياسة أو بياناتك، يُرجى التواصل معنا عبر قسم التواصل.</p>
+                </div>
+              </div>
+            `
+              }
+            }
+          }
+        },
+        terms: {
+          title: { en: 'Terms of Service', ar: 'شروط الاستخدام' },
+          tabs: {
+            fullcontent: {
+              label: { en: '', ar: '' },
+              content: {
+                en: `
+              <div class="text-slate-300 w-full space-y-6">
+                <p class="text-sm text-slate-400">Last updated: 30 Aug 2025</p>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Acceptance of Terms</h3>
+                  <p>By accessing or using our website, you agree to these Terms of Service and our Privacy Policy. If you do not agree, please stop using the site.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Use of the Site</h3>
+                  <ul class="list-disc list-inside text-slate-400 space-y-1">
+                    <li>Use the site only for lawful purposes and in accordance with these terms.</li>
+                    <li>Do not attempt to disrupt, damage, or gain unauthorized access to the site or related systems.</li>
+                  </ul>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Intellectual Property</h3>
+                  <p>All content, logos, graphics, and materials on this site are owned by AFAQ Digital Infrastructure or its licensors and are protected by applicable laws. You may not copy, modify, or distribute without permission.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Third-Party Links</h3>
+                  <p>Links to third-party websites are provided for convenience only. We are not responsible for their content or practices.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Disclaimers</h3>
+                  <p>The site is provided “as is” without warranties of any kind, to the fullest extent permitted by law.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Limitation of Liability</h3>
+                  <p>To the maximum extent permitted by law, we are not liable for any indirect, incidental, or consequential damages arising from your use of the site.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Termination</h3>
+                  <p>We may suspend or terminate access to the site at any time for any reason, including violation of these terms.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Governing Law</h3>
+                  <p>These terms are governed by the laws of the Kingdom of Saudi Arabia, without regard to conflict of laws.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Changes to Terms</h3>
+                  <p>We may update these terms from time to time. Continued use of the site constitutes acceptance of the updated terms.</p>
+                </div>
+
+                <div class="space-y-3">
+                  <h3 class="text-xl font-semibold text-white">Contact</h3>
+                  <p>For questions about these terms, please contact us through the Contact section.</p>
+                </div>
+              </div>
+            `,
+                ar: `
+              <div class=\"text-slate-300 w-full space-y-6\" dir=\"rtl\">
+                <p class=\"text-sm text-slate-400\">آخر تحديث: 30 أغسطس 2025</p>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">قبول الشروط</h3>
+                  <p>باستخدامك لهذا الموقع فإنك توافق على شروط الاستخدام هذه وسياسة الخصوصية. إذا لم توافق، يُرجى التوقف عن استخدام الموقع.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">استخدام الموقع</h3>
+                  <ul class=\"list-disc list-inside text-slate-400 space-y-1\">
+                    <li>استخدم الموقع لأغراض مشروعة وبما يتوافق مع هذه الشروط.</li>
+                    <li>لا تحاول تعطيل الموقع أو إلحاق الضرر به أو الحصول على وصول غير مصرح به إلى أنظمته.</li>
+                  </ul>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">حقوق الملكية الفكرية</h3>
+                  <p>جميع المحتوى والشعارات والرسومات والمواد الموجودة في هذا الموقع مملوكة لشركة آفاق للبنية التحتية الرقمية أو لمرخصيها ومحميَّة بموجب القوانين المعمول بها. لا يجوز النسخ أو التعديل أو التوزيع بدون إذن.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">روابط الجهات الخارجية</h3>
+                  <p>تُوفَّر روابط مواقع الجهات الخارجية للراحة فقط. لسنا مسؤولين عن محتواها أو ممارساتها.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">إخلاء المسؤولية</h3>
+                  <p>يُقدَّم الموقع \"كما هو\" دون أي ضمانات من أي نوع إلى الحد الذي يسمح به القانون.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">تحديد المسؤولية</h3>
+                  <p>إلى أقصى حد يسمح به القانون، لا نتحمل أي مسؤولية عن أي أضرار غير مباشرة أو عرضية أو تبعية تنشأ عن استخدامك للموقع.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">إنهاء الاستخدام</h3>
+                  <p>يجوز لنا تعليق أو إنهاء الوصول إلى الموقع في أي وقت لأي سبب، بما في ذلك مخالفة هذه الشروط.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">القانون الحاكم</h3>
+                  <p>تخضع هذه الشروط لقوانين المملكة العربية السعودية دون اعتبار لتضارب القوانين.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">تعديل الشروط</h3>
+                  <p>قد نقوم بتحديث هذه الشروط من وقت لآخر. يُعد استمرارك في استخدام الموقع موافقةً على الشروط المحدَّثة.</p>
+                </div>
+
+                <div class=\"space-y-3\">
+                  <h3 class=\"text-xl font-semibold text-white\">تواصل معنا</h3>
+                  <p>للاستفسار حول هذه الشروط، يُرجى التواصل معنا عبر قسم التواصل.</p>
+                </div>
               </div>
             `
               }
@@ -2029,8 +2327,8 @@
             gallery: {
               label: 'Gallery',
               content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <img src="https://placehold.co/600x400?text=RAK+1" class="rounded-md w-full">
-              <img src="https://placehold.co/600x400?text=RAK+2" class="rounded-md w-full">
+              <img src="https://placehold.co/600x400?text=RAK+1" alt="RAK gallery photo 1" class="rounded-md w-full" loading="lazy">
+              <img src="https://placehold.co/600x400?text=RAK+2" alt="RAK gallery photo 2" class="rounded-md w-full" loading="lazy">
             </div>`
             }
           }
@@ -2635,16 +2933,16 @@
                 class="text-slate-400 hover:text-[#1eaae7] text-sm english">Privacy Policy</a></li>
             <li><a href="#" onclick="openModal('privacy')"
                 class="text-slate-400 hover:text-[#1eaae7] text-sm arabic">سياسة الخصوصية</a></li>
-            <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm english">Terms of Service</a></li>
-            <li><a href="#" class="text-slate-400 hover:text-[#1eaae7] text-sm arabic">شروط الاستخدام</a></li>
+            <li><a href="#" onclick="openModal('terms')" class="text-slate-400 hover:text-[#1eaae7] text-sm english">Terms of Service</a></li>
+            <li><a href="#" onclick="openModal('terms')" class="text-slate-400 hover:text-[#1eaae7] text-sm arabic">شروط الاستخدام</a></li>
           </ul>
         </div>
         <div>
           <h4 class="font-semibold mb-4 english">Connect</h4>
           <h4 class="font-semibold mb-4 arabic">تواصل معنا</h4>
           <div class="flex space-x-4">
-            <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-twitter-x-line text-xl"></i></a>
-            <a href="#" class="text-slate-400 hover:text-[#1eaae7]"><i class="ri-linkedin-box-line text-xl"></i></a>
+            <a href="#" class="text-slate-400 hover:text-[#1eaae7]" aria-label="Twitter" rel="nofollow noopener"><i class="ri-twitter-x-line text-xl"></i></a>
+            <a href="#" class="text-slate-400 hover:text-[#1eaae7]" aria-label="LinkedIn" rel="nofollow noopener"><i class="ri-linkedin-box-line text-xl"></i></a>
           </div>
         </div>
       </div>
@@ -2762,12 +3060,83 @@
     }
 
     // Define a function to update the language attributes of the site and the button
+    function setSeoMeta() {
+      try {
+        var origin = window.location.origin || '';
+        var pageUrl = origin + window.location.pathname;
+        var canonical = document.getElementById('canonical-link');
+        if (canonical) canonical.href = pageUrl;
+        var altEn = document.getElementById('alt-en');
+        var altAr = document.getElementById('alt-ar');
+        if (altEn) altEn.href = pageUrl;
+        if (altAr) altAr.href = pageUrl;
+        var ogUrl = document.getElementById('og-url');
+        if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+        var ogImg = document.getElementById('og-image');
+        if (ogImg) ogImg.setAttribute('content', origin + '/imgs/hero%203.png');
+        var twImg = document.getElementById('tw-image');
+        if (twImg) twImg.setAttribute('content', origin + '/imgs/hero%203.png');
+
+        // Update structured data absolute URLs
+        var orgEl = document.getElementById('org-schema');
+        if (orgEl) {
+          var orgJson = JSON.parse(orgEl.textContent);
+          orgJson.url = pageUrl;
+          orgJson.logo = origin + '/imgs/logo.svg';
+          orgEl.textContent = JSON.stringify(orgJson);
+        }
+        var lbEl = document.getElementById('localbusiness-schema');
+        if (lbEl) {
+          var lbJson = JSON.parse(lbEl.textContent);
+          lbJson.image = origin + '/imgs/hero%203.png';
+          lbEl.textContent = JSON.stringify(lbJson);
+        }
+        var bcEl = document.getElementById('breadcrumbs-schema');
+        if (bcEl) {
+          var bcJson = JSON.parse(bcEl.textContent);
+          if (Array.isArray(bcJson.itemListElement)) {
+            bcJson.itemListElement = [
+              {"@type":"ListItem","position":1,"name":"Home","item": pageUrl},
+              {"@type":"ListItem","position":2,"name":"Services","item": pageUrl + '#services'},
+              {"@type":"ListItem","position":3,"name":"Contact","item": pageUrl + '#contact'}
+            ];
+          }
+          bcEl.textContent = JSON.stringify(bcJson);
+        }
+      } catch (e) { /* noop */ }
+    }
+
     function updateLangAttributes() {
       document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+      document.documentElement.lang = isArabic ? 'ar' : 'en';
       document.documentElement.classList.toggle('show-arabic', isArabic);
       if (langbtn) langbtn.textContent = isArabic ? 'EN' : 'عربى';
       if (langbtnMobile) langbtnMobile.textContent = isArabic ? 'EN' : 'عربى';
+
+      // Update meta descriptions and OG/Twitter titles/descriptions based on language
+      var metaDesc = document.getElementById('meta-description');
+      var ogTitle = document.getElementById('og-title');
+      var ogDesc = document.getElementById('og-description');
+      var twTitle = document.getElementById('tw-title');
+      var twDesc = document.getElementById('tw-description');
+      var ogLocale = document.getElementById('og-locale');
+      if (isArabic) {
+        if (metaDesc) metaDesc.setAttribute('content', 'آفاق للبنية التحتية الرقمية تقدم حلول تقنية موثوقة وقابلة للتوسع في السعودية: تشغيل مراكز البيانات، الشبكات، أنظمة الأمن، والتكامل.');
+        if (ogTitle) ogTitle.setAttribute('content', 'آفاق للبنية التحتية الرقمية - موثوقون دائمًا، جاهزون دائمًا');
+        if (ogDesc) ogDesc.setAttribute('content', 'حلول تقنية موثوقة وقابلة للتوسع في المملكة العربية السعودية.');
+        if (twTitle) twTitle.setAttribute('content', 'آفاق للبنية التحتية الرقمية - موثوقون دائمًا، جاهزون دائمًا');
+        if (twDesc) twDesc.setAttribute('content', 'حلول تقنية موثوقة وقابلة للتوسع في المملكة العربية السعودية.');
+        if (ogLocale) ogLocale.setAttribute('content', 'ar_SA');
+      } else {
+        if (metaDesc) metaDesc.setAttribute('content', 'AFAQ Digital Infrastructure delivers reliable, scalable IT and ELV solutions in Saudi Arabia: data center operations, networking, security, and system integration.');
+        if (ogTitle) ogTitle.setAttribute('content', 'AFAQ Digital Infrastructure - Always Reliable, Always Ready');
+        if (ogDesc) ogDesc.setAttribute('content', 'Reliable, scalable IT and ELV solutions in Saudi Arabia.');
+        if (twTitle) twTitle.setAttribute('content', 'AFAQ Digital Infrastructure - Always Reliable, Always Ready');
+        if (twDesc) twDesc.setAttribute('content', 'Reliable, scalable IT and ELV solutions in Saudi Arabia.');
+        if (ogLocale) ogLocale.setAttribute('content', 'en_US');
+      }
       syncFormLangFields();
+      setSeoMeta();
     }
 
     // Define a function to toggle the language
@@ -2777,9 +3146,10 @@
       updateLangAttributes();
     }
 
-    // Initialize the language
+    // Initialize the language and SEO metadata
     updateLangAttributes();
     syncFormLangFields();
+    setSeoMeta();
 
     // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
