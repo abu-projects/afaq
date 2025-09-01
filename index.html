@@ -2015,6 +2015,130 @@
       const container = document.getElementById(`modal-${id}`);
       const rtl = document.documentElement.dir === 'rtl';
 
+      // Custom rendering for KKIA modal using provided content
+      if (id === 'kkia') {
+        container.innerHTML = `
+        <!-- KKIA Modal -->
+        <div class="fixed inset-0 z-[200] flex flex-col modal-content overflow-y-auto">
+          <!-- Background layer -->
+          <img src="imgs/King-Khaled-International-Airport.jpg" alt="KKIA Background" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-slate-900/80"></div>
+          <button class="absolute top-4 right-4 z-[110] text-white text-3xl hover:text-[#1eaae7]" onclick="closeModal('kkia')">&times;</button>
+
+          <!-- Foreground content -->
+          <div class="relative w-full min-h-full max-w-none bg-transparent">
+            <div class="px-8 sm:px-10 lg:px-14 py-8">
+              <!-- Header -->
+              <div class="flex items-center gap-4 pb-4 mb-6 border-b border-slate-600/60">
+                <img src="imgs/brands/riy.svg" alt="Riyadh Airports" class="h-8 w-auto opacity-80">
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">ALTANFEETHI – T5 Enabling Works</h1>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left column -->
+                <div class="lg:col-span-7 space-y-6">
+                  <h3 class="text-[#1eaae7] text-2xl font-bold">Work Covered</h3>
+                  <ol class="list-decimal list-inside text-slate-200/95 space-y-2 text-lg">
+                    <li>Detailed design and permits documentation.</li>
+                    <li>Permits and airside insurance.</li>
+                    <li>As-Built and Operations Manual documentation.</li>
+                  </ol>
+
+                  <!-- Scope chips -->
+                  <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="flex items-center gap-3 bg-slate-800/40 border border-slate-600/60 px-5 py-4">
+                      <i class="ri-building-2-line text-[#1eaae7] text-xl"></i>
+                      <span class="text-white">Infrastructure Civil Works</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-800/40 border border-slate-600/60 px-5 py-4">
+                      <i class="ri-camera-lens-line text-[#1eaae7] text-xl"></i>
+                      <span class="text-white">Surveillance System</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-800/40 border border-slate-600/60 px-5 py-4">
+                      <i class="ri-global-line text-[#1eaae7] text-xl"></i>
+                      <span class="text-white">ICT</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-800/40 border border-slate-600/60 px-5 py-4">
+                      <i class="ri-flashlight-line text-[#1eaae7] text-xl"></i>
+                      <span class="text-white">Electrical & Flood Lighting</span>
+                    </div>
+                    <div class="sm:col-span-2 flex items-center gap-3 bg-slate-800/40 border border-slate-600/60 px-5 py-4">
+                      <i class="ri-shield-check-line text-[#1eaae7] text-xl"></i>
+                      <span class="text-white">Physical Security: supply, install, test and commission</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right column -->
+                <div class="lg:col-span-5 space-y-6">
+                  <!-- Metrics -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-slate-800/50 border border-slate-600/60 p-6">
+                      <div class="text-3xl md:text-4xl font-extrabold text-white">4M SAR</div>
+                      <div class="text-slate-300">Project Value</div>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-600/60 p-6">
+                      <div class="text-3xl md:text-4xl font-extrabold text-white">1,040</div>
+                      <div class="text-slate-300">Man-days</div>
+                    </div>
+                  </div>
+
+                  <!-- Systems -->
+                  <div class="bg-slate-800/50 border border-slate-600/60 p-6">
+                    <h4 class="text-[#1eaae7] font-semibold mb-3">Systems</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-slate-200">
+                      <ul class="list-disc list-inside space-y-2">
+                        <li>2,000 m Cabling</li>
+                        <li>50 Gates</li>
+                        <li>50 Cameras</li>
+                        <li>40 Lighting Fixtures</li>
+                      </ul>
+                      <ul class="list-disc list-inside space-y-2">
+                        <li>2,000 m Fence</li>
+                        <li>Access Control</li>
+                        <li>Perimeter Security</li>
+                        <li>Surveillance & ICT</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Main Contractor / End User -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-slate-800/50 border border-slate-600/60 p-6 flex flex-col items-start gap-3">
+                      <h4 class="text-[#1eaae7] font-semibold">Main Contractor</h4>
+                      <img src="imgs/cacc.jpeg" alt="CACC - Main Contractor" class="h-16 sm:h-20 w-auto object-contain bg-white/5 p-2">
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-600/60 p-6 flex flex-col items-start gap-3">
+                      <h4 class="text-[#1eaae7] font-semibold">End User</h4>
+                      <img src="imgs/attanfezy.png" alt="ALTANFEETHI - End User" class="h-16 sm:h-20 w-auto object-contain bg-white/5 p-2">
+                    </div>
+                  </div>
+
+                  <!-- Partners -->
+                  <div class="bg-slate-800/50 border border-slate-600/60 p-6">
+                    <h4 class="text-[#1eaae7] font-semibold mb-4">Partners</h4>
+                    <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+                      <img src="imgs/brands/genetec_logo.svg" alt="Genetec" class="h-8 w-auto opacity-90">
+                      <img src="imgs/brands/honeywell-logo.svg" alt="Honeywell" class="h-8 w-auto opacity-90">
+                      <img src="imgs/brands/LenelS2-logo.svg" alt="LenelS2" class="h-8 w-auto opacity-90">
+                      <img src="imgs/brands/samsung-electronics.svg" alt="Samsung" class="h-8 w-auto opacity-90">
+                      <img src="imgs/brands/corning-5.svg" alt="Corning" class="h-8 w-auto opacity-90">
+                    </div>
+                  </div>
+
+                  <!-- Project Location -->
+                  <div class="bg-slate-800/50 border border-slate-600/60 p-6">
+                    <h4 class="text-[#1eaae7] font-semibold mb-4">Project Location</h4>
+                    <img src="imgs/Picture1.png" alt="ALTANFEETHI Riyadh T5 – Project Location" class="w-full h-auto object-contain rounded-sm">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        return; // Do not continue to default rendering
+      }
+
       if (id === 'privacy' || id === 'terms') {
         // Special rendering for privacy policy - full width without sidebar
         container.innerHTML = `
