@@ -1741,15 +1741,20 @@
           <!-- KKIA Project Card -->
           <div onclick="openModal('kkia')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="King Khalid International Airport project (KKIA)"
-              loading="lazy" class="rounded-md mb-4 w-full h-40 object-cover">
-            <div class="flex items-center gap-4 mb-3 text-xl">
-              <img src="imgs/brands/riy.svg" alt="KKIA Logo"
-                class="h-[1em] w-auto object-contain align-middle shrink-0">
-              <h3 class="text-xl font-semibold text-[#1eaae7]">KKIA Concourse Hall</h3>
+            <div class="relative mb-4">
+              <img src="imgs/King-Khaled-International-Airport.jpg" alt="King Khalid International Airport project (KKIA)"
+                loading="lazy" class="rounded-md w-full h-40 object-cover">
+              <!-- Overlayed logo with primary background -->
+              <div class="absolute bottom-3 left-3 bg-[#0f172a] px-3 py-1 rounded shadow-md">
+                <img src="imgs/brands/riy.svg" alt="Riyadh Airports" class="h-5 w-auto object-contain">
+              </div>
             </div>
-            <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security,
-              and smart systems.</p>
+            <div class="flex items-center gap-4 mb-3 text-xl">
+              <h3 class="text-xl font-semibold text-[#1eaae7]">King Khaled International Airport - ALTANFEETHI Terminal 5 Iconic Terminal Enabling Work Package
+</h3>
+            </div>
+            <!-- <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security,
+              and smart systems.</p> -->
           </div>
           
         </div>
@@ -1763,11 +1768,15 @@
           <!-- KKIA Project Card -->
           <div onclick="openModal('kkia')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
-            <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشروع مطار الملك خالد" loading="lazy"
-              class="rounded-md mb-4 w-full h-40 object-cover">
+            <div class="relative mb-4">
+              <img src="imgs/King-Khaled-International-Airport.jpg" alt="مشروع مطار الملك خالد" loading="lazy"
+                class="rounded-md w-full h-40 object-cover">
+              <!-- Overlayed logo with primary background -->
+              <div class="absolute bottom-3 left-3 bg-[#1eaae7] px-3 py-1 rounded shadow-md">
+                <img src="imgs/brands/riy.svg" alt="شعار مطار الملك خالد" class="h-5 w-auto object-contain">
+              </div>
+            </div>
             <div class="flex items-center gap-4 mb-3 text-xl">
-              <img src="imgs/brands/riy.svg" alt="شعار مطار الملك خالد"
-                class="h-[1em] w-auto object-contain align-middle shrink-0">
               <h3 class="text-xl font-semibold text-[#1eaae7]">صالة مطار الملك خالد</h3>
             </div>
             <p class="text-slate-400 text-sm">تنفيذ بنية تحتية ضخمة بمطار الرياض - تمديدات، أنظمة أمنية وأنظمة ذكية.</p>
@@ -1949,11 +1958,22 @@
                     <h4 class="text-[#1eaae7] font-semibold text-lg arabic">المستخدم النهائي</h4>
                     <img src="imgs/attanfezy.png" alt="ALTANFEETHI - End User" class="h-20 w-auto object-contain bg-white/5 p-3 rounded">
                   </div>
+                      <!-- Project Partners -->
                   <div class="bg-slate-800/50 border border-slate-600/60 p-6 flex flex-col items-center text-center gap-4">
+                    <h4 class="text-[#1eaae7] font-semibold text-lg english">Project Partners</h4>
+                    <h4 class="text-[#1eaae7] font-semibold text-lg arabic">شركاء المشروع</h4>
+                    <div class="flex items-center justify-center gap-6 flex-wrap">
+                      <img src="imgs/brands/axis.png" alt="AXIS" class="h-10 w-auto object-contain bg-white/5 p-2 rounded">
+                      <img src="imgs/brands/MOXA.jpg" alt="MOXA" class="h-10 w-auto object-contain bg-white/5 p-2 rounded">
+                      <img src="imgs/brands/comm.png" alt="CommScope" class="h-10 w-auto object-contain bg-white/5 p-2 rounded">
+                    </div>
+                  </div>
+                  <div class="bg-slate-800/50 border border-slate-600/60 p-6 flex flex-col items-center text-center gap-4 md:col-span-3">
                     <h4 class="text-[#1eaae7] font-semibold text-lg english">Project Location</h4>
                     <h4 class="text-[#1eaae7] font-semibold text-lg arabic">موقع المشروع</h4>
-                    <img src="imgs/Picture1.png" alt="ALTANFEETHI Riyadh T5 – Project Location" class="w-full h-32 object-contain rounded-sm bg-white/5 p-2">
+                    <img src="imgs/Picture1.png" alt="ALTANFEETHI Riyadh T5 – Project Location" class="w-full h-[25rem] object-contain rounded-sm bg-white/5 p-2">
                   </div>
+              
                 </div>
               </div>
             </div>
