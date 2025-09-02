@@ -805,3 +805,31 @@ if (mobileMenuButton && mobileMenu) {
     });
   });
 }
+
+// Initialize hero background video (autoplay muted loop with fallback image)
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    var heroSection = document.querySelector('.hero-section');
+    var heroVideo = document.getElementById('heroVideo');
+    if (!heroSection || !heroVideo) return;
+
+    heroVideo.muted = true;
+    heroVideo.loop = true;
+    if ('playsInline' in heroVideo) heroVideo.playsInline = true;
+
+    var revealVideo = function () {
+      heroSection.classList.add('hero-playing');
+    };
+
+    var onLoaded = function () {
+      heroVideo.removeEventListener('loadeddata', onLoaded);
+      revealVideo();
+    };
+    heroVideo.addEventListener('loadeddata', onLoaded);
+
+    var playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.then === 'function') {
+      playPromise.then(revealVideo).catch(function () { /* Autoplay blocked; keep image */ });
+    }
+  } catch (_) { /* noop */ }
+});

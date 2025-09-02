@@ -1794,8 +1794,9 @@
   <div id="modal-privacy" class="modal-template hidden"></div>
   <div id="modal-terms" class="modal-template hidden"></div>
 
-
-
+  <!-- Modal Script -->
+  <script>
+    function renderModal(data, id) {
       const container = document.getElementById(`modal-${id}`);
       const rtl = document.documentElement.dir === 'rtl';
 
@@ -3107,7 +3108,6 @@
     <i class="ri-whatsapp-line text-4xl"></i>
   </a>
 
-  <script src="script.js"></script>
 </body>
 
 </html>
