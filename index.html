@@ -299,6 +299,24 @@
     html[dir="rtl"] .modal-content {
       font-family: 'alex-md', sans-serif;
     }
+
+    /* Nav active state */
+    nav a.nav-link {
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    nav a.nav-link.active {
+      color: #1eaae7 !important;
+      border-bottom-color: #1eaae7;
+    }
+
+    /* Active menu item styles */
+    .nav-item.active {
+      color: #1eaae7 !important;
+      border-bottom: 2px solid #1eaae7;
+    }
   </style>
 </head>
 
@@ -312,22 +330,29 @@
       </a>
       <!-- Desktop nav (>= 1024px) -->
       <div class="hidden lg:flex items-center gap-8 english">
-        <a href="#about" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">About Us</a>
-        <a href="#story" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Story</a>
-        <a href="#values" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Values</a>
-        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Our Team</a>
-        <a href="#services" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Services</a>
-        <a href="#projects" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Projects</a>
-        <a href="#partners" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">Partners</a>
+        <a href="#about" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">About Us</a>
+        <a href="#story" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Our Story</a>
+        <a href="#values" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Our
+          Values</a>
+        <a href="#team" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Our Team</a>
+        <a href="#services"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Services</a>
+        <a href="#projects"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Projects</a>
+        <a href="#partners"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">Partners</a>
       </div>
       <div class="hidden lg:flex items-center gap-8 arabic">
-        <a href="#about" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">من نحن</a>
-        <a href="#story" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">قصتنا</a>
-        <a href="#values" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">قيمنا</a>
-        <a href="#team" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">فريق العمل</a>
-        <a href="#services" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">الخدمات</a>
-        <a href="#projects" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">المشاريع</a>
-        <a href="#partners" class="text-slate-300 hover:text-[#1eaae7] transition duration-300">الشركاء</a>
+        <a href="#about" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">من نحن</a>
+        <a href="#story" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">قصتنا</a>
+        <a href="#values" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">قيمنا</a>
+        <a href="#team" class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">فريق العمل</a>
+        <a href="#services"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">الخدمات</a>
+        <a href="#projects"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">المشاريع</a>
+        <a href="#partners"
+          class="nav-item text-slate-300 hover:text-[#1eaae7] transition duration-300 pb-2">الشركاء</a>
       </div>
       <!-- Desktop actions (>= 1024px) -->
       <div class="hidden lg:flex items-center gap-4">
@@ -353,26 +378,39 @@
     <div id="mobile-menu" class="lg:hidden hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-md">
       <div class="container mx-auto px-6 py-4">
         <div class="english flex flex-col">
-          <a href="#about" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">About Us</a>
-          <a href="#story" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our Story</a>
-          <a href="#values" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Values</a>
-          <a href="#team" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our Team</a>
-          <a href="#services" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Services</a>
-          <a href="#projects" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Projects</a>
-          <a href="#partners" class="py-4 text-slate-200 hover:text-[#1eaae7]">Partners</a>
+          <a href="#about" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">About
+            Us</a>
+          <a href="#story" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our
+            Story</a>
+          <a href="#values"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Values</a>
+          <a href="#team" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Our
+            Team</a>
+          <a href="#services"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Services</a>
+          <a href="#projects"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">Projects</a>
+          <a href="#partners" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7]">Partners</a>
           <a href="#contact" class="mt-2 bg-[#1eaae7] text-white px-6 py-3 rounded-none text-center">Get In Touch</a>
         </div>
         <div class="arabic flex flex-col">
-          <a href="#about" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">من نحن</a>
-          <a href="#story" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قصتنا</a>
-          <a href="#values" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قيمنا</a>
-          <a href="#team" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">فريق العمل</a>
-          <a href="#services" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">الخدمات</a>
-          <a href="#projects" class="py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">المشاريع</a>
-          <a href="#partners" class="py-4 text-slate-200 hover:text-[#1eaae7]">الشركاء</a>
-          <a href="#contact" class="mt-2 bg-[#1eaae7] text-white px-6 py-3 rounded-none text-center">تواصل معنا</a>
-        </div>
+          <a href="#about" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">من
+            نحن</a>
+          <a href="#story"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قصتنا</a>
+          <a href="#values"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">قيمنا</a>
+          <a href="#team" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">فريق
+            العمل</a>
+          <a href="#services"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">الخدمات</a>
+          <a href="#projects"
+            class="nav-item py-4 text-slate-200 hover:text-[#1eaae7] border-b border-slate-800/60">المشاريع</a>
+          <a href="#partners" class="nav-item py-4 text-slate-200 hover:text-[#1eaae7]">الشركاء
+        </div>a>
+        <a href="#contact" class="mt-2 bg-[#1eaae7] text-white px-6 py-3 rounded-none text-center">تواصل معنا</a>
       </div>
+    </div>
     </div>
   </nav>
 
@@ -1190,8 +1228,9 @@
       <div class="arabic">
         <div class="text-center mb-16">
           <h2 class="text-5xl font-bold mb-6">الأسماء الأكثر موثوقية في البنية التحتية،<br>
-             <span class="gradient-text leading-[2]">تعمل
-              الآن من أجلك</span></h2>
+            <span class="gradient-text leading-[2]">تعمل
+              الآن من أجلك</span>
+          </h2>
           <p class="text-xl text-slate-300 mb-4">أكثر من 11 عامًا من التميز الجماعي. معتمدون. مُثبتون. مُمكّنون.</p>
         </div>
 
@@ -1199,8 +1238,7 @@
         <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
           <!-- Left Side - Team Image -->
           <div class="relative">
-            <img src="imgs/team.png" alt="AFAQ ADI Team" loading="lazy"
-              class="w-full ">
+            <img src="imgs/team.png" alt="AFAQ ADI Team" loading="lazy" class="w-full ">
             <div class="absolute -bottom-6 -right-6 bg-[#1eaae7] text-white p-6 rounded-lg shadow-xl">
               <div class="text-3xl font-bold">11+</div>
               <div class="text-sm">سنوات خبرة مجمعة</div>
@@ -1364,7 +1402,7 @@
                 <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs">Cooling Systems</span>
                 <!-- <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">Asset Management</span> -->
               </div>
-<!-- 
+              <!-- 
               <div class="flex items-center text-slate-400 group-hover:text-[#1eaae7] transition-colors duration-300">
 <span class="text-sm font-medium">Learn More</span> 
                 <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -1405,7 +1443,7 @@
                 <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">Wireless Solutions</span>
                 <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs">Network Security</span>
               </div>
-<!-- 
+              <!-- 
               <div class="flex items-center text-slate-400 group-hover:text-green-500 transition-colors duration-300">
           <span class="text-sm font-medium">Learn More</span> 
                 <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -1487,7 +1525,7 @@
                 <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs">Cybersecurity</span>
                 <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs">Virtualization</span>
               </div>
-<!-- 
+              <!-- 
               <div class="flex items-center text-slate-400 group-hover:text-orange-500 transition-colors duration-300">
           <span class="text-sm font-medium">Learn More</span> 
                 <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
@@ -1743,21 +1781,23 @@
           <div onclick="openModal('kkia')"
             class="cursor-pointer bg-slate-800/50 border border-slate-700 rounded-md p-6 card-hover transition duration-300">
             <div class="relative mb-4">
-              <img src="imgs/King-Khaled-International-Airport.jpg" alt="King Khalid International Airport project (KKIA)"
-                loading="lazy" class="rounded-md w-full h-40 object-cover">
+              <img src="imgs/King-Khaled-International-Airport.jpg"
+                alt="King Khalid International Airport project (KKIA)" loading="lazy"
+                class="rounded-md w-full h-40 object-cover">
               <!-- Overlayed logo with primary background -->
               <div class="absolute bottom-3 left-3 bg-[#0f172a] px-3 py-1 rounded shadow-md">
                 <img src="imgs/brands/riy.svg" alt="Riyadh Airports" class="h-5 w-auto object-contain">
               </div>
             </div>
             <div class="flex items-center gap-4 mb-3 text-xl">
-              <h3 class="text-xl font-semibold text-[#1eaae7]">King Khaled International Airport - ALTANFEETHI Terminal 5 Iconic Terminal Enabling Work Package
-</h3>
+              <h3 class="text-xl font-semibold text-[#1eaae7]">King Khaled International Airport - ALTANFEETHI Terminal
+                5 Iconic Terminal Enabling Work Package
+              </h3>
             </div>
             <!-- <p class="text-slate-400 text-sm">Massive infrastructure deployment at Riyadh Airport – cabling, security,
               and smart systems.</p> -->
           </div>
-          
+
         </div>
       </div>
       <div class="arabic">
@@ -1782,7 +1822,7 @@
             </div>
             <p class="text-slate-400 text-sm">تنفيذ بنية تحتية ضخمة بمطار الرياض - تمديدات، أنظمة أمنية وأنظمة ذكية.</p>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -2380,7 +2420,7 @@
             }
           }
         },
-        
+
       };
 
       renderModal(modals[id], id);
@@ -2406,212 +2446,212 @@
     }
   </script>
 
-  <!-- Core Values Section (moved; old copy commented out)
-   <section id="values" class="py-20 bg-slate-900"> -->
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
-        <i class="ri-shield-check-line text-[#1eaae7]"></i>
-        <span class="english text-[#1eaae7] text-sm font-medium uppercase">CORE VALUES</span>
-        <span class="arabic text-[#1eaae7] text-sm font-medium">قيمنا الأساسية</span>
+  <!-- Core Values Section (moved; old copy commented out) -->
+  <section id="values" class="py-20 bg-slate-900">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-[#1eaae7]/10 px-4 py-2">
+          <i class="ri-shield-check-line text-[#1eaae7]"></i>
+          <span class="english text-[#1eaae7] text-sm font-medium uppercase">CORE VALUES</span>
+          <span class="arabic text-[#1eaae7] text-sm font-medium">قيمنا الأساسية</span>
+        </div>
       </div>
-    </div>
-    <div class="english">
-      <h2 class="text-4xl font-bold text-center mb-4">Our Core <span class="gradient-text">Values</span></h2>
-      <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-        Our operations and client engagements are guided by a set of core values that reflect our commitment to
-        excellence.
-      </p>
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-4">
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-shield-check-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Reliability</span>
+      <div class="english">
+        <h2 class="text-4xl font-bold text-center mb-4">Our Core <span class="gradient-text">Values</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+          Our operations and client engagements are guided by a set of core values that reflect our commitment to
+          excellence.
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-4">
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-shield-check-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Reliability</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">We are dedicated to building and maintaining digital
+                  infrastructures that are consistently stable, dependable, and perform optimally under all conditions.
+                  Our solutions are designed for maximum uptime and minimal disruption.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">We are dedicated to building and maintaining digital
-                infrastructures that are consistently stable, dependable, and perform optimally under all conditions.
-                Our solutions are designed for maximum uptime and minimal disruption.</p>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 150ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-rocket-2-line text-2xl text-[#57b5e7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#57b5e7] transition-colors">Readiness</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">We ensure our clients are always prepared for future technological
+                  advancements and potential challenges. This involves proactive planning, agile implementation, and
+                  continuous support to adapt to evolving needs.</p>
+              </div>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 300ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-lightbulb-flash-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Innovation</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">We embrace cutting-edge technologies and innovative approaches to
+                  deliver solutions that are not just current but also future-proof, providing our clients with a
+                  competitive edge.</p>
+              </div>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 450ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-hand-heart-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Integrity</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">We operate with the highest standards of honesty, transparency, and
+                  ethical conduct in all our dealings, building lasting relationships based on trust and mutual respect.
+                </p>
+              </div>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 600ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-user-settings-line text-2xl text-[#1eaae7]"></i>
+                  <span
+                    class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Client-Centricity</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">Our clients are at the heart of everything we do. We are committed
+                  to understanding their unique needs and delivering tailored solutions that exceed their expectations
+                  and contribute to their success.</p>
+              </div>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 750ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-award-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Excellence</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">We strive for perfection in every project, from initial
+                  consultation to post-implementation support, ensuring the highest quality of service and technical
+                  expertise.</p>
+              </div>
             </div>
           </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 150ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-rocket-2-line text-2xl text-[#57b5e7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#57b5e7] transition-colors">Readiness</span>
+        </div>
+      </div>
+      <div class="arabic">
+        <h2 class="text-4xl font-bold text-center mb-4">قيمنا <span class="gradient-text">الأساسية</span></h2>
+        <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
+          تستند أعمالنا وتفاعلنا مع العملاء إلى مجموعة من القيم الجوهرية التي تعكس التزامنا بالتميز.
+        </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-4">
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-shield-check-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">الموثوقية</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">نلتزم ببناء وصيانة بنى تحتية رقمية مستقرة وموثوقة وتعمل بكفاءة
+                  عالية في جميع الظروف. حلولنا مصممة لتحقيق أعلى جاهزية وأقل توقف ممكن.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">We ensure our clients are always prepared for future technological
-                advancements and potential challenges. This involves proactive planning, agile implementation, and
-                continuous support to adapt to evolving needs.</p>
             </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 300ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-lightbulb-flash-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Innovation</span>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 150ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-rocket-2-line text-2xl text-[#57b5e7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#57b5e7] transition-colors">الجاهزية</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">نحرص على أن يكون عملاؤنا مستعدين دومًا لمواكبة التطورات التقنية
+                  والتحديات المستقبلية من خلال التخطيط الاستباقي والتنفيذ المرن والدعم المستمر.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">We embrace cutting-edge technologies and innovative approaches to
-                deliver solutions that are not just current but also future-proof, providing our clients with a
-                competitive edge.</p>
             </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 450ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-hand-heart-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Integrity</span>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 300ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-lightbulb-flash-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">الابتكار</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">نتبنى أحدث التقنيات والأساليب المبتكرة لنقدم حلولاً عصرية ومستقبلية
+                  تمنح عملاءنا ميزة تنافسية حقيقية.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">We operate with the highest standards of honesty, transparency, and
-                ethical conduct in all our dealings, building lasting relationships based on trust and mutual respect.
-              </p>
             </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 600ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-user-settings-line text-2xl text-[#1eaae7]"></i>
-                <span
-                  class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Client-Centricity</span>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 450ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-hand-heart-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">النزاهة</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">نلتزم بأعلى معايير الصدق والشفافية والسلوك الأخلاقي في جميع
+                  تعاملاتنا لبناء علاقات طويلة الأمد قائمة على الثقة والاحترام المتبادل.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">Our clients are at the heart of everything we do. We are committed
-                to understanding their unique needs and delivering tailored solutions that exceed their expectations
-                and contribute to their success.</p>
             </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 750ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-award-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">Excellence</span>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 600ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-user-settings-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">العميل أولاً</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">عملاؤنا في صميم كل ما نقوم به. نحرص على فهم احتياجاتهم وتقديم حلول
+                  مخصصة تفوق توقعاتهم وتدعم نجاحهم.</p>
               </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">We strive for perfection in every project, from initial
-                consultation to post-implementation support, ensuring the highest quality of service and technical
-                expertise.</p>
+            </div>
+            <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
+              style="transition-delay: 750ms;">
+              <button class="accordion-btn w-full flex justify-between items-center text-left group">
+                <div class="flex items-center gap-4">
+                  <i class="ri-award-line text-2xl text-[#1eaae7]"></i>
+                  <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">التميز</span>
+                </div>
+                <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
+              </button>
+              <div class="accordion-content">
+                <p class="text-slate-400 pt-4 pl-10">نسعى للكمال في كل مشروع بدءًا من الاستشارة الأولى وحتى الدعم بعد
+                  التنفيذ، لنضمن أعلى جودة للخدمة والخبرة التقنية.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="arabic">
-      <h2 class="text-4xl font-bold text-center mb-4">قيمنا <span class="gradient-text">الأساسية</span></h2>
-      <p class="text-slate-300 text-center max-w-3xl mx-auto mb-16">
-        تستند أعمالنا وتفاعلنا مع العملاء إلى مجموعة من القيم الجوهرية التي تعكس التزامنا بالتميز.
-      </p>
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-4">
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-shield-check-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">الموثوقية</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">نلتزم ببناء وصيانة بنى تحتية رقمية مستقرة وموثوقة وتعمل بكفاءة
-                عالية في جميع الظروف. حلولنا مصممة لتحقيق أعلى جاهزية وأقل توقف ممكن.</p>
-            </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 150ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-rocket-2-line text-2xl text-[#57b5e7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#57b5e7] transition-colors">الجاهزية</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">نحرص على أن يكون عملاؤنا مستعدين دومًا لمواكبة التطورات التقنية
-                والتحديات المستقبلية من خلال التخطيط الاستباقي والتنفيذ المرن والدعم المستمر.</p>
-            </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 300ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-lightbulb-flash-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">الابتكار</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">نتبنى أحدث التقنيات والأساليب المبتكرة لنقدم حلولاً عصرية ومستقبلية
-                تمنح عملاءنا ميزة تنافسية حقيقية.</p>
-            </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 450ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-hand-heart-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">النزاهة</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">نلتزم بأعلى معايير الصدق والشفافية والسلوك الأخلاقي في جميع
-                تعاملاتنا لبناء علاقات طويلة الأمد قائمة على الثقة والاحترام المتبادل.</p>
-            </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 600ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-user-settings-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">العميل أولاً</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">عملاؤنا في صميم كل ما نقوم به. نحرص على فهم احتياجاتهم وتقديم حلول
-                مخصصة تفوق توقعاتهم وتدعم نجاحهم.</p>
-            </div>
-          </div>
-          <div class="bg-slate-800/50 border border-slate-700 rounded-none p-6" data-animate="fade-in"
-            style="transition-delay: 750ms;">
-            <button class="accordion-btn w-full flex justify-between items-center text-left group">
-              <div class="flex items-center gap-4">
-                <i class="ri-award-line text-2xl text-[#1eaae7]"></i>
-                <span class="font-semibold text-lg group-hover:text-[#1eaae7] transition-colors">التميز</span>
-              </div>
-              <i class="ri-add-line text-2xl accordion-icon transition-transform"></i>
-            </button>
-            <div class="accordion-content">
-              <p class="text-slate-400 pt-4 pl-10">نسعى للكمال في كل مشروع بدءًا من الاستشارة الأولى وحتى الدعم بعد
-                التنفيذ، لنضمن أعلى جودة للخدمة والخبرة التقنية.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </section> -->
+  </section>
 
 
 
@@ -3075,6 +3115,77 @@
         });
         observer.observe(section);
       });
+
+      // Nav link active state on scroll
+      const allNavLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'))
+        .filter(a => a.getAttribute('href') && a.getAttribute('href') !== '#');
+      allNavLinks.forEach(a => a.classList.add('nav-link'));
+
+      const uniqueIds = Array.from(new Set(allNavLinks.map(a => a.getAttribute('href'))));
+      const observedSections = uniqueIds
+        .map(id => ({ id, el: document.querySelector(id) }))
+        .filter(x => x.el);
+
+      const setActive = (id) => {
+        allNavLinks.forEach(a => {
+          const match = a.getAttribute('href') === id;
+          a.classList.toggle('active', match);
+        });
+      };
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActive('#' + entry.target.id);
+          }
+        });
+      }, { rootMargin: '0px 0px -70% 0px', threshold: 0.3 });
+
+      observedSections.forEach(s => navObserver.observe(s.el));
+
+      // Also update on click
+      allNavLinks.forEach(a => {
+        a.addEventListener('click', () => setActive(a.getAttribute('href')));
+      });
+
+      // Navigation active state functionality
+      const navItems = document.querySelectorAll('.nav-item');
+
+      // Add click event listeners to all nav items
+      navItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+          // Remove active class from all nav items
+          navItems.forEach(nav => nav.classList.remove('active'));
+
+          // Add active class to clicked item
+          this.classList.add('active');
+        });
+      });
+
+      // Optional: Set active based on current section in viewport
+      const sections = document.querySelectorAll('section[id]');
+
+      function setActiveNavOnScroll() {
+        let current = '';
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.scrollY >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
+          }
+        });
+      }
+
+      // Listen for scroll events to update active nav item
+      window.addEventListener('scroll', setActiveNavOnScroll);
     });
   </script>
   <!-- lang -->
